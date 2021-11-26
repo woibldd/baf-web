@@ -15,7 +15,7 @@ module.exports = {
   css: {
     loaderOptions: {
       sass: {
-        additionalData: `@import "@/styles/default.scss"; `
+        prependData: `@import "@/styles/default.scss"; `
       },
       // less: {  
       //     modifyVars: {
@@ -27,10 +27,10 @@ module.exports = {
       postcss: {
         plugins: [
           autoprefixer(),
-          pxtorem({
-            rootValue: 37.5,
-            propList: ['*']
-          })
+          // pxtorem({
+          //   rootValue: 37.5,
+          //   propList: ['*']
+          // })
         ]
       }
     }

@@ -6,7 +6,7 @@ import store from './store'
 import commonMixins from './mixins/common'
 
 import '@/styles/index.scss'
-import '@/styles/default.scss'
+import '@/styles/mixins.scss'
 import '@/styles/flex.css'
 
 Vue.mixin(commonMixins) 
