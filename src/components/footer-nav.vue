@@ -1,37 +1,48 @@
 <template>
   <div class="footer-nav-container">
-    <div class="footer-nav-box">
-  
+    <div class="footer-nav-box" flex="main:justify">
+      <div class="footer-left">
+        Copyright © 1998 - 2021 BAF Capital. All Rights Reserved.
+      </div>
+      <div class="footer-right" flex="cross:center">
+        <img class="ml-23" src="~@/assets/icon-1.png" alt="">
+        <img class="ml-23"  src="~@/assets/icon-2.png" alt="">
+        <img class="ml-23"  src="~@/assets/icon-3.png" alt="">
+        <img class="ml-23"  src="~@/assets/icon-4.png" alt="">
+        <button  class="btn ml-60">Contact Us</button>
+      </div>
     </div>
-    <div class="bottom-layer">
+    <!-- <div class="bottom-layer">
       <div class="bottom-box" flex="main:justify cross:center">
          
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
 
 <style lang="scss">
   .footer-nav-container {
+    padding: 105px 0 108px;
+    background-color: #000F27;
     .txr {text-align: right;}
     .txl {text-align: left;}
-    .footer-nav-box {
-      width: 1200px;
+    .footer-nav-box { 
+      width: 1300px;
       margin: 0 auto;
-      padding: 50px 0;
-      dl {
-        dt {
-          padding-bottom: 64px;
-          color: #F8413A;
-        }
-        dd {
-          padding-bottom: 27px;
-          color: #7C7C7C;
-          &:last-child {
-             padding-bottom: 0;
-          }
-        }
+      padding: 0 0 25px 0; 
+      height: 59px;
+      line-height: 59px;
+      color: #fff;
+      font-size: 18px;
+      border-bottom: 1px solid $primary;
+      .btn {
+        width: 220px;
+        height: 59px;
+        background-color: $primary;
+        font-size: 18px;
+        color: #fff;
+        border: none;
       }
     }
     .bottom-layer { 

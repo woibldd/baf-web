@@ -7,13 +7,12 @@
          </div>
          <div class="right"> 
             <ul flex="main:right">
-              <li class="pointer nav-item mr-60" >About Us</li>
-              <li class="pointer nav-item mr-60" >Portfolio</li>
-              <li class="pointer nav-item mr-60" >Insights</li>
-              <li class="pointer nav-item mr-60">News</li>
-              <li class="pointer nav-item mr-60">News</li>
-              <li class="pointer nav-item mr-60">Contact</li>
-              <li class="pointer nav-item">
+              <li class="pointer nav-item mr-60" ><router-link to="/home">About Us</router-link></li>
+              <li class="pointer nav-item mr-60" ><router-link to="/portfolio">Portfolio</router-link></li>
+              <li class="pointer nav-item mr-60" ><router-link to="/insights">Insights</router-link></li>
+              <li class="pointer nav-item mr-60">News</li> 
+              <li class="pointer nav-item mr-60"><router-link to="/contact">Contact</router-link></li>
+              <li class="pointer nav-item lang">
                 <span>简</span> / <span>EN</span>
               </li>
             </ul>
@@ -24,13 +23,14 @@
 </template>
 
 <script> 
+
 export default { 
   props: {
     banner: {
       type: Boolean,
       default: false,
     },
-  }
+  },
 }
 </script>
 
@@ -49,12 +49,18 @@ export default {
         }
       }
       .nav-item {
-        color: $nav;
-        font-family: Arial-BoldMT, Arial;
-        font-weight: bold;
-        &:hover {
-          color : $nav-hover;
+        a {
+          color: $nav;
+          font-family: Arial-BoldMT, Arial;
+          font-weight: bold;
+          &:hover {
+            color : $nav-hover;
+          }
         }
+        &.lang {
+          font-size: 16px;
+          font-weight: 400;
+        } 
       }
     } 
   }

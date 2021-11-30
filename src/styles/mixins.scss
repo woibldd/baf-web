@@ -1,5 +1,5 @@
 
-@for $i from 1 through 60 {
+@for $i from 1 through 80 {
   .mt-#{$i} {
       margin-top: $i * 1px !important;
   }
@@ -17,7 +17,7 @@
   }
 }
 
-@for $i from 1 through 60 {
+@for $i from 1 through 80 {
   .pt-#{$i} {
       padding-top: $i * 1px !important;
   }
