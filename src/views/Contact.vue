@@ -36,16 +36,21 @@
               <input :class="{hasValue:!!name}" v-model="name" placeholder="Name" type="text">
             </div>
             <div class="cell">
-              <el-popover
-                placement="bottom-start" 
+              <el-popover 
+                placement="bottom-end" 
                 width="200"
+                v-model="showLista"
                 trigger="hover" > 
                 <div class="popover-box">
                   <ul>
-                    <li v-for="(item, index) in regionOptions" :key="index">{{`${item.cname}(${item.id})`}}</li>
+                    <li v-for="(item, index) in regionOptions" 
+                      @click="handleSelectRegion(item)"
+                      :key="index">
+                      {{`(+${item.id})${item.fullname}`}}
+                    </li>
                   </ul>
                 </div>
-                <div slot="reference" class="label">+{{regionId}}</div>
+                <div slot="reference"  class="label">+{{regionId}}</div>
               </el-popover>
               <!-- <div class="label">+{{regionId}}</div> -->
               <input :class="{hasValue:!!phone}" v-model="phone" placeholder="Phone" type="text">
@@ -53,8 +58,24 @@
             <div>
               <input :class="{hasValue:!!email}" v-model="email" placeholder="Email" type="text">
             </div> 
-            <div>
-              <input :class="{hasValue:!!country}" v-model="country" placeholder="Country" type="text">
+            <div class="cell"> 
+              <el-popover 
+                placement="bottom-end" 
+                width="200"
+                v-model="showListb"
+                trigger="hover" > 
+                <div class="popover-box">
+                  <ul>
+                    <li v-for="(item, index) in regionOptions" 
+                      @click="handleSelectCountry(item)"
+                      :key="index">
+                      {{`${item.fullname}`}}
+                    </li>
+                  </ul>
+                </div>
+                <div slot="reference"  class="label country-label"></div>
+              </el-popover>
+              <input :class="{hasValue:!!country}" v-model="country" readonly placeholder="Country" type="text"> 
             </div>
             <div>
               <input :class="{hasValue:!!company}" v-model="company" placeholder="Company" type="text">
@@ -90,7 +111,9 @@ export default {
       company: '',
       inquiry: '',
       message: '',
-      regionId: 86
+      regionId: 86,
+      showLista: false,
+      showListb: false,
     }
   },
   methods: {
@@ -100,6 +123,14 @@ export default {
     handleClickSend() {
 
     }, 
+    handleSelectRegion(item) {
+      this.regionId = item.id
+      this.showLista = false
+    },
+    handleSelectCountry(item) {
+      this.country = item.fullname
+      this.showListb = false
+    },
     getRegionList() {
       return () => Promise.resolve(require('@/modules/region.json'))
     },
@@ -232,6 +263,18 @@ export default {
                 border-top: 5px solid #ccc;
                 border-left: 5px solid #fff;
                 border-right: 5px solid #fff;
+                transition: all 0.2s ease-in-out;
+                // &:hover {
+                //   transform: rotate(180deg);
+                // }
+              }
+              &:hover {
+                &::after { 
+                  transform: rotate(180deg);
+                }
+              }
+              &.country-label {
+                left: 200px;
               }
             }
           }
@@ -310,7 +353,8 @@ export default {
 
 <style lang="scss">
 .popover-box {
-  max-height: 450px;
+  max-height: 300px;
+  cursor: pointer;
   overflow-y: auto;
   ul {
     li {

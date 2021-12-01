@@ -83,7 +83,7 @@ export default {
           ]
         },
         {
-          name: 'protocol',
+          name: 'Protocol',
           linkList: [
             {
               pic: require('@/assets/portfolio/protocol-1.png'),
@@ -117,7 +117,7 @@ export default {
           ]
         },
         {
-          name: 'defi',
+          name: 'Defi',
           linkList: [
             {
               pic: require('@/assets/portfolio/defi-1.png'),
@@ -163,7 +163,7 @@ export default {
           ]
         },
         {
-          name: 'othres',
+          name: 'Othres',
           linkList: [
             {
               pic: require('@/assets/portfolio/others-1.png'),
