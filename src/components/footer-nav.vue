@@ -9,7 +9,8 @@
         <img class="ml-23"  src="~@/assets/icon-2.png" alt="">
         <img class="ml-23"  src="~@/assets/icon-3.png" alt="">
         <img class="ml-23"  src="~@/assets/icon-4.png" alt="">
-        <button  class="btn ml-60">Contact Us</button>
+        <router-link to="/contact"><button class="btn ml-60">Contact Us</button></router-link>
+        
       </div>
     </div>
     <!-- <div class="bottom-layer">

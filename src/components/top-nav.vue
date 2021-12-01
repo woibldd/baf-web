@@ -10,7 +10,7 @@
               <li class="pointer nav-item mr-60" ><router-link to="/home">About Us</router-link></li>
               <li class="pointer nav-item mr-60" ><router-link to="/portfolio">Portfolio</router-link></li>
               <li class="pointer nav-item mr-60" ><router-link to="/insights">Insights</router-link></li>
-              <li class="pointer nav-item mr-60">News</li> 
+              <li class="pointer nav-item mr-60"><router-link to="/news">News</router-link></li> 
               <li class="pointer nav-item mr-60"><router-link to="/contact">Contact</router-link></li>
               <li class="pointer nav-item lang">
                 <span>简</span> / <span>EN</span>

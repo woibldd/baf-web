@@ -6,7 +6,7 @@
             Contact Us.
           </h1>  
       </div>
-    </div>
+    </div> 
     <div class="page-content">
       <div class="panel-content">
         <div class="top-rectangle"></div>
@@ -14,13 +14,61 @@
           <div class="panel-tips">
             For general inquiries, please fill out the contact form. If you would like BAF to consider your project, please send a summary of your project along with a BP and/or white paper to Business@baf.vc
           </div>
-          <div class="panel-tabs">
-            <el-tabs  v-model="activeName" @tab-click="handleClick" flex>
+          <div class="panel-tabs mt-40">
+            <mytabs  v-model="activeName" @tab-click="handleClick" flex>
               <el-tab-pane label="INVESTORS" name="INVESTORS" style="width: 300px;"></el-tab-pane>
               <el-tab-pane label="ENTREPRENEURS" name="ENTREPRENEURS" flex-box="1"></el-tab-pane>
               <el-tab-pane label="CAREERS" name="CAREERS" flex-box="1"></el-tab-pane>
-            </el-tabs>
+            </mytabs>
           </div> 
+          <div class="panel-icons mt-40">
+            <div></div>
+            <div class="pl-9 pr-9" flex="main:justify">  
+              <img src="@/assets/contact/contact-icon-1.png" alt="">
+              <img src="@/assets/contact/contact-icon-2.png" alt="">
+              <img src="@/assets/contact/contact-icon-3.png" alt="">
+              <img src="@/assets/contact/contact-icon-4.png" alt="">
+            </div>
+            <div></div>
+          </div>
+          <div class="form mt-52"> 
+            <div>
+              <input :class="{hasValue:!!name}" v-model="name" placeholder="Name" type="text">
+            </div>
+            <div class="cell">
+              <el-popover
+                placement="bottom-start" 
+                width="200"
+                trigger="hover" > 
+                <div class="popover-box">
+                  <ul>
+                    <li v-for="(item, index) in regionOptions" :key="index">{{`${item.cname}(${item.id})`}}</li>
+                  </ul>
+                </div>
+                <div slot="reference" class="label">+{{regionId}}</div>
+              </el-popover>
+              <!-- <div class="label">+{{regionId}}</div> -->
+              <input :class="{hasValue:!!phone}" v-model="phone" placeholder="Phone" type="text">
+            </div>
+            <div>
+              <input :class="{hasValue:!!email}" v-model="email" placeholder="Email" type="text">
+            </div> 
+            <div>
+              <input :class="{hasValue:!!country}" v-model="country" placeholder="Country" type="text">
+            </div>
+            <div>
+              <input :class="{hasValue:!!company}" v-model="company" placeholder="Company" type="text">
+            </div>
+            <div>
+              <input :class="{hasValue:!!inquiry}" v-model="inquiry" placeholder="Inquiry" type="text">
+            </div> 
+            <div class="row3">
+              <div class="row-pd">
+                <textarea :class="{hasValue:!!message}" v-model="message" placeholder="Enter your message" name="" id="" cols="30" rows="10"></textarea>
+              </div> 
+              <button class="submit" @click="handleClickSend">SEND</button>
+            </div>
+          </div>
         </div> 
       </div> 
     </div>
@@ -28,20 +76,44 @@
 </template>
 
 <script>
+import mytabs from '@/components/tabs'
 export default {
+  components: {mytabs},
   data() {
-    return { 
+    return {
+      regionOptions: [],
       activeName: 'ENTREPRENEURS',
+      name: '',
+      phone: '',
+      email: '',
+      country: '',
+      company: '',
+      inquiry: '',
+      message: '',
+      regionId: 86
     }
   },
   methods: {
     handleClick(tab, event) {
       console.log(tab, event);
-    }
-  }
+    },
+    handleClickSend() {
+
+    }, 
+    getRegionList() {
+      return () => Promise.resolve(require('@/modules/region.json'))
+    },
+  },
+  async created() {
+    // const res = await this.getRegionList() 
+    const res = require('@/modules/region.json')
+    console.log('ddddd', res)
+    if (!res.code) {
+      this.regionOptions = res.data
+    } 
+  },
 }
 </script>
-
 
 <style lang="scss" scoped>
 .page-container {
@@ -72,7 +144,7 @@ export default {
     .panel-content {
       position: relative;
       margin: -36px auto -74px;
-      padding: 73px 0 20px;
+      // padding: 73px 0 20px;
       width: 1300px;
       background-color: #fff;
       text-align: left;
@@ -94,7 +166,11 @@ export default {
       } 
       .panel-pd {
         padding: 86px 150px;
-        .panel-tips {}
+        .panel-tips {
+          font-size: 18px;
+          text-align: center;
+          line-height: 1.4em;
+        }
         .panel-tabs {
           .el-tabs {
             /deep/ .el-tabs__nav-wrap {
@@ -108,20 +184,138 @@ export default {
               .el-tabs__nav-scroll {
               }
               .el-tabs__item {
+                height: 51px;
                 width: 333.3px;
+                line-height: 51px;
                 text-align: center;
+                &:hover {
+                  color: $primary;
+                } 
                 &.is-active {
                   // background-color: $primary;
                   color: #fff;
                 }
               }
               .el-tabs__active-bar {
-                height: 40px;
+                height: 51px; 
+                background-color: $primary;
                 z-index: 0;
               }
             }
           }
         }
+        .panel-icons {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+        }
+        .form {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          column-gap: 44px;
+          row-gap: 34px;
+          .cell {
+            position: relative;
+            .label {
+              position: absolute;
+              top: 0;
+              left: 20px;
+              height: 51px;
+              width: 50px; 
+              line-height: 51px;;
+              color: #ccc;
+              &::after {
+                position: absolute;
+                right: 0;
+                top: 24px;
+                display: inline;
+                content: '';  
+                border-top: 5px solid #ccc;
+                border-left: 5px solid #fff;
+                border-right: 5px solid #fff;
+              }
+            }
+          }
+          .row3 {
+            position: relative;
+            grid-column-start: 1;
+            grid-column-end: 4; 
+            width: 100%;
+            height: 500px; 
+            .submit {
+              position:absolute;
+              bottom: 25px;
+              right: 21px;
+              width: 168px;
+              height: 51px;
+              border: 1px solid #CCD1E8;
+              color: #CCD1E8;
+              font-size: 24px;
+              background-color: #fff;
+            }
+            .row-pd {
+              // padding: 29px 47px;
+            }
+          }
+          input::-webkit-input-placeholder {
+            color: #cccccc !important; /* WebKit browsers */
+          }
+          input:-moz-placeholder {
+            color: #cccccc !important; /* Mozilla Firefox 4 to 18 */
+          } 
+          input:-ms-input-placeholder {
+            color: #cccccc !important; /* Internet Explorer 10+ */
+          }
+          input {
+            width: 100%;
+            height: 51px;
+            font-size: 18px;
+            text-align: center; 
+            border: 1px solid #CCD1E8;
+            box-sizing: border-box;
+            color: $primary;
+            &::-moz-placeholder,
+            &::-webkit-input-placeholder {
+              color: red;
+            }
+            &.hasValue {
+              border-color: $primary;
+            }
+          }
+          textarea {
+            padding: 29px 47px;
+            width: 100%; 
+            height: 500px;  
+            font-size: 18px;
+            box-sizing: border-box;
+            color: $primary;
+            border: 1px solid #CCD1E8;
+            &.hasValue {
+              border-color: $primary;
+            }
+            // &::-webkit-input-placeholder {
+            //   padding: 29px 47px;
+            // }
+          }
+          textarea::-webkit-input-placeholder {
+              color: #ccc;  
+              font-family: ArialMT; 
+              // text-align: right;
+          }
+        }
+      }
+    }
+  }
+}
+</style>
+
+<style lang="scss">
+.popover-box {
+  max-height: 450px;
+  overflow-y: auto;
+  ul {
+    li {
+      &:hover {
+        background-color: #ccc;
       }
     }
   }

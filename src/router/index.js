@@ -40,6 +40,15 @@ const routes = [
       footer: true
     },
     component: () => import("@/views/Contact.vue")
+  }, 
+  {
+    path: '/news',
+    name: 'news',
+    meta: {
+      nav: true,
+      footer: true
+    },
+    component: () => import("@/views/News.vue")
   }
 ]
 
