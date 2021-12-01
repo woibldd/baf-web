@@ -3,7 +3,7 @@
     <div class="nav-a">
       <div class="nav-box" flex="main:justify">
          <div class="left" flex="cross:center">
-            <img class="logo" src="@/assets/logo-blue.png" alt="">
+          <router-link to="/"><img class="logo" src="@/assets/logo-blue.png" alt=""></router-link>
          </div>
          <div class="right"> 
             <ul flex="main:right">

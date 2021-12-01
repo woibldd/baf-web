@@ -50,7 +50,7 @@
                     <div class="sub-title-b">
                       {{obj.subTitle}}
                     </div>
-                    <div class="news-content new-content-b mt-10" v-html="obj.content">
+                    <div class="news-content news-content-b mt-10" v-html="obj.content">
                       {{obj.content}}
                     </div>
                   </div>
@@ -73,7 +73,7 @@
                     <div class="sub-title-b">
                       {{obj.subTitle}}
                     </div>
-                    <div class="news-content mt-10" v-html="obj.content">
+                    <div class="news-content news-content-b mt-10" v-html="obj.content">
                       {{obj.content}}
                     </div>
                   </div> 
@@ -279,8 +279,9 @@ export default {
                 img {
                   vertical-align: bottom;
                 }
-                .news-a-box {
+                .news-a-box { 
                   border: 1px solid #CCD1E8;
+                  border-top: none;
                   line-height: 1.4em;
                 }
                 .box- {
