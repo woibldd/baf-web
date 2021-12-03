@@ -1,21 +1,36 @@
 <template>
   <div class="page-container">
-    <div class="page-banner">
+    <!-- <div class="page-banner">
       <div class="banner-content">
-        <div class="banner-box pt-1"> 
-          <h5 class="title ">ABOUT US</h5>
-          <h1 class="sub-title mt-19">
-            Focusing on cutting edge blockchain innovations with global exposure.
-          </h1>
-          <h6 class="tips mt-19">Founded in 2019, BAF Capital focuses on investing in innovative blockchain infrastructure at the technological level or business model level, from seed round to private sale. The founding partners all joined the blockchain industry in early 2013 (the year was marked by the price of 1BTC>1 ounce of gold), and became life members of the Bitcoin Foundation in the same year. </h6>
+        <div class="animated bounceInLeft">
+          <swiper
+            ref="swiperDesigner"
+            class="swiper-designer " 
+            :options="swiperDesignerOptions">  
+            <swiper-slide 
+              v-for="index in 3"  
+              class="swiper-designer-item"  
+              :key="'designer'+index">
+                <div class="banner-box pt-1"> 
+                  <h5 class="title ">ABOUT US</h5>
+                  <h1 class="sub-title mt-19">
+                    Focusing on cutting edge blockchain innovations with global exposure
+                  </h1>
+                  <h6 class="tips mt-19">Founded in 2019, BAF Capital focuses on investing in innovative blockchain infrastructure at the technological level or business model level, from seed round to private sale. The founding partners all joined the blockchain industry in early 2013 (the year was marked by the price of 1BTC>1 ounce of gold), and became life members of the Bitcoin Foundation in the same year. </h6>
+                </div>
+            </swiper-slide> 
+          </swiper>  
+        </div>
+        <div class="banner-box">
+          <div class="ml-78 swiper-pagination"></div> 
         </div>
       </div>
-    </div>
+    </div> -->
     <div class="page-content">
       <div class="float-content">
         <div class="float-box">
           <article>
-            <p class="text1"> Moreover, BAF Capital invests and incubates Mayflower Lab, Galand Research Institute and Panda Game Guild. </p>
+            <p class="text1"> In addition to the investment and research team, BAF Capital makes great efforts in building its own technical capability and operational proficiency to deliver strategic, practical, and impactful support to our portfolio companies. </p>
             <p class="text2 mt-20">We connect investors, industry experts, KOL, community, media, and other resources to the project company within an ecosystem.   </p>
             <p class="text1 mt-20">Moreover, BAF Capital invests and incubates Mayflower Lab, Galand Research Institute and Panda Game Guild. </p>
           </article>
@@ -28,19 +43,19 @@
       </div>
       <div class="panel-content intent-content ">
         <div class="top-rectangle"></div>
-        <div class="panel-title">Strategic Intent</div>
+        <div class="animated fadeInUp panel-title">Strategic Intent</div>
         <div class="intent-box" flex="main:justify">
-          <div class="intent-item intent-item1">
+          <div class="animated fadeInUp intent-item intent-item1">
             <p class="p1"><img src="~@/assets/intent-mission.png" alt=""></p>
             <p class="mt-24"><label>Mission</label></p>    
             <p class="mt-15">Promote the positive development of blockchain industry.</p>
           </div>
-          <div class="intent-item intent-item2"> 
+          <div class="animated fadeInUp intent-item intent-item2"> 
             <p class="p1"><img src="~@/assets/intent-vision.png" alt=""></p>
             <p class="mt-15"><label>Vision</label></p>
             <p class="mt-15">Strive to become the best crypto investment institution worldwide.</p>
           </div>
-          <div class="intent-item intent-item3"> 
+          <div class="animated fadeInUp intent-item intent-item3"> 
             <p class="p1"><img src="~@/assets/intent-value.png" alt=""></p>
             <p class="mt-27"><label>Value</label></p>
             <p class="mt-15">Results-oriented, value-added services to all connecting parties.</p>
@@ -104,12 +119,12 @@
           </div>
         </div>
       </div>
-      <div class="panel-content strategy-content"> 
+      <div ref="strategy" class="panel-content strategy-content"> 
         <div class="panel-title">Investment Strategy</div>
         <div class="strategy-box">
           <div class="strategy-item item1">
             <div class="amount mt-68">
-              <div class="num">50<i>%</i></div>
+              <div class="num">{{animatedNum1}}<i>%</i></div>
               <div class="rect">
               </div>
             </div>
@@ -122,7 +137,7 @@
           </div>
           <div class="strategy-item item1">
             <div class="amount mt-68">
-              <div class="num">30%</div>
+              <div class="num">{{animatedNum2}}%</div>
               <div class="rect">
               </div>
             </div>
@@ -134,7 +149,7 @@
           </div>
           <div class="strategy-item item1">
             <div class="amount mt-68">
-              <div class="num">20%</div>
+              <div class="num">{{animatedNum3}}%</div>
               <div class="rect">
               </div>
             </div>
@@ -149,10 +164,117 @@
 </template>
 
 
-<script> 
+<script>  
+// import {swiperAnimateCache,swiperAnimate} from '@/modules/swiper/swiper.animate1.0.2.min.js'
+import '@/modules/swiper/animate.min.css'
+import TWEEN from 'tween.js'
+
 export default {
+  data() {
+    return { 
+      TWEEN,
+      swiperDesignerOptions: { 
+        // autoplay: {
+        //   delay: 5000,
+        //   disableOnInteraction: false,
+        // },
+        loop: true, 
+        loopAdditionalSlides: 5,  
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },  
+      },
+      num1: 0,
+      animatedNum1: 0,
+      num2:0,
+      animatedNum2: 0,
+      num3:0,
+      animatedNum3: 0,
+    }
+  },
   components: { 
   }, 
+  watch: {
+    num1: function(newValue, oldValue) {
+      var vm = this
+      function animate(time) {
+        if (+vm.animatedNum1 !== +newValue) {
+          requestAnimationFrame(animate) 
+        } 
+        TWEEN.update(time)
+
+      }
+      new TWEEN.Tween({tweeningNumber: oldValue})
+        .easing(TWEEN.Easing.Quadratic.Out)
+        .to({tweeningNumber: newValue}, 3000)
+        .onUpdate(function() {
+          vm.animatedNum1 = this.tweeningNumber.toFixed(0)
+        })
+        .start()
+      animate()  
+    },
+    num2: function(newValue, oldValue) {
+      var vm = this
+      function animate(time) {
+        if (+vm.animatedNum2 !== +newValue) {
+          requestAnimationFrame(animate) 
+        } 
+        TWEEN.update(time)
+
+      }
+      new TWEEN.Tween({tweeningNumber: oldValue})
+        .easing(TWEEN.Easing.Quadratic.Out)
+        .to({tweeningNumber: newValue}, 3000)
+        .onUpdate(function() {
+          vm.animatedNum2 = this.tweeningNumber.toFixed(0)
+        })
+        .start()
+      animate()  
+    },
+    num3: function(newValue, oldValue) {
+      var vm = this
+      function animate(time) {
+        if (+vm.animatedNum3 !== +newValue) {
+          requestAnimationFrame(animate) 
+        } 
+        TWEEN.update(time)
+
+      }
+      new TWEEN.Tween({tweeningNumber: oldValue})
+        .easing(TWEEN.Easing.Quadratic.Out)
+        .to({tweeningNumber: newValue}, 3000)
+        .onUpdate(function() {
+          vm.animatedNum3 = this.tweeningNumber.toFixed(0)
+        })
+        .start()
+      animate()  
+    }
+  },
+  methods: {
+    handleScroll() {
+      let docSrollTop = document.scrollingElement.scrollTop
+      let clientH = window.innerHeight  //视窗大小
+      // console.log(this.$refs['strategy'])
+      let sectionTop = this.$refs['strategy'].offsetTop //动态文字模块距离文档头部的距离
+      let sectionH = this.$refs['strategy'].clientHeight
+      if((docSrollTop + clientH - sectionTop) >= 0 && (docSrollTop - sectionTop - sectionH) <= 0){
+        this.setAnimatedNum()
+      }
+    },
+    setAnimatedNum() {
+      this.num1 = 50
+      this.num2 = 30
+      this.num3 = 20
+    }
+
+
+  },
+  mounted() {
+    
+    this.handleScroll()
+    window.addEventListener('scroll',this.handleScroll)
+  }
 }
 </script>
 
@@ -181,6 +303,7 @@ export default {
       .sub-title {
         margin-left: 78px;
         width: 838px;
+        height: 172px;
         font-weight: 600;
         font-size: 48px;
         line-height: 1.2em;
@@ -188,11 +311,28 @@ export default {
       }
       .tips {
         margin-left: 78px;
+        height: 180px;
         line-height: 1.5em;
         width: 838px;
         font-size: 16px; 
         color: #FFFFFF;
         opacity:abs($number: .4)
+      }
+      .swiper-pagination {
+        /deep/.swiper-pagination-bullet{
+          margin-right: 9px;
+          width: 28px;
+          height: 10px;
+          background: #FFFFFF;
+          opacity: 0.1;
+          border-radius: 0;
+          transition: all 1s ;
+          &.swiper-pagination-bullet-active {
+            background-color: $primary;
+            width: 100px;
+            opacity: 1;
+          }
+        }
       }
     }
   }
