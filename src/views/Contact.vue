@@ -3,7 +3,7 @@
     <div class="page-banner">
       <div class="banner-content"> 
           <h1 class="title">
-            Contact Us.
+            Contact Us
           </h1>  
       </div>
     </div> 

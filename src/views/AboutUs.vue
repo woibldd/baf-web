@@ -1,6 +1,6 @@
 <template>
   <div class="page-container">
-    <!-- <div class="page-banner">
+    <div class="page-banner">
       <div class="banner-content">
         <div class="animated bounceInLeft">
           <swiper
@@ -25,7 +25,7 @@
           <div class="ml-78 swiper-pagination"></div> 
         </div>
       </div>
-    </div> -->
+    </div>
     <div class="page-content">
       <div class="float-content">
         <div class="float-box">
@@ -35,36 +35,45 @@
             <p class="text1 mt-20">Moreover, BAF Capital invests and incubates Mayflower Lab, Galand Research Institute and Panda Game Guild. </p>
           </article>
           <div class="ziyuan mt-56" flex="main:justify cross:center">
-            <img src="@/assets/ziyuan1.png" alt="">
-            <img src="@/assets/ziyuan2.png" alt="">
-            <img class="mr-20" src="@/assets/ziyuan3.png" alt="">
+            <div class="ziyuan-box">
+              <img class="def"  src="@/assets/ziyuan1.png" alt="">
+              <img class="hover"  src="@/assets/ziyuan1-hover.png" alt="">
+            </div>
+            <div class="ziyuan-box">
+              <img class="def"  src="@/assets/ziyuan2.png" alt="">
+              <img class="hover"  src="@/assets/ziyuan2-hover.png" alt="">
+            </div>
+            <div class="ziyuan-box">
+              <img class="def"  src="@/assets/ziyuan3.png" alt="">
+              <img class="hover"  src="@/assets/ziyuan3-hover.png" alt="">
+            </div> 
           </div>
         </div>
       </div>
-      <div class="panel-content intent-content ">
+      <div ref="intent" class="panel-content intent-content ">
         <div class="top-rectangle"></div>
-        <div class="animated fadeInUp panel-title">Strategic Intent</div>
+        <div class="  panel-title intent-title">Strategic Intent</div>
         <div class="intent-box" flex="main:justify">
-          <div class="animated fadeInUp intent-item intent-item1">
+          <div class="  intent-item intent-item1">
             <p class="p1"><img src="~@/assets/intent-mission.png" alt=""></p>
             <p class="mt-24"><label>Mission</label></p>    
-            <p class="mt-15">Promote the positive development of blockchain industry.</p>
+            <p class="mt-15">Build and support bitcoin and blockchain companies by leveraging our insights, network, and access to capital.</p>
           </div>
-          <div class="animated fadeInUp intent-item intent-item2"> 
+          <div class="  intent-item intent-item2"> 
             <p class="p1"><img src="~@/assets/intent-vision.png" alt=""></p>
             <p class="mt-15"><label>Vision</label></p>
-            <p class="mt-15">Strive to become the best crypto investment institution worldwide.</p>
+            <p class="mt-15">The best crypto investment institution worldwide.</p>
           </div>
-          <div class="animated fadeInUp intent-item intent-item3"> 
+          <div class="  intent-item intent-item3"> 
             <p class="p1"><img src="~@/assets/intent-value.png" alt=""></p>
             <p class="mt-27"><label>Value</label></p>
             <p class="mt-15">Results-oriented, value-added services to all connecting parties.</p>
           </div>
         </div>
       </div>
-      <div class="panel-content team-content">
-        <div class="team-item team1" flex="main:justify">
-          <div class="item-box" flex="main:center cross:center dir:top">
+      <div ref="team" class="panel-content team-content">
+        <div class="team-item team1 " flex="main:justify">
+          <div class="item-box item-box-side" flex="main:center cross:center dir:top">
             <div class="item-box-title">Foundation</div>
             <div class="item-box-tip mt-7">Research Driven</div>
           </div>
@@ -72,12 +81,12 @@
             <div class="item-box-title">Focus</div>
             <div class="item-box-tip mt-7">Strong Communication</div>
           </div>
-          <div class="item-box" flex="main:center cross:center dir:top">
+          <div class="item-box item-box-side" flex="main:center cross:center dir:top">
             <div class="item-box-title">Integration</div>
             <div class="item-box-tip mt-7">Ecosystem</div>
           </div>
         </div>
-        <div class="team-item team2" flex="main:justify">
+        <div class="team-item team2 " flex="main:justify">
           <div class="item-box-b" flex="main:center cross:center">
             <div class="vertical-line"></div>
           </div>
@@ -91,28 +100,28 @@
             <div class="vertical-line"></div>
           </div>
         </div>
-        <div class="team-item team3" flex="main:justify">
-          <div class="item-box" flex="main:center cross:center dir:top">
-            <div class="item-box-title">Foundation</div>
-            <div class="item-box-tip mt-7">Research Driven</div>
+        <div class="team-item team3 " flex="main:justify">
+          <div class="item-box item-box-side" flex="main:center cross:center dir:top">
+            <div class="item-box-title">Support</div>
+            <div class="item-box-tip mt-7">Empower</div>
           </div>
           <div class="item-box item-box-middle" flex="main:center cross:center dir:top">
-            <div class="item-box-title">Focus</div>
-            <div class="item-box-tip mt-7">Strong Communication</div>
+            <div class="item-box-title">Promotion</div>
+            <div class="item-box-tip mt-7">Operational Excellen</div>
           </div>
-          <div class="item-box" flex="main:center cross:center dir:top">
-            <div class="item-box-title">Integration</div>
-            <div class="item-box-tip mt-7">Ecosystem</div>
+          <div class="item-box item-box-side" flex="main:center cross:center dir:top">
+            <div class="item-box-title">Impetus</div>
+            <div class="item-box-tip mt-7">Technology Innovatio</div>
           </div>
         </div> 
         <div class="team-box mt-50">
           <div class="team-pd" flex="box:first">
             <div class="team-box-left">
-              <img src="~@/assets/team-rotate.png" alt="">
+              <div class="img-box"><img src="~@/assets/team-rotate.png" alt=""></div> 
             </div>
             <div class="team-box-right"> 
               <div class="team-box-title">Founders Team </div>
-              <div class="team-box-content">
+              <div class="team-box-content mt-14">
                 Founders with solid investment knowledge, blockchain industry experience and unique expertise, come together to build a professional team, aiming to deliver more reliable services to clients.   
               </div>
             </div> 
@@ -129,11 +138,11 @@
               </div>
             </div>
             <div class="text1 mt-53 row1">
-              Primary Market：Earli
-              <div class="text2">*Angel and Seed</div>
+              Primary Market: Angel and Seed Round
+              <!-- <div class="text2">*Angel and Seed</div> -->
             </div>
             <div class="text1">+</div>
-            <div class="text1">Primarily on oversea deals</div>
+            <div class="text1">Oversea Deals</div>
           </div>
           <div class="strategy-item item1">
             <div class="amount mt-68">
@@ -142,7 +151,7 @@
               </div>
             </div>
             <div class="text1 mt-53  row1">
-              Late-stage investmen
+              Late-stage Investmen
             </div>
             <div class="text1">+</div>
             <div class="text1">Secondary Market</div>
@@ -153,9 +162,12 @@
               <div class="rect">
               </div>
             </div>
-            <div class="text1 mt-53  row1">Mining</div>
-            <div class="text1">+</div>
-            <div class="text1">Yield Farming</div>
+            <div class="text3 mt-53  row1">Mining, Staking,
+Keeper Operations and Liquidations</div>
+            <div class="text3">+</div>
+            <div class="text3">Play to earn, Write to earn</div>
+            <div class="text3">+</div>
+            <div class="text3">Crypto Assets: Land, NFT</div>
           </div>
         </div>
       </div>
@@ -174,10 +186,10 @@ export default {
     return { 
       TWEEN,
       swiperDesignerOptions: { 
-        // autoplay: {
-        //   delay: 5000,
-        //   disableOnInteraction: false,
-        // },
+        autoplay: {
+          delay: 15000,
+          disableOnInteraction: false,
+        },
         loop: true, 
         loopAdditionalSlides: 5,  
         pagination: {
@@ -255,18 +267,51 @@ export default {
     handleScroll() {
       let docSrollTop = document.scrollingElement.scrollTop
       let clientH = window.innerHeight  //视窗大小
-      // console.log(this.$refs['strategy'])
-      let sectionTop = this.$refs['strategy'].offsetTop //动态文字模块距离文档头部的距离
-      let sectionH = this.$refs['strategy'].clientHeight
-      if((docSrollTop + clientH - sectionTop) >= 0 && (docSrollTop - sectionTop - sectionH) <= 0){
+      let sectionTop = this.$refs['intent'].offsetTop //动态文字模块距离文档头部的距离
+      let sectionH = this.$refs['intent'].clientHeight
+      if((docSrollTop + clientH - sectionTop - 100) >= 0 && (docSrollTop - sectionTop - sectionH) <= 0){ 
+        this.setAnimatedIntent()
+      }
+      sectionTop = this.$refs['team'].offsetTop 
+      sectionH = this.$refs['team'].clientHeight
+      if((docSrollTop + clientH - sectionTop - 100) >= 0 && (docSrollTop - sectionTop - sectionH) <= 0){ 
+        this.setAnimatedTeam()
+      }
+      sectionTop = this.$refs['strategy'].offsetTop //动态文字模块距离文档头部的距离
+      sectionH = this.$refs['strategy'].clientHeight
+      if((docSrollTop + clientH - sectionTop - 100) >= 0 && (docSrollTop - sectionTop - sectionH) <= 0){
         this.setAnimatedNum()
       }
+    },
+    setAnimatedIntent() {
+      let intentTitle = document.getElementsByClassName('intent-title')
+      let list = document.getElementsByClassName('intent-item') 
+      if (!intentTitle[0].classList.contains('animated')) {
+        intentTitle[0].classList.add('fadeInUp')
+        intentTitle[0].classList.add('animated')
+      } 
+      for (const item of list) {
+         if (!item.classList.contains('animated')) {
+          item.classList.add('fadeInUp')
+          item.classList.add('animated')
+        }
+      }
+    },
+    setAnimatedTeam() {
+      let list2 = document.getElementsByClassName('team-item')
+      for (const item of list2) {
+         if (!item.classList.contains('animated')) {
+          item.classList.add('fadeInUp')
+          item.classList.add('animated')
+        }
+      }  
     },
     setAnimatedNum() {
       this.num1 = 50
       this.num2 = 30
       this.num3 = 20
     }
+
 
 
   },
@@ -362,6 +407,19 @@ export default {
         .ziyuan {
           margin: 0 auto;
           width: 864px;
+          .ziyuan-box {
+            &:hover {
+              img.def {
+                display: none;
+              }
+              img.hover {
+                display:inline;
+              }
+            }
+            img.hover {
+              display:none;
+            }
+          }
         }
       }
     } 
@@ -496,6 +554,12 @@ export default {
               border: 2px dashed $primary;
               box-sizing:border-box;
             }
+            &.item-box-side:hover {
+              background-color: $primary;
+              .item-box-title, .item-box-tip {
+                color: #fff; 
+              }
+            }
           }
           .item-box-b {
             position: relative;
@@ -548,6 +612,47 @@ export default {
             padding: 60px 100px;
             .team-box-left {
               padding: 0 158px 0 81px;
+              .img-box {
+                position: relative;
+                // background-color: pink;
+                img {
+                  position: relative;
+                  z-index: 1;
+                }
+                &::after {
+                  position:absolute;
+                  content: ''; 
+                  top: 9px;
+                  left: 9px;
+                  height: 260px;
+                  width: 259px;
+                  border-radius: 50%;
+                  border: 1px dashed rgba(255,255,255,.4);
+                  z-index: 0;
+                  // transform: rotate(360deg)
+                  animation: cycle 16s linear infinite;
+                }
+                &::before {
+                  position:absolute;
+                  content: '';
+                  top: 47px;
+                  left: 47px;
+                  height: 186px;
+                  width: 186px;
+                  border-radius: 50%;
+                  border: 1px dashed rgba(255,255,255,.4);
+                  z-index: 0;
+                  animation: cycle2 16s linear infinite;
+                }
+                @keyframes cycle {
+                  from { transform: rotate(0deg);} 
+                  to { transform: rotate(360deg);}
+                }
+                @keyframes cycle2 {
+                  from { transform: rotate(360deg);} 
+                  to { transform: rotate(0deg);}
+                }
+              }
             }
             .team-box-right {
               position: relative;
@@ -584,7 +689,7 @@ export default {
           color: #fff;
         }
         .strategy-box {
-          width: 1300px;
+          width: 1200px;
           margin: 80px auto 0;
           display: grid;
           grid-template-columns: 1fr 1fr 1fr;
@@ -614,12 +719,16 @@ export default {
               // &.row1 { 
               //   height: 44px;
               // }
-              height: 40px;
+              height: 60px;
               font-size: 18px;
               .text2 {
                 font-size: 12px;
                 color: rgba(255,255,255,.29)
-              }
+              } 
+            }
+            .text3 {
+              width: 228px;
+              margin: 10px auto;
             }
             &:after {
               position: absolute;

@@ -4,10 +4,10 @@
       <div class="banner-content">
         <div class="banner-box pt-1">  
           <h1 class="title mt-19">
-            invest the future.
+            Invest The Future
           </h1>
           <h6 class="sub-title mt-19">
-            BAF Capital has invested in more than 100 projects around the world, bringing high returns to more investors and fulfilling significant social responsibilities at the same time…
+            BAF Capital has invested in more than 100 projects around the world, bringing high returns to investors and fulfilling social responsibilities at the same time. Today, we manage long duration capital on behalf of storied venture capital funds, family offices, institutions, and high net worth individuals.
           </h6>
         </div>
       </div>

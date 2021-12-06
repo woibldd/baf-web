@@ -4,10 +4,10 @@
       <div class="banner-content">
         <div class="banner-box pt-1">  
           <h1 class="title mt-19">
-            Insight becomes returns.
+            Insight becomes return
           </h1>
           <h6 class="sub-title mt-19">
-            BAF Capital will provide the latest industry research from time to time, as well as authoritative trend interpretation, I believe our views will bring you a higher return on investment
+            BAF Capital is a thesis-driven investment firm. We provides industry research and authoritative trend interpretation regularly.
           </h6>
         </div>
       </div>

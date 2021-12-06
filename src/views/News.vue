@@ -3,7 +3,7 @@
     <div class="page-banner">
       <div class="banner-content"> 
           <h1 class="title">
-            BAF Capital News.
+            BAF Capital News
           </h1>  
           <div class="label-list mt-27" flex>
             <label class="mr-19">Latest</label>

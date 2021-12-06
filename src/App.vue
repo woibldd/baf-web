@@ -42,7 +42,7 @@ export default {
 
 <style lang="scss">
 #app {
-  font-family:Arial-BoldMT, Arial;
+  font-family: Arial;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

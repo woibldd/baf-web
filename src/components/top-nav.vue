@@ -3,7 +3,7 @@
     <div class="nav-a">
       <div class="nav-box" flex="main:justify">
          <div class="left" flex="cross:center">
-          <router-link to="/"><img class="logo" src="@/assets/logo-blue.png" alt=""></router-link>
+          <router-link to="/"  flex="cross:center"><img class="logo" src="@/assets/logo-blue.png" alt=""></router-link>
          </div>
          <div class="right"> 
             <ul flex="main:right">
@@ -13,7 +13,7 @@
               <li class="pointer nav-item mr-60"><router-link to="/news">News</router-link></li> 
               <li class="pointer nav-item mr-60"><router-link to="/contact">Contact</router-link></li>
               <li class="pointer nav-item lang">
-                <span>简</span> / <span>EN</span>
+                <a>简</a> / <a>EN</a>
               </li>
             </ul>
          </div>
@@ -40,8 +40,8 @@ export default {
     .nav-box {
       margin: 0 auto;
       width: 1300px;
-      height: 120px;
-      line-height: 120px;
+      height: 100px;
+      line-height: 100px;
       .left {
         .logo {
           width: 157px;
