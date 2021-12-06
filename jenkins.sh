@@ -1,8 +1,4 @@
-#!/bin/sh 
-cnpm i 
-
-sleep 2
-
+#!/bin/sh  
 npm run build
 
 sleep 2

@@ -1,6 +1,6 @@
 <template>
   <div class="top-nav-container">
-    <div class="nav-a">
+    <div ref="nav" style="transition: all 0.5s ease 0s;" class="nav-a">
       <div class="nav-box" flex="main:justify">
          <div class="left" flex="cross:center">
           <router-link to="/"  flex="cross:center"><img class="logo" src="@/assets/logo-blue.png" alt=""></router-link>
@@ -31,12 +31,46 @@ export default {
       default: false,
     },
   },
+  data() {
+    return {
+      scrollY: 0,
+    }
+  },
+  methods: {
+    handleScroll() { 
+      let nav = this.$refs['nav']
+      let docSrollTop = document.scrollingElement.scrollTop
+      if (docSrollTop >= this.scrollY) {
+        // console.log(nav.style, '下')
+        nav.style.transform = 'translate3d(0px, -100px, 0px)' 
+        
+      } else {
+        nav.style.transform = 'translate3d(0px, 0px, 0px)' 
+      }
+      this.scrollY = docSrollTop
+    }
+  }, 
+  mounted() { 
+    // this.handleScroll()
+    window.addEventListener('scroll',this.handleScroll)
+  }
 }
 </script>
 
 <style lang="scss">
-  .top-nav-container { 
+  .top-nav-container {
+    position: relative ;
     font-size: 18px;  
+    .nav-a {
+      border-bottom: 1px solid #ccc;
+      background-color: #fff;
+      backface-visibility: hidden;
+      left: 0;
+      position: fixed;
+      right: 0;
+      top: 0;
+      z-index: 100;
+    }
     .nav-box {
       margin: 0 auto;
       width: 1300px;

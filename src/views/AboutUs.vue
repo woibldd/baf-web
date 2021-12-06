@@ -162,8 +162,7 @@
               <div class="rect">
               </div>
             </div>
-            <div class="text3 mt-53  row1">Mining, Staking,
-Keeper Operations and Liquidations</div>
+            <div class="text3 mt-53  row1">Mining, Staking, Keeper Operations and Liquidations</div>
             <div class="text3">+</div>
             <div class="text3">Play to earn, Write to earn</div>
             <div class="text3">+</div>
@@ -310,13 +309,9 @@ export default {
       this.num1 = 50
       this.num2 = 30
       this.num3 = 20
-    }
-
-
-
+    } 
   },
-  mounted() {
-    
+  mounted() { 
     this.handleScroll()
     window.addEventListener('scroll',this.handleScroll)
   }
