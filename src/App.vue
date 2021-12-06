@@ -46,22 +46,11 @@ export default {
     }
   },
   methods: { 
-    handleScroll() {
-      //transition: all 0.5s ease 0s; transform: translate3d(0px, 0px, 0px);
-      //transition: all 0.5s ease 0s; transform: translate3d(0px, -120px, 0px);
-      // let nav = this.$refs['nav']
-      // let docSrollTop = document.scrollingElement.scrollTop
-      // if (docSrollTop >= this.scrollY) {
-      //   console.log(nav.style, '下')
-      // } else {
-      //   console.log(nav, '上')
-      // }
-      // this.scrollY = docSrollTop
+    handleScroll() { 
     }
   },
-  mounted() { 
-    // this.handleScroll()
-    window.addEventListener('scroll',this.handleScroll)
+  mounted() {  
+    // window.addEventListener('scroll',this.handleScroll)
   }
 }
 </script>
