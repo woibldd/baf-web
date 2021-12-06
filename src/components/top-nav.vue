@@ -40,8 +40,8 @@ export default {
     handleScroll() { 
       let nav = this.$refs['nav']
       let docSrollTop = document.scrollingElement.scrollTop
-      if (docSrollTop >= this.scrollY) {
-        // console.log(nav.style, '下')
+      if (docSrollTop >= this.scrollY && docSrollTop > 100) {
+        
         nav.style.transform = 'translate3d(0px, -100px, 0px)' 
         
       } else {
@@ -60,6 +60,7 @@ export default {
 <style lang="scss">
   .top-nav-container {
     position: relative ;
+    height: 100px;
     font-size: 18px;  
     .nav-a {
       border-bottom: 1px solid #ccc;
