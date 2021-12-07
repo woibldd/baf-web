@@ -2,7 +2,7 @@
   <div class="page-container">
     <div class="page-banner">
       <div class="banner-content">
-        <div class="banner-box pt-1">  
+        <div class="banner-box pt-1 animated flipInX">  
           <h1 class="title mt-19">
             Insight becomes return
           </h1>
@@ -24,9 +24,15 @@
                 :href="obj.link" 
                 :style="{backgroundImage: `url(${obj.pic})`}"
                 :key="index">
-                <div class="p-title" flex="cross:center">{{obj.title}}</div>
-                <div class="p-sub-title">{{obj.subTitle}}</div>
-                <div class="p-content mt-10">{{obj.content}}</div>
+                <div class="a-pd">
+                  <div class="p-title" flex="cross:center">{{obj.title}}</div>
+                  <div class="p-sub-title">{{obj.subTitle}}</div>
+                  <div class="p-content mt-10">{{obj.content}}</div> 
+                </div>
+                <div class="mask"></div> 
+                <div class="arrow" >
+                  <img src="@/assets/icon-arrow-right@2x.png" alt="">
+                </div> 
               </a>
             </div>
           </div>
@@ -154,8 +160,7 @@ export default {
       .panel-title {
         text-align: center;
         font-size: 60px;
-        font-weight: 600;
-
+        font-weight: 600; 
       }
       .my-list {
         margin-top: 97px;
@@ -169,6 +174,7 @@ export default {
             color: $text;
             font-size: 36px;
             border-bottom: 1px solid $text;
+            font-weight: 600; 
           }
           .item-content {
             display: grid;
@@ -176,9 +182,39 @@ export default {
             color: #FFFFFF;
             a {
               display: block;
-              padding: 30px 60px;
-              height: 320px;
+              height: 380px;
               color: #FFFFFF;
+              overflow: hidden;
+              .a-pd { 
+                padding: 30px 60px;
+                height: 320px;
+              }
+              .mask { 
+                opacity: 0; 
+                transform: translate3d(1180px, -380px, 0);
+                height: 380px;
+                width: 1180px;
+                background: linear-gradient(90deg, rgba(0, 27, 139, 0) 0%, #001B8B 100%);
+                opacity: 0.9;
+                transition: all .38s linear;
+              } 
+              .arrow {
+                padding-right: 50px;
+                text-align: right;
+                opacity: 0;
+                transform: translate(0, -200px);
+                transition: all .68s ease-out; 
+              } 
+              &:hover {
+                .mask { 
+                  opacity: 1; 
+                  transform: translate3d(200px, -380px, 0);
+                } 
+                .arrow { 
+                  opacity: 1;
+                  transform: translate(0, -440px);
+                }
+              }
             }
             &.Insights {
               a {
@@ -186,7 +222,7 @@ export default {
               }
             }
             .p-title {
-              height: 204px;
+              height: 211px;
               width: 604px;
               font-size: 72px;
               font-weight: 600;

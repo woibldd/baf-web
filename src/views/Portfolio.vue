@@ -2,7 +2,7 @@
   <div class="page-container">
     <div class="page-banner">
       <div class="banner-content">
-        <div class="banner-box pt-1">  
+        <div class="banner-box pt-1 animated fadeInUp">  
           <h1 class="title mt-19">
             Invest The Future
           </h1>
@@ -20,8 +20,13 @@
           <div class="item-box" v-for="(item, idx) in list" :key="idx">
             <div class="item-title">{{item.name}}</div>
             <div class="item-content">
-              <a :href="obj.link" v-for="(obj, index) in item.linkList" :key="index">
+              <a class="item-pic" :href="obj.link" v-for="(obj, index) in item.linkList" :key="index">
                 <img :src="obj.pic" alt="" >
+                <div class="mask"></div>
+                <div class="name" >{{obj.text}}</div>
+                <div class="arrow" >
+                  <img src="@/assets/icon-arrow-right.png" alt="">
+                </div>
               </a>
             </div>
           </div>
@@ -42,35 +47,28 @@ export default {
             {
               pic: require('@/assets/portfolio/public-chain-1.png'),
               link: 'http://www.baidu.com', 
+              text: 'Casper',
             },
             {
               pic: require('@/assets/portfolio/public-chain-2.png'),
               link: '', 
+              text: 'MINA',
             },
             {
               pic: require('@/assets/portfolio/public-chain-3.png'),
               link: '', 
+              text: 'ECOBALL',
             },
             {
               pic: require('@/assets/portfolio/public-chain-4.png'),
               link: '', 
+              text: 'COSMOS',
             },
             {
               pic: require('@/assets/portfolio/public-chain-5.png'),
               link: '', 
-            },
-            {
-              pic: require('@/assets/portfolio/public-chain-6.png'),
-              link: '', 
-            },
-            {
-              pic: require('@/assets/portfolio/public-chain-7.png'),
-              link: '', 
-            },
-            {
-              pic: require('@/assets/portfolio/public-chain-8.png'),
-              link: '', 
-            },
+              text: 'Polkadot',
+            }, 
           ]
         },
         {
@@ -79,23 +77,42 @@ export default {
             {
               pic: require('@/assets/portfolio/layer-2-1.png'),
               link: 'http://www.baidu.com', 
+              text: 'zkSync',
             }, 
           ]
         },
         {
-          name: 'Protocol',
+          name: 'Infrastructure and Storage',
           linkList: [
             {
-              pic: require('@/assets/portfolio/protocol-1.png'),
+              pic: require('@/assets/portfolio/storage-1.png'),
               link: 'http://www.baidu.com', 
+              text: 'IPFS',
             }, 
             {
-              pic: require('@/assets/portfolio/protocol-2.png'),
+              pic: require('@/assets/portfolio/storage-2.png'),
               link: 'http://www.baidu.com', 
+              text: 'Polkadot',
             }, 
             {
-              pic: require('@/assets/portfolio/protocol-3.png'),
+              pic: require('@/assets/portfolio/storage-3.png'),
               link: 'http://www.baidu.com', 
+              text: 'Crust Network',
+            }, 
+            {
+              pic: require('@/assets/portfolio/storage-4.png'),
+              link: 'http://www.baidu.com', 
+              text: 'EPIK PROTOCOL',
+            }, 
+            {
+              pic: require('@/assets/portfolio/storage-5.png'),
+              link: 'http://www.baidu.com', 
+              text: 'XNFT',
+            }, 
+            {
+              pic: require('@/assets/portfolio/storage-6.png'),
+              link: 'http://www.baidu.com', 
+              text: 'ADAMoracle',
             }, 
           ]
         },
@@ -105,14 +122,17 @@ export default {
             {
               pic: require('@/assets/portfolio/mining-1.png'),
               link: 'http://www.baidu.com', 
+              text: 'Canaan',
             }, 
             {
               pic: require('@/assets/portfolio/mining-2.png'),
               link: 'http://www.baidu.com', 
+              text: 'Harmony',
             }, 
             {
               pic: require('@/assets/portfolio/mining-3.png'),
               link: 'http://www.baidu.com', 
+              text: 'RENYUNYIYUN',
             }, 
           ]
         },
@@ -121,28 +141,29 @@ export default {
           linkList: [
             {
               pic: require('@/assets/portfolio/defi-1.png'),
-              link: 'http://www.baidu.com', 
+              link: 'https://ixxweb.com/', 
+              text: 'IXX.COM',
             }, 
             {
               pic: require('@/assets/portfolio/defi-2.png'),
               link: 'http://www.baidu.com', 
+              text: 'Shield',
             }, 
             {
               pic: require('@/assets/portfolio/defi-3.png'),
               link: 'http://www.baidu.com', 
+              text: 'METEORITE',
             }, 
             {
               pic: require('@/assets/portfolio/defi-4.png'),
               link: 'http://www.baidu.com', 
+              text: 'DYDX',
             }, 
             {
               pic: require('@/assets/portfolio/defi-5.png'),
               link: 'http://www.baidu.com', 
-            }, 
-            {
-              pic: require('@/assets/portfolio/defi-6.png'),
-              link: 'http://www.baidu.com', 
-            }, 
+              text: 'UNISWAP',
+            },  
           ]
         },
         {
@@ -151,31 +172,42 @@ export default {
             {
               pic: require('@/assets/portfolio/gamefi-1.png'),
               link: 'http://www.baidu.com', 
+              text: 'GALAXY BLITZ',
             }, 
             {
               pic: require('@/assets/portfolio/gamefi-2.png'),
               link: 'http://www.baidu.com', 
+              text: 'MELI',
             }, 
             {
               pic: require('@/assets/portfolio/gamefi-3.png'),
               link: 'http://www.baidu.com', 
+              text: 'SAMA',
+            }, 
+            {
+              pic: require('@/assets/portfolio/gamefi-4.png'),
+              link: 'http://www.baidu.com', 
+              text: 'KAKI',
             }, 
           ]
         },
         {
-          name: 'Othres',
+          name: 'Others',
           linkList: [
             {
               pic: require('@/assets/portfolio/others-1.png'),
               link: 'http://www.baidu.com', 
+              text: 'Hilamg',
             }, 
             {
               pic: require('@/assets/portfolio/others-2.png'),
               link: 'http://www.baidu.com', 
+              text: 'PeckShield',
             }, 
             {
               pic: require('@/assets/portfolio/others-3.png'),
               link: 'http://www.baidu.com', 
+              text: 'Samecoin',
             }, 
           ]
         }
@@ -240,7 +272,7 @@ export default {
         font-weight: 600;
       }
       .my-list {
-        padding: 0 60px;
+        padding: 103px 60px 0;
         .item-box {
           text-align: left;
           margin-bottom: 100px;
@@ -249,12 +281,58 @@ export default {
             margin-bottom: 21px;
             color: $text;
             font-size: 36px;
+            font-weight: 600;
             border-bottom: 1px solid $text;
           }
           .item-content {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr 1fr;
             row-gap: 22px;
+            .item-pic {
+              position: relative;
+              height: 160px;
+              width: 280px;
+              overflow: hidden;
+              .mask { 
+                opacity: 0;
+                transform: translate3d(0, 0, 0);
+                height: 160px;
+                width: 280px;
+                background-color: rgba($color: $primary, $alpha: .9); 
+                transition: all .18s linear;
+              }
+              .name {
+                font-size: 36px;
+                color: #fff;
+                opacity: 0;
+                transform: translate3d(0, 0, 0);
+                height: 160px;
+                width: 280px; 
+                line-height: 160px;
+                text-align: center;
+                transition: all .38s ease-out; 
+              }
+              .arrow {
+                padding-right: 10px;
+                text-align: right;
+                opacity: 0;
+                transition: all .58s ease-out; 
+              }
+              &:hover {
+                .mask { 
+                  opacity: 1;
+                  transform: translate3d(0, -162px, 0);
+                }
+                .name { 
+                  opacity: 1;
+                  transform: translate3d(0, -323px, 0);
+                }
+                .arrow { 
+                  opacity: 1;
+                  transform: translate3d(0, -353px, 0);
+                }
+              }
+            }
           }
         }
       }

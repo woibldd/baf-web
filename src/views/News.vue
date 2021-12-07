@@ -2,6 +2,7 @@
   <div class="page-container">
     <div class="page-banner">
       <div class="banner-content"> 
+        <div class="banner-box animated fadeIn">
           <h1 class="title">
             BAF Capital News
           </h1>  
@@ -12,7 +13,8 @@
           </div>
           <div class="tips mt-22">
             Stay tuned to BAF Capital News to get more updated investment and activity information.
-          </div>
+          </div> 
+        </div>
       </div>
     </div>
     <div class="page-content">
@@ -24,7 +26,9 @@
             <div class="item-title">Investment</div>
             <div class="item-content investment-list">
               <div class="news-item black" :href="obj.link" v-for="(obj, index) in investmentList" :key="index">
-                <img :src="obj.pic" alt="" >
+                <div class="img-box"  :class="['img-box-'+index]">
+                  <img :src="obj.pic" alt="" > 
+                </div>
                 <div class="news-a-box" :class="['box-'+index]">
                   <div class="news-text">
                     <div class="title-a">{{obj.title}}</div>
@@ -249,7 +253,7 @@ export default {
       } 
       
       .my-list {
-        padding: 0 60px;
+        padding: 100px 60px 0;
         .item-box {
           text-align: left;
           margin-bottom: 100px;
@@ -268,6 +272,7 @@ export default {
             &.investment-list {
               grid-template-columns: 1fr 1fr 1fr;
               .news-item {
+                overflow: hidden;
                 &:first-child {
                   grid-column-start: 1;
                   grid-column-end: 3;
@@ -276,8 +281,17 @@ export default {
                   grid-column-start: 1;
                   grid-column-end: 4;
                 }
+                &:hover { 
+                  transform: translateY(-4px);
+                  transition: ease all 0.3s;
+                  box-shadow: 0px 4px 4px rgba(0, 0, 0, .1);
+                }
                 img {
                   vertical-align: bottom;
+                  transition: ease all 0.3s;
+                  &:hover { 
+                    transform: scale(1.05);
+                  } 
                 }
                 .news-a-box { 
                   border: 1px solid #CCD1E8;
@@ -289,11 +303,18 @@ export default {
                   &0, &5 {
                     height: 150px;
                   }
-                  &1 {
+                  // &1 {
+                  //   height: 290px;
+                  // }
+                  &1, &2, &3, &4 {
                     height: 290px;
                   }
-                  &2, &3, &4 {
-                    height: 190px;
+                }
+                .img-box {
+                  height: 231px;
+                  overflow: hidden;
+                  &-0, &-5 {
+                    height: 370px;
                   }
                 }
                 .news-text { 
