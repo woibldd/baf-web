@@ -125,6 +125,7 @@ const router = new VueRouter({
   routes
 })
 
+//切换页面后回到顶部
 router.afterEach((to, from, next) => {
   window,scrollTo(0,0)
 })
