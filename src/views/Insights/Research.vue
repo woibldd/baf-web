@@ -1,39 +1,29 @@
 <template>
   <div class="page-container">
-    <div class="page-banner">
-      <div class="banner-content">
-        <div class="banner-box pt-1 animated flipInX">  
-          <h1 class="title mt-19">
-            Insight becomes return
-          </h1>
-          <h6 class="sub-title mt-19">
-            BAF Capital is a thesis-driven investment firm. We provides industry research and authoritative trend interpretation regularly.
-          </h6>
-        </div>
-      </div>
+    <div class="page-banner"> 
     </div>
     <div class="page-content">
       <div class="panel-content">
-        <div class="top-rectangle"></div>
-        <div class="panel-title">Insights</div>
+        <div class="left-rectangle"></div> 
+        <div class="breadcrumb ml-43">
+          <router-link class="mr-14" to="/insights">Insights</router-link>
+          <icon class="separator mr-14" name="arrow" />
+          <router-link class="mr-14" to="/insights/Research">Research</router-link>
+        </div>
         <div class="my-list">
           <div class="item-box" v-for="(item, idx) in list" :key="idx">
-            <div class="item-title">{{item.name}}</div>
-            <div :class="['item-content', item.name]">
-              <a v-for="(obj, index) in item.linkList" 
-                :href="obj.link" 
-                :style="{backgroundImage: `url(${obj.pic})`}"
-                :key="index">
-                <div class="a-pd">
-                  <div class="p-title" flex="cross:center">{{obj.title}}</div>
-                  <div class="p-sub-title">{{obj.subTitle}}</div>
-                  <div class="p-content mt-10">{{obj.content}}</div> 
-                </div>
-                <div class="mask"></div> 
-                <div class="arrow" >
-                  <img src="@/assets/icon-arrow-right@2x.png" alt="">
-                </div> 
-              </a>
+            <div class="item-title">
+              <label>{{item.name}}</label>
+              <!-- <a class="view-all">
+                <em>View All</em>
+                <img src="@/assets/icon-view-all.png" alt="">
+              </a> -->
+            </div>
+            <div :class="['item-content', item.name]"> 
+              <my-link v-for="(obj, index) in item.linkList" 
+                :key="index"
+                :obj="obj"
+                ></my-link>
             </div>
           </div>
         </div>
@@ -43,67 +33,48 @@
 </template>
 
 <script>
+import myLink from '@/components/linkTemplate'
 export default {
   data() {
     return {
-      list: [
+      list: [ 
         {
           name: 'Research',
           linkList: [
             {
-              pic: require('@/assets/insights/insights-1.png'),
+              pic: require('@/assets/insights/research/1.png'),
               link: 'http://www.baidu.com', 
-              title: 'What’s Filecoin？',
-              subTitle: 'Comprehensive research report',
-              content: 'This is BAF\'s first comprehensive study of the filecoin project, and we are grateful to Filecoin for its support and assistance in this study'
+              title: 'Explain It Like I’m 5:<br>GameFi',
+              subTitle: 'The concept of play-to-earn games isn’t novel, but other aspects of GameFi are',
+              description: 'Listen to what’s being said at conferences, on earning calls, or in boardrooms in the gaming industry, and a recurring theme stands out: GameFi.'
             }, 
             {
-              pic: require('@/assets/insights/insights-2.png'),
+              pic: require('@/assets/insights/research/2.png'),
               link: 'http://www.baidu.com', 
-              title: 'What’s Filecoin？',
-              subTitle: 'Comprehensive research report',
-              content: 'This is BAF\'s first comprehensive study of the filecoin project, and we are grateful to Filecoin for its support and assistance in this study'
+              title: 'Genie: The Metaverse’s <br>Aggregator',
+              subTitle: 'Showing assets or buying NFTs on different exchanges is time-consuming and tedious',
+              description: 'Genie is an NFT aggregator, or as the team so catchily describes it, “The Metaverse’s Aggregator”. Genie offers two features, Genie Swap and Genie List.'
             }, 
             {
-              pic: require('@/assets/insights/insights-3.png'),
+              pic: require('@/assets/insights/research/3.png'),
               link: 'http://www.baidu.com', 
-              title: 'What’s Filecoin？',
-              subTitle: 'Comprehensive research report',
-              content: 'This is BAF\'s first comprehensive study of the filecoin project, and we are grateful to Filecoin for its support and assistance in this study'
+              title: 'dYdX - <br>Perpetual Maxima',
+              subTitle: 'Six months is all it took for dYdX’s layer 2 offering to eclipse Coinbase in daily trading volumes.',
+              description: 'dYdX is one of if not the most liquid exchanges in crypto. dYdX has now shut down its Layer 1 offering and is doubling down on perpetuals by expanding beyond the currently available 28 markets.'
             }, 
             {
-              pic: require('@/assets/insights/insights-4.png'),
+              pic: require('@/assets/insights/research/4.png'),
               link: 'http://www.baidu.com', 
-              title: 'What’s Filecoin？',
-              subTitle: 'Comprehensive research report',
-              content: 'This is BAF\'s first comprehensive study of the filecoin project, and we are grateful to Filecoin for its support and assistance in this study'
+              title: 'Why Smart Money <br>Matters More',
+              subTitle: '“In a world deluged by irrelevant information, clarity is power.”',
+              description: 'To make crypto accessible, tools like Nansen must continue to push the frontiers transforming data into meaningful signals. In crypto, following the smart money matters more than ever.'
             }, 
           ]
-        },
-        {
-          name: 'Insights',
-          linkList: [
-            {
-              pic: require('@/assets/insights/insights-5.png'),
-              link: 'http://www.baidu.com', 
-              title: 'Sustainable development',
-              subTitle: 'Comprehensive research report',
-              content: 'This is BAF\'s first comprehensive study of the filecoin project, and we are grateful to Filecoin for its support and assistance in this study'
-            }, 
-            {
-              pic: require('@/assets/insights/insights-5.png'),
-              link: 'http://www.baidu.com', 
-              title: 'Sustainable development',
-              subTitle: 'Comprehensive research report',
-              content: 'This is BAF\'s first comprehensive study of the filecoin project, and we are grateful to Filecoin for its support and assistance in this study'
-            }, 
-          ]
-        },
-         
-
+        }, 
       ]
     }
-  }
+  },
+  components: {myLink}
 }
 </script>
 
@@ -112,8 +83,7 @@ export default {
 .page-container {
   .page-banner {
     position: relative;
-    height: 700px;
-    background-image: url('~@/assets/banner-insights.png'); 
+    height: 112px; 
     background-position: center 0;
     background-color: #000F27;
     background-repeat: repeat-x;
@@ -129,7 +99,7 @@ export default {
         color: #ffffff;
       }
       .sub-title {  
-        width: 895px;
+        width: 671px;
         font-size: 16px;
         line-height: 1.6em;
         color: #FFFFFF;
@@ -142,11 +112,21 @@ export default {
     background-color: #F2F4F7;
     .panel-content {
       position: relative;
-      margin: -36px auto -74px;
-      padding: 73px 0 20px;
+      margin: -56px auto -74px;
+      padding: 46px 0 20px;
       width: 1300px;
       background-color: #fff;
       text-align: left;
+      .breadcrumb { 
+        .separator {
+          color: $nav;
+          font-size: 10px;
+        }
+        a {
+          color: $nav;
+          font-size: 18px;
+        }
+      }
       .top-rectangle {
         position:absolute;
         top: -44px;
@@ -157,24 +137,50 @@ export default {
         background: $primary;
         z-index: 2;
       } 
+      .left-rectangle {
+        position:absolute;
+        top: 48px;
+        left: -20px; 
+        width: 40px;
+        height: 16px;
+        background: $primary;
+        z-index: 2;
+      }
       .panel-title {
         text-align: center;
         font-size: 60px;
         font-weight: 600; 
       }
       .my-list {
-        margin-top: 97px;
+        margin-top: 63px;
         padding: 0 60px;
         .item-box {
           text-align: left;
           margin-bottom: 100px;
           .item-title {
+            position:relative;
             padding: 0 0 16px;
             margin-bottom: 21px;
             color: $text;
             font-size: 36px;
             border-bottom: 1px solid $text;
             font-weight: 600; 
+            .view-all {
+              position: absolute;
+              right: 0;
+              top: 33px;
+              background-color: #fff;
+              color: #000F27;
+              font-size: 24px;
+              em{
+                padding: 0 30px;
+                cursor: pointer;
+              }
+              img {
+                width: 36px;
+                height: 13px;
+              }
+            }
           }
           .item-content {
             display: grid;
@@ -223,7 +229,7 @@ export default {
             }
             .p-title {
               height: 211px;
-              width: 604px;
+              width: 911px;
               font-size: 72px;
               font-weight: 600;
             }

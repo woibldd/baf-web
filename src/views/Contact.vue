@@ -2,7 +2,7 @@
   <div class="page-container">
     <div class="page-banner">
       <div class="banner-content"> 
-          <h1 class="title">
+          <h1 class="title animated fadeInUp">
             Contact Us
           </h1>  
       </div>
@@ -206,7 +206,7 @@ export default {
           .el-tabs {
             /deep/ .el-tabs__nav-wrap {
               font-size: 18px;
-              font-family: Arial-BoldMT, Arial;
+              font-family: Arial;
               font-weight: 600;
               border: 1px solid #CCD1E8;
                 &::after {

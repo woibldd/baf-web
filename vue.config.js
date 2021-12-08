@@ -35,28 +35,28 @@ module.exports = {
       }
     }
   },
-  // chainWebpack(config) {
-  //   config.module
-  //       .rule('svg')
-  //       .exclude.add(resolve('src/assets/svg'))
-  //       .end()
-  //   config.module
-  //       .rule('icons')
-  //       .test(/\.svg$/)
-  //       .include.add(resolve('src//assets/svg'))
-  //       .end()
-  //       .use('svg-sprite-loader')
-  //       .loader('svg-sprite-loader')
-  //       .options({
-  //           symbolId: '[name]'
-  //       })
-  //       .end() 
-  //   config.plugin('html')
-  //       .tap(args => {
-  //         args[0].title = "平台";
-  //         return args;
-  //       })
-  // },  
+  chainWebpack(config) {
+    config.module
+        .rule('svg')
+        .exclude.add(resolve('src/assets/svg'))
+        .end()
+    config.module
+        .rule('icons')
+        .test(/\.svg$/)
+        .include.add(resolve('src//assets/svg'))
+        .end()
+        .use('svg-sprite-loader')
+        .loader('svg-sprite-loader')
+        .options({
+            symbolId: '[name]'
+        })
+        .end() 
+    config.plugin('html')
+        .tap(args => {
+          args[0].title = "帅锅";
+          return args;
+        })
+  },  
   // configureWebpack: {
   //   plugins: [
   //     // 设置环境变量信息

@@ -30,8 +30,86 @@ const routes = [
       nav: true,
       footer: true
     },
-    component: () => import("@/views/Insights.vue")
+    component: () => import("@/views/Insights/index"),
+    redirect: '/insights/insights',
+    children: [
+      {
+        path: 'insights',
+        name: 'insightsIndex',
+        meta: {
+          nav: true,
+          footer: true
+        },
+        component: () => import('@/views/Insights/Insights')
+      }, 
+      {
+        path: 'OurInsights',
+        name: 'OurInsights',
+        meta: {
+          nav: true,
+          footer: true
+        },
+        component: () => import('@/views/Insights/OurInsights')
+      },
+      {
+        path: 'Research',
+        name: 'Research',
+        meta: {
+          nav: true,
+          footer: true
+        },
+        component: () => import('@/views/Insights/Research')
+      }
+    ]
   }, 
+  {
+    path: '/news',
+    name: 'news', 
+    meta: {
+      nav: true,
+      footer: true
+    },
+    component: () => import("@/views/News/index"),
+    redirect: '/news/news',
+    children: [
+      {
+        path: 'news',  
+        name: 'newsIndex',
+        meta: {
+          nav: true,
+          footer: true
+        },
+        component: () => import('@/views/News/NewsIndex')
+      },  
+      {
+        path: 'Investment',
+        name: 'newsInvestment',
+        meta: {
+          nav: true,
+          footer: true
+        },
+        component: () => import('@/views/News/NewsInvestment')
+      }, 
+      {
+        path: 'Seminar',
+        name: 'newsSeminar',
+        meta: {
+          nav: true,
+          footer: true
+        },
+        component: () => import('@/views/News/NewsSeminar')
+      }, 
+      {
+        path: 'FridgeWineParty',
+        name: 'newsFridgeWineParty',
+        meta: {
+          nav: true,
+          footer: true
+        },
+        component: () => import('@/views/News/NewsFridgeWineParty')
+      }
+    ] 
+  },
   {
     path: '/contact',
     name: 'contact',
@@ -41,15 +119,6 @@ const routes = [
     },
     component: () => import("@/views/Contact.vue")
   }, 
-  {
-    path: '/news',
-    name: 'news',
-    meta: {
-      nav: true,
-      footer: true
-    },
-    component: () => import("@/views/News.vue")
-  }
 ]
 
 const router = new VueRouter({

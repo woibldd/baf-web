@@ -12,11 +12,13 @@
               class="swiper-designer-item"  
               :key="'designer'+index">
                 <div class="banner-box pt-1"> 
-                  <h5 class="title ">ABOUT US</h5>
-                  <h1 class="sub-title mt-19">
+                  <h5 class="title ani" swiper-animate-effect="fadeInLeft"  swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">ABOUT US</h5>
+                  <h1 class="sub-title mt-19 ani" swiper-animate-effect="fadeInLeft"  swiper-animate-duration="0.5s" swiper-animate-delay="0.5s">
                     Focusing on cutting edge blockchain innovations with global exposure
                   </h1>
-                  <h6 class="tips mt-19">Founded in 2019, BAF Capital focuses on investing in innovative blockchain infrastructure at the technological level or business model level, from seed round to private sale. The founding partners all joined the blockchain industry in early 2013 (the year was marked by the price of 1BTC>1 ounce of gold), and became life members of the Bitcoin Foundation in the same year. </h6>
+                  <h6 class="tips mt-19 ani" swiper-animate-effect="fadeInLeft"  swiper-animate-duration="0.5s" swiper-animate-delay="0.7s">
+                    Founded in 2019, BAF Capital focuses on investing in innovative blockchain infrastructure at the technological level or business model level, from seed round to private sale. The founding partners all joined the blockchain industry in early 2013 (the year was marked by the price of 1BTC>1 ounce of gold), and became life members of the Bitcoin Foundation in the same year. 
+                  </h6>
                 </div>
             </swiper-slide> 
           </swiper>  
@@ -59,12 +61,12 @@
             <p class="mt-24"><label>Mission</label></p>    
             <p class="mt-15">Build and support bitcoin and blockchain companies by leveraging our insights, network, and access to capital.</p>
           </div>
-          <div class="  intent-item intent-item2"> 
+          <div class="  intent-item intent-item2" style="animation-delay:.3s"> 
             <p class="p1"><img src="~@/assets/intent-vision.png" alt=""></p>
             <p class="mt-15"><label>Vision</label></p>
             <p class="mt-15">The best crypto investment institution worldwide.</p>
           </div>
-          <div class="  intent-item intent-item3"> 
+          <div class="  intent-item intent-item3" style="animation-delay:.6s"> 
             <p class="p1"><img src="~@/assets/intent-value.png" alt=""></p>
             <p class="mt-27"><label>Value</label></p>
             <p class="mt-15">Results-oriented, value-added services to all connecting parties.</p>
@@ -72,49 +74,51 @@
         </div>
       </div>
       <div ref="team" class="panel-content team-content">
-        <div class="team-item team1 " flex="main:justify">
-          <div class="item-box item-box-side" flex="main:center cross:center dir:top">
-            <div class="item-box-title">Foundation</div>
-            <div class="item-box-tip mt-7">Research Driven</div>
-          </div>
-          <div class="item-box item-box-middle" flex="main:center cross:center dir:top">
-            <div class="item-box-title">Focus</div>
-            <div class="item-box-tip mt-7">Strong Communication</div>
-          </div>
-          <div class="item-box item-box-side" flex="main:center cross:center dir:top">
-            <div class="item-box-title">Integration</div>
-            <div class="item-box-tip mt-7">Ecosystem</div>
-          </div>
-        </div>
-        <div class="team-item team2 " flex="main:justify">
-          <div class="item-box-b" flex="main:center cross:center">
-            <div class="vertical-line"></div>
-          </div>
-          <div class="item-box-b" flex="main:center cross:center">
-            <div class="vertical-line line-middle"></div>
-            <div class="team-title panel-title">
-              Investment Belief
+        <div ref="teamA" class="teamA">
+          <div class="team-item team1 " flex="main:justify">
+            <div class="item-box item-box-side" flex="main:center cross:center dir:top">
+              <div class="item-box-title">Foundation</div>
+              <div class="item-box-tip mt-7">Research Driven</div>
+            </div>
+            <div class="item-box item-box-middle" flex="main:center cross:center dir:top">
+              <div class="item-box-title">Focus</div>
+              <div class="item-box-tip mt-7">Strong Communication</div>
+            </div>
+            <div class="item-box item-box-side" flex="main:center cross:center dir:top">
+              <div class="item-box-title">Integration</div>
+              <div class="item-box-tip mt-7">Ecosystem</div>
             </div>
           </div>
-          <div class="item-box-b" flex="main:center cross:center">
-            <div class="vertical-line"></div>
+          <div class="team-item team2 " flex="main:justify">
+            <div class="item-box-b" flex="main:center cross:center">
+              <div class="vertical-line"></div>
+            </div>
+            <div class="item-box-b" flex="main:center cross:center">
+              <div class="vertical-line line-middle"></div>
+              <div class="team-title panel-title">
+                Investment Belief
+              </div>
+            </div>
+            <div class="item-box-b" flex="main:center cross:center">
+              <div class="vertical-line"></div>
+            </div>
           </div>
+          <div class="team-item team3 " flex="main:justify">
+            <div class="item-box item-box-side" flex="main:center cross:center dir:top">
+              <div class="item-box-title">Support</div>
+              <div class="item-box-tip mt-7">Empower</div>
+            </div>
+            <div class="item-box item-box-middle" flex="main:center cross:center dir:top">
+              <div class="item-box-title">Promotion</div>
+              <div class="item-box-tip mt-7">Operational Excellen</div>
+            </div>
+            <div class="item-box item-box-side" flex="main:center cross:center dir:top">
+              <div class="item-box-title">Impetus</div>
+              <div class="item-box-tip mt-7">Technology Innovatio</div>
+            </div>
+          </div>  
         </div>
-        <div class="team-item team3 " flex="main:justify">
-          <div class="item-box item-box-side" flex="main:center cross:center dir:top">
-            <div class="item-box-title">Support</div>
-            <div class="item-box-tip mt-7">Empower</div>
-          </div>
-          <div class="item-box item-box-middle" flex="main:center cross:center dir:top">
-            <div class="item-box-title">Promotion</div>
-            <div class="item-box-tip mt-7">Operational Excellen</div>
-          </div>
-          <div class="item-box item-box-side" flex="main:center cross:center dir:top">
-            <div class="item-box-title">Impetus</div>
-            <div class="item-box-tip mt-7">Technology Innovatio</div>
-          </div>
-        </div> 
-        <div class="team-box mt-50">
+        <div ref="teamB" class="team-box mt-50">
           <div class="team-pd" flex="box:first">
             <div class="team-box-left">
               <div class="img-box"><img src="~@/assets/team-rotate.png" alt=""></div> 
@@ -144,7 +148,7 @@
             <div class="text1">+</div>
             <div class="text1">Oversea Deals</div>
           </div>
-          <div class="strategy-item item1">
+          <div class="strategy-item item1" style="animation-delay:.3s">
             <div class="amount mt-68">
               <div class="num">{{animatedNum2}}%</div>
               <div class="rect">
@@ -156,7 +160,7 @@
             <div class="text1">+</div>
             <div class="text1">Secondary Market</div>
           </div>
-          <div class="strategy-item item1">
+          <div class="strategy-item item1" style="animation-delay:.6s">
             <div class="amount mt-68">
               <div class="num">{{animatedNum3}}%</div>
               <div class="rect">
@@ -176,7 +180,7 @@
 
 
 <script>  
-// import {swiperAnimateCache,swiperAnimate} from '@/modules/swiper/swiper.animate1.0.2.min.js'
+import {swiperAnimateCache,swiperAnimate} from '@/modules/swiper/swiper.animate1.0.2.min.js'
 import '@/modules/swiper/animate.min.css'
 import TWEEN from 'tween.js'
 
@@ -185,6 +189,8 @@ export default {
     return { 
       TWEEN,
       swiperDesignerOptions: { 
+        effect: 'fade',
+        allowTouchMove: false,
         autoplay: {
           delay: 15000,
           disableOnInteraction: false,
@@ -195,6 +201,17 @@ export default {
           el: '.swiper-pagination',
           clickable: true,
         },  
+        on:{
+          init: function(){
+            swiperAnimateCache(this); //隐藏动画元素 
+            swiperAnimate(this); //初始化完成开始动画
+          }, 
+          slideChangeTransitionEnd: function(){ 
+            swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+            //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); 动画只展现一次，去除ani类名
+          } 
+        }
+
       },
       num1: 0,
       animatedNum1: 0,
@@ -263,6 +280,12 @@ export default {
     }
   },
   methods: {
+    getElementToPageTop(el) {
+      if(el.parentElement) {
+        return this.getElementToPageTop(el.parentElement) + el.offsetTop
+      }
+      return el.offsetTop
+    },
     handleScroll() {
       let docSrollTop = document.scrollingElement.scrollTop
       let clientH = window.innerHeight  //视窗大小
@@ -271,10 +294,17 @@ export default {
       if((docSrollTop + clientH - sectionTop - 100) >= 0 && (docSrollTop - sectionTop - sectionH) <= 0){ 
         this.setAnimatedIntent()
       }
-      sectionTop = this.$refs['team'].offsetTop 
-      sectionH = this.$refs['team'].clientHeight
-      if((docSrollTop + clientH - sectionTop - 100) >= 0 && (docSrollTop - sectionTop - sectionH) <= 0){ 
-        this.setAnimatedTeam()
+      // console.log('teamA') 
+      let sectionTopX = this.$refs['team'].offsetTop 
+      sectionTop = this.$refs['teamA'].offsetTop + sectionTopX
+      sectionH = this.$refs['teamA'].clientHeight
+      if((docSrollTop + clientH - sectionTop) >= 0 && (docSrollTop - sectionTop - sectionH) <= 0){ 
+        this.setAnimatedTeam1()
+      }
+      sectionTop = this.$refs['teamB'].offsetTop  + sectionTopX
+      sectionH = this.$refs['teamB'].clientHeight
+      if((docSrollTop + clientH - sectionTop) >= 0 && (docSrollTop - sectionTop - sectionH) <= 0){ 
+        this.setAnimatedTeam2()
       }
       sectionTop = this.$refs['strategy'].offsetTop //动态文字模块距离文档头部的距离
       sectionH = this.$refs['strategy'].clientHeight
@@ -296,7 +326,7 @@ export default {
         }
       }
     },
-    setAnimatedTeam() {
+    setAnimatedTeam1() { 
       let list2 = document.getElementsByClassName('team-item')
       for (const item of list2) {
          if (!item.classList.contains('animated')) {
@@ -305,10 +335,24 @@ export default {
         }
       }  
     },
+    setAnimatedTeam2() { 
+      let list = document.getElementsByClassName('team-box')
+       if (!list[0].classList.contains('animated')) {
+        list[0].classList.add('fadeInUp')
+        list[0].classList.add('animated')
+      }  
+    },
     setAnimatedNum() {
       this.num1 = 50
       this.num2 = 30
       this.num3 = 20
+      let list = document.getElementsByClassName('strategy-item')
+      for (const item of list) {
+        if (!item.classList.contains('animated')) {
+          item.classList.add('fadeInUp')
+          item.classList.add('animated')
+        }
+      }
     } 
   },
   mounted() { 

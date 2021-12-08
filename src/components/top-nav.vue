@@ -3,7 +3,9 @@
     <div ref="nav" style="transition: all 0.5s ease 0s;" class="nav-a">
       <div class="nav-box" flex="main:justify">
          <div class="left" flex="cross:center">
-          <router-link to="/"  flex="cross:center"><img class="logo" src="@/assets/logo-blue.png" alt=""></router-link>
+          <router-link to="/"  flex="cross:center" style="color:red;">  
+            <icon  style="font-size: 220px;" name="logo" /> 
+          </router-link>
          </div>
          <div class="right"> 
             <ul flex="main:right">
@@ -13,7 +15,7 @@
               <li class="pointer nav-item mr-60"><router-link to="/news">News</router-link></li> 
               <li class="pointer nav-item mr-60"><router-link to="/contact">Contact</router-link></li>
               <li class="pointer nav-item lang">
-                <a>简</a> / <a>EN</a>
+                <label>简</label> / <label>EN</label>
               </li>
             </ul>
          </div>
@@ -86,15 +88,19 @@ export default {
       .nav-item {
         a {
           color: $nav;
-          font-family: Arial-BoldMT, Arial;
+          font-family: Arial;
           font-weight: bold;
           &:hover {
             color : $nav-hover;
           }
         }
         &.lang {
-          font-size: 16px;
+          font-size: 14px;
           font-weight: 400;
+          color: $nav; 
+          label {
+            font-size: 16px;
+          }
         } 
       }
     } 

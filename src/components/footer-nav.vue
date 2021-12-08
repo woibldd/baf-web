@@ -5,10 +5,10 @@
         Copyright © 1998 - 2021 BAF Capital. All Rights Reserved.
       </div>
       <div class="footer-right" flex="cross:center">
-        <img class="ml-23" src="~@/assets/icon-1.png" alt="">
-        <img class="ml-23"  src="~@/assets/icon-2.png" alt="">
-        <img class="ml-23"  src="~@/assets/icon-3.png" alt="">
-        <img class="ml-23"  src="~@/assets/icon-4.png" alt="">
+        <img class="ml-23 icon" src="~@/assets/icon-1@2x.png" alt="">
+        <img class="ml-23 icon"  src="~@/assets/icon-2@2x.png" alt="">
+        <img class="ml-23 icon"  src="~@/assets/icon-3@2x.png" alt="">
+        <img class="ml-23 icon"  src="~@/assets/icon-4@2x.png" alt="">
         <router-link to="/contact"><button class="btn ml-60">Contact Us</button></router-link>
         
       </div>
@@ -44,6 +44,10 @@
         font-size: 18px;
         color: #fff;
         border: none;
+      }
+      .icon {
+        width: 25px;
+        height: 25px;
       }
     }
     .bottom-layer { 

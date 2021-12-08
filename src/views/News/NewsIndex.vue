@@ -1,17 +1,17 @@
 <template>
   <div class="page-container">
     <div class="page-banner">
-      <div class="banner-content"> 
-        <div class="banner-box animated fadeIn">
-          <h1 class="title">
+      <div class="banner-content" flex="cross:center"> 
+        <div class="banner-box " >
+          <h1 class="title animated fadeInLeft" style="animation-delay: .3s;">
             BAF Capital News
           </h1>  
-          <div class="label-list mt-27" flex>
+          <div class="label-list mt-27 animated fadeInLeft" style="animation-delay: .5s;" flex>
             <label class="mr-19">Latest</label>
             <label class="mr-19">True</label>
             <label class="mr-19">Effective</label>
           </div>
-          <div class="tips mt-22">
+          <div class="tips mt-22 animated fadeInLeft" style="animation-delay: .7s;">
             Stay tuned to BAF Capital News to get more updated investment and activity information.
           </div> 
         </div>
@@ -23,7 +23,13 @@
         <div class="panel-title">News</div>
         <div class="my-list">
           <div class="item-box" >
-            <div class="item-title">Investment</div>
+            <div class="item-title">
+              <label>Investment</label>
+              <router-link to="/news/Investment" class="view-all">
+                <em>View All</em>
+                <img src="@/assets/icon-view-all.png" alt="">
+              </router-link>
+            </div>
             <div class="item-content investment-list">
               <div class="news-item black" :href="obj.link" v-for="(obj, index) in investmentList" :key="index">
                 <div class="img-box"  :class="['img-box-'+index]">
@@ -34,55 +40,45 @@
                     <div class="title-a">{{obj.title}}</div>
                     <div class="news-content mt-17" v-html="obj.content">{{obj.content}}</div>
                   </div> 
+                  <div class="news-mask" flex="cross:center main:center">
+                    <div class="title-a">{{obj.title}}</div>
+                    <div class="arrow">
+                      <icon v-if="index === 5" name="arrow-long"  size="100"/>
+                      <icon v-else name="arrow-short"  size="70"/>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
           <div class="item-box" >
-            <div class="item-title">Seminar</div>
-            <div class="item-content">
-              <div class="news-item white" 
-                :href="obj.link" v-for="(obj, index) in seminarList"
-                :style="{backgroundImage: `url(${obj.pic})`}"
-                :key="index">
-                <div class="news-pd">
-                  <div class="title-b">
-                    <h1>{{obj.title}}</h1>
-                    <h1>{{obj.date}}</h1>
-                  </div> 
-                  <div class="news-text-b mt-22">
-                    <div class="sub-title-b">
-                      {{obj.subTitle}}
-                    </div>
-                    <div class="news-content news-content-b mt-10" v-html="obj.content">
-                      {{obj.content}}
-                    </div>
-                  </div>
-                </div> 
-              </div>
+            <div class="item-title"> 
+              <label>Seminar</label>
+              <router-link to="/news/Seminar" class="view-all">
+                <em>View All</em>
+                <img src="@/assets/icon-view-all.png" alt="">
+              </router-link>
+            </div>
+            <div class="item-content"> 
+              <my-link v-for="(obj, index) in seminarList" 
+                :key="index"
+                :obj="obj"
+                ></my-link>
             </div>
           </div>
           <div class="item-box" >
-            <div class="item-title">Fridge Wine Party</div>
-            <div class="item-content">
-              <div class="news-item black" :href="obj.link" v-for="(obj, index) in partyList"
-                :style="{backgroundImage: `url(${obj.pic})`}"
-                :key="index">
-                <div class="news-pd">
-                  <div class="title-b">
-                    <h1>{{obj.title}}</h1>
-                    <h1>{{obj.date}}</h1>
-                  </div>
-                  <div class="news-text-b mt-22">
-                    <div class="sub-title-b">
-                      {{obj.subTitle}}
-                    </div>
-                    <div class="news-content news-content-b mt-10" v-html="obj.content">
-                      {{obj.content}}
-                    </div>
-                  </div> 
-                </div>
-              </div>
+            <div class="item-title"> 
+              <label>Fridge Wine Party</label>
+              <router-link to="/news/FridgeWineParty" class="view-all">
+                <em>View All</em>
+                <img src="@/assets/icon-view-all.png" alt="">
+              </router-link>
+            </div>
+            <div class="item-content"> 
+              <my-link v-for="(obj, index) in partyList" 
+                :key="index"
+                :obj="obj"
+                ></my-link>
             </div>
           </div>
         </div>
@@ -92,7 +88,9 @@
 </template>
 
 <script>
+import myLink from '@/components/linkTemplate'
 export default {
+  components: {myLink},
   data() {
     return {  
       investmentList: [
@@ -139,47 +137,49 @@ export default {
           link: 'http://www.baidu.com',
         },
       ],
-      seminarList: [
+      seminarList:  [
         {
-          pic: require('@/assets/news/seminar-1.png'),
-          title: 'BAF-Seminar ',
-          subTitle: 'Blockchain event for academic researchers',
-          content: 'It was a blockchain event for creative academic researchers, attended by senior executives from major technology companies',
-          date: '1101',
-          link: 'http://www.baidu.com',
-        },
+          pic: require('@/assets/news/seminar/1.png'),
+          link: 'http://www.baidu.com', 
+          title: 'BAF - Seminar<br>Serial 02',
+          subTitle: 'Crypto Assets’ Allocation',
+          description: 'Seminar topics are how to better manage the allocation of crypto assets, shared by Leon, partner of BAF Capital; Blockchain Overview, shared by Dr. Yu Gang, Co-chairman of Hong Kong Blockchain Association; Meteorite Project Overview, shared by Aaron. '
+        }, 
         {
-          pic: require('@/assets/news/seminar-1.png'),
-          title: 'BAF-Seminar ',
-          subTitle: 'Blockchain event for academic researchers',
-          content: 'It was a blockchain event for creative academic researchers, attended by senior executives from major technology companies',
-          date: '1101',
-          link: 'http://www.baidu.com',
-        },
+          pic: require('@/assets/news/seminar/2.png'),
+          link: 'http://www.baidu.com', 
+          title: 'BAF - Seminar<br>Serial 01',
+          subTitle: 'The Next Generation of Public Chain',
+          description: 'BAF Capital hosted a private seminar in Shenzhen Bay One. This private meeting brought together a number of industry elites, KOL and project founders.'
+        }, 
       ],
       partyList: [
         {
-          pic: require('@/assets/news/party-1.png'),
-          title: 'BAF-Party ',
-          subTitle: 'Blockchain event for academic researchers',
-          content: 'It was a blockchain event for creative academic researchers, attended by senior executives from major technology companies',
-          date: '1101',
-          link: 'http://www.baidu.com',
-        },
+          pic: require('@/assets/news/fridge-wine-party/1.png'),
+          link: 'http://www.baidu.com', 
+          title: 'Fridge Wine Party<br>Serial 03',
+          subTitle: 'Road to DAO',
+          description: 'DAO is a paradigm shift in the concept of economic organization and a fitting tool for metaverse. The advent of DAO era requires us to embrace it together.'
+        }, 
         {
-          pic: require('@/assets/news/party-1.png'),
-          title: 'BAF-Party ',
-          subTitle: 'Blockchain event for academic researchers',
-          content: 'It was a blockchain event for creative academic researchers, attended by senior executives from major technology companies',
-          date: '1101',
-          link: 'http://www.baidu.com',
-        },
+          pic: require('@/assets/news/fridge-wine-party/2.png'),
+          link: 'http://www.baidu.com', 
+          title: 'Fridge Wine Party<br>Serial 02',
+          subTitle: 'How to Gamefi: Land, NFT, P2E',
+          description: 'What are the Metaverse Panorama and Opportunities? Are there any potential investment opportunities in secondary market?'
+        }, 
+        // {
+        //   pic: require('@/assets/news/fridge-wine-party/3.png'),
+        //   link: 'http://www.baidu.com', 
+        //   title: 'Fridge Wine Party<br>Serial 01',
+        //   subTitle: 'Metaverse',
+        //   description: 'What are the Metaverse Panorama and Opportunities? Are there any potential investment opportunities in secondary market? '
+        // }, 
       ],
     }
   },
   methods: {
-    handleClick(tab, event) {
-      console.log(tab, event);
+    handleClick(tab, event) { 
     }
   }
 }
@@ -191,7 +191,7 @@ export default {
   .page-banner {
     position: relative;
     height: 700px;
-    background-image: url('~@/assets/banner-contact.png'); 
+    background-image: url('~@/assets/banner-news.png'); 
     background-position: center 0;
     background-color: #000F27;
     background-repeat: repeat-x;
@@ -202,8 +202,7 @@ export default {
       margin: 0 auto;
       text-align: left;
       color: #fff;
-      .title {  
-        padding-top: 236px;
+      .title {   
         // text-align: center;
         font-weight: 600;
         font-size: 80px;
@@ -258,12 +257,29 @@ export default {
           text-align: left;
           margin-bottom: 100px;
           .item-title {
+            position: relative;
             padding: 0 0 16px;
             margin-bottom: 21px;
             color: $text;
             font-size: 36px;
             font-weight: 600;
             border-bottom: 1px solid $text;
+            .view-all {
+              position: absolute;
+              right: 0;
+              top: 33px;
+              background-color: #fff;
+              color: #000F27;
+              font-size: 24px;
+              em{
+                padding: 0 30px;
+                cursor: pointer;
+              }
+              img {
+                width: 36px;
+                height: 13px;
+              }
+            }
           }
           .item-content {
             display: grid; 
@@ -273,6 +289,7 @@ export default {
               grid-template-columns: 1fr 1fr 1fr;
               .news-item {
                 overflow: hidden;
+                transition: ease all 0.3s;
                 &:first-child {
                   grid-column-start: 1;
                   grid-column-end: 3;
@@ -283,8 +300,10 @@ export default {
                 }
                 &:hover { 
                   transform: translateY(-4px);
-                  transition: ease all 0.3s;
-                  box-shadow: 0px 4px 4px rgba(0, 0, 0, .1);
+                  // box-shadow: 0px 4px 4px rgba(0, 0, 0, .1); 
+                  .news-a-box .news-mask {
+                    transform: translate3d(0, 0, 0);
+                  }
                 }
                 img {
                   vertical-align: bottom;
@@ -293,19 +312,35 @@ export default {
                     transform: scale(1.05);
                   } 
                 }
-                .news-a-box { 
+                .news-a-box {
+                  position: relative;  
                   border: 1px solid #CCD1E8;
                   border-top: none;
                   line-height: 1.4em;
-                }
+                  overflow: hidden;
+                  .news-mask { 
+                    position: absolute;  
+                    top:0;
+                    left:0;  
+                    background-color: $primary;
+                    color: #ffffff;
+                    height: 100%;
+                    width: 100%;
+                    transform: translate3d(0, 100%, 0);
+                    transition-duration: .3s;
+                    .arrow {
+                      position: absolute;
+                      bottom: 0;
+                      right: 29px;
+                      font-size: 70px;
+                    } 
+                  } 
+                } 
                 .box- {
                   border-top: none;
                   &0, &5 {
-                    height: 150px;
-                  }
-                  // &1 {
-                  //   height: 290px;
-                  // }
+                    height: 151px;
+                  } 
                   &1, &2, &3, &4 {
                     height: 290px;
                   }
