@@ -245,7 +245,7 @@ export default {
         }
       }
       .tips {
-        opacity: .4;
+        color: rgba($color: #ffffff, $alpha: .4); 
         width: 600px;
       }
     }

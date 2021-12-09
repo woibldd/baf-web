@@ -242,8 +242,7 @@ export default {
         width: 895px;
         font-size: 16px;
         line-height: 1.6em;
-        color: #FFFFFF;
-        opacity:abs($number: .4)
+        color: rgba($color: #ffffff, $alpha: .4); 
       }
     }
   }

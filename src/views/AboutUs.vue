@@ -191,10 +191,10 @@ export default {
       swiperDesignerOptions: { 
         effect: 'fade',
         allowTouchMove: false,
-        // autoplay: {
-        //   delay: 15000,
-        //   disableOnInteraction: false,
-        // },
+        autoplay: {
+          delay: 15000,
+          disableOnInteraction: false,
+        },
         loop: true, 
         loopAdditionalSlides: 5,  
         pagination: {
