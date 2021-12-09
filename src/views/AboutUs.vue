@@ -17,7 +17,7 @@
                     Focusing on cutting edge blockchain innovations with global exposure
                   </h1>
                   <h6 class="tips mt-19 ani" swiper-animate-effect="fadeInLeft"  swiper-animate-duration="0.5s" swiper-animate-delay="0.7s">
-                    Founded in 2019, BAF Capital focuses on investing in innovative blockchain infrastructure at the technological level or business model level, from seed round to private sale. The founding partners all joined the blockchain industry in early 2013 (the year was marked by the price of 1BTC>1 ounce of gold), and became life members of the Bitcoin Foundation in the same year. 
+                    Founded in 2019, BAF Capital has developed a reputation for being forward-leaning and independent. We focuses on investing in cryptocurrencies, tokens, and innovative blockchain companies at the technological level or business model level.  Our team is around the world, with a presence in China, America, and Korea. The founding partners all joined the blockchain industry in early 2013 (the year was marked by the price of 1BTC>1 ounce of gold), and became life members of the Bitcoin Foundation in the same year.
                   </h6>
                 </div>
             </swiper-slide> 
@@ -191,10 +191,10 @@ export default {
       swiperDesignerOptions: { 
         effect: 'fade',
         allowTouchMove: false,
-        autoplay: {
-          delay: 15000,
-          disableOnInteraction: false,
-        },
+        // autoplay: {
+        //   delay: 15000,
+        //   disableOnInteraction: false,
+        // },
         loop: true, 
         loopAdditionalSlides: 5,  
         pagination: {
@@ -402,8 +402,7 @@ export default {
         line-height: 1.5em;
         width: 838px;
         font-size: 16px; 
-        color: #FFFFFF;
-        opacity:abs($number: .4)
+        color: rgba($color: #ffffff, $alpha: .4); 
       }
       .swiper-pagination {
         /deep/.swiper-pagination-bullet{
