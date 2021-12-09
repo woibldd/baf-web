@@ -358,6 +358,9 @@ export default {
   mounted() { 
     this.handleScroll()
     window.addEventListener('scroll',this.handleScroll)
+  },
+  destroyed() {
+    window.removeEventListener('scroll',this.handleScroll)
   }
 }
 </script>

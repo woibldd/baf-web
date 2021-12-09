@@ -317,7 +317,7 @@ export default {
                 padding-right: 20px;
                 text-align: right;
                 opacity: 0;
-                transition: all .58s ease-out; 
+                transition: all .28s ease-out; 
               }
               &:hover {
                 .mask { 

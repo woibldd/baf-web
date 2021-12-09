@@ -3,7 +3,7 @@
     <div ref="nav" style="transition: all 0.5s ease 0s;" class="nav-a">
       <div class="nav-box" flex="main:justify">
          <div class="left" flex="cross:center">
-          <router-link to="/"  flex="cross:center" style="color:red;">  
+          <router-link to="/"  flex="cross:center" style="height: 100px; overflow: hidden;">  
             <icon  style="font-size: 220px;" name="logo" /> 
           </router-link>
          </div>
