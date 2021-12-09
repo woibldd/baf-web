@@ -6,29 +6,38 @@
       <div class="panel-content">
         <div class="left-rectangle"></div> 
         <div class="breadcrumb ml-43">
-          <router-link class="mr-14" to="/news">News</router-link>
+          <!-- <router-link class="mr-14" to="/news">News</router-link>
           <icon class="separator mr-14" name="arrow" />
-          <router-link class="mr-14" to="/news/FridgeWineParty">Fridge Wine Party</router-link>
-        </div>
-        <div class="my-list">
-          <div class="item-box" v-for="(item, idx) in list" :key="idx">
-            <div class="item-title">
-              <label>{{item.name}}</label> 
-            </div>
-            <div :class="['item-content', item.name]"> 
-              <my-link v-for="(obj, index) in item.linkList" 
-                :key="index"
-                :obj="obj"
-                ></my-link>
-            </div>
-          </div>
+          <router-link class="mr-14" to="/news/FridgeWineParty">Fridge Wine Party</router-link> --> 
+          <label v-for="(link, idx) in $route.matched" :key="idx"> 
+            <icon v-if="idx!==0" class="separator mr-14" name="arrow" />
+            <router-link class="mr-14" :to="link.path">{{link.meta.text || link.name}}</router-link>
+          </label>
         </div> 
-        <div class="panel-bottom pt-50 pb-50">
-          <div class="load-more">
-            LOAD MORE
-            <icon name="arrow" class="arrow-down ml-8" size="26"/>
-          </div>
+        <div v-if="$route.name.includes('Article')">
+          <router-view></router-view>
         </div>
+        <div v-else>
+          <div class="my-list">
+            <div class="item-box" v-for="(item, idx) in list" :key="idx">
+              <div class="item-title">
+                <label>{{item.name}}</label> 
+              </div>
+              <div :class="['item-content', item.name]"> 
+                <my-link v-for="(obj, index) in item.linkList" 
+                  :key="index"
+                  :obj="obj"
+                  ></my-link>
+              </div>
+            </div>
+          </div> 
+          <div class="panel-bottom pt-50 pb-50">
+            <div class="load-more">
+              LOAD MORE
+              <icon name="arrow" class="arrow-down ml-8" size="26"/>
+            </div>
+          </div> 
+        </div> 
       </div> 
     </div>
   </div>
@@ -43,23 +52,26 @@ export default {
         {
           name: 'Fridge Wine Party',
           linkList: [
-            {
+           {
+              id: 9,
               pic: require('@/assets/news/fridge-wine-party/1.png'),
-              link: 'http://www.baidu.com', 
+              link: 'FridgeWinePartyArticle', 
               title: 'Fridge Wine Party<br>Serial 03',
               subTitle: 'Road to DAO',
               description: 'DAO is a paradigm shift in the concept of economic organization and a fitting tool for metaverse. The advent of DAO era requires us to embrace it together.'
             }, 
             {
+              id: 10,
               pic: require('@/assets/news/fridge-wine-party/2.png'),
-              link: 'http://www.baidu.com', 
+              link: 'FridgeWinePartyArticle', 
               title: 'Fridge Wine Party<br>Serial 02',
               subTitle: 'How to Gamefi: Land, NFT, P2E',
               description: 'What are the Metaverse Panorama and Opportunities? Are there any potential investment opportunities in secondary market?'
             }, 
             {
+              id: 11,
               pic: require('@/assets/news/fridge-wine-party/3.png'),
-              link: 'http://www.baidu.com', 
+              link: 'FridgeWinePartyArticle', 
               title: 'Fridge Wine Party<br>Serial 01',
               subTitle: 'Metaverse',
               description: 'What are the Metaverse Panorama and Opportunities? Are there any potential investment opportunities in secondary market? '

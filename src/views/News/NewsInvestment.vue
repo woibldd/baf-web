@@ -6,34 +6,45 @@
       <div class="panel-content">
         <div class="left-rectangle"></div> 
         <div class="breadcrumb ml-43">
-          <router-link class="mr-14" to="/news">News</router-link>
+          <!-- <router-link class="mr-14" to="/news">News</router-link>
           <icon class="separator mr-14" name="arrow" />
-          <router-link class="mr-14" to="/news/Investment">Investment</router-link>
+          <router-link class="mr-14" to="/news/Investment">Investment</router-link> --> 
+          <label v-for="(link, idx) in $route.matched" :key="idx"> 
+            <icon v-if="idx!==0" class="separator mr-14" name="arrow" />
+            <router-link class="mr-14" :to="link.path">{{link.meta.text || link.name}}</router-link>
+          </label>
         </div>
-        <div class="my-list-b">
-          <div class="item-box" v-for="(item, idx) in list" :key="idx">
-            <div class="item-title">
-              <label>{{item.name}}</label> 
-            </div>
-            <div :class="['item-content', item.name]"> 
-              <div class="link-item" v-for="(obj, index) in item.linkList" 
-                :key="index"
-                flex="box:first">
-                <div class="link-left" flex="main:center"><img :src="obj.pic" alt=""></div> 
-                <div class="link-right ml-41">
-                  <div class="title mt-17" flex="cross:center">{{obj.title}}</div>
-                  <div class="description mt-16">{{obj.description}}</div>
-                  <div class="date">{{obj.createDate}}</div>
+        <div v-if="$route.name.includes('Article')">
+          <router-view></router-view>
+        </div>
+        <div v-else>
+          <div class="my-list-b">
+            <div class="item-box" v-for="(item, idx) in list"
+              :key="idx">
+              <div class="item-title">
+                <label>{{item.name}}</label> 
+              </div>
+              <div :class="['item-content', item.name]"> 
+                <div class="link-item" v-for="(obj, index) in item.linkList" 
+                  @click="gotoPath({name: obj.link, params: {id: obj.id}})"
+                  :key="index"
+                  flex="box:first">
+                  <div class="link-left" flex="main:center"><img :src="obj.pic" alt=""></div> 
+                  <div class="link-right ml-41">
+                    <div class="title mt-17" flex="cross:center">{{obj.title}}</div>
+                    <div class="description mt-16">{{obj.description}}</div>
+                    <div class="date">{{obj.createDate}}</div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div> 
-        <div class="panel-bottom pt-50 pb-50">
-          <div class="load-more">
-            LOAD MORE
-            <icon name="arrow" class="arrow-down ml-8" size="26"/>
-          </div>
+          </div> 
+          <div class="panel-bottom pt-50 pb-50">
+            <div class="load-more">
+              LOAD MORE
+              <icon name="arrow" class="arrow-down ml-8" size="26"/>
+            </div>
+          </div> 
         </div>
       </div> 
     </div>
@@ -49,8 +60,9 @@ export default {
           name: 'Investment',
           linkList: [
             {
+              id: 1,
               pic: require('@/assets/news/investment/1.png'),
-              link: 'http://www.baidu.com', 
+              link: 'InvestmentArticle', 
               title: 'Investment Blast: MeliGame, reaches a peak half a month after listed.',
               subTitle: '',
               description: 'MeliGame, co-invested by BAF Capital, OK Blockchain Venture, has achieved 10+ times of profits after listed on Exchange.',
@@ -58,8 +70,9 @@ export default {
               createDate: 'Dec 5,2021'
             }, 
             {
+              id: 2,
               pic: require('@/assets/news/investment/2.png'),
-              link: 'http://www.baidu.com', 
+              link: 'InvestmentArticle', 
               title: 'Galaxy Blitz Play-To-Earn Combat Strategy NFT Game Launches Official Website',
               subTitle: '',
               description: 'Galaxy Blitz, a Play-To-Earn combat strategy NFT game, launched its official website on December 1, 2021. The website will be a repository for artwork from the game, lore, updates in the game\'s development, and more.',
@@ -67,8 +80,9 @@ export default {
               createDate: 'Dec 2,2021'
             }, 
             {
+              id: 3,
               pic: require('@/assets/news/investment/3.png'),
-              link: 'http://www.baidu.com', 
+              link: 'InvestmentArticle', 
               title: 'Meteorite vs Crypto Quantitative Platform — Comprehensive Comparison and Review',
               subTitle: '',
               description: 'Meteorite is a decentralized quantitative strategy platform that supports several fundamental quantitative strategies for digital assets.',
@@ -76,8 +90,9 @@ export default {
               createDate: 'Nov 30,2021'
             }, 
             {
+              id: 4,
               pic: require('@/assets/news/investment/4.png'),
-              link: 'http://www.baidu.com', 
+              link: 'InvestmentArticle', 
               title: 'Epik protocol and nft: Much more than the hype',
               subTitle: '',
               description: 'There are underlying risks and concerns that must be critically looked at before one jumps into the wagon. ',
@@ -85,8 +100,9 @@ export default {
               createDate: 'Nov 24,2021'
             }, 
             {
+              id: 5,
               pic: require('@/assets/news/investment/5.png'),
-              link: 'http://www.baidu.com', 
+              link: 'InvestmentArticle', 
               title: 'Introducing CasperPunks NFTs!',
               subTitle: '',
               description: 'Casper, one of BAF Capital’s portfolio project, has launched their NFT. What they call is CasperPunks. Go grab them.',
@@ -94,8 +110,9 @@ export default {
               createDate: 'Dec 2,2021'
             }, 
             {
+              id: 6,
               pic: require('@/assets/news/investment/6.png'),
-              link: 'http://www.baidu.com', 
+              link: 'InvestmentArticle', 
               title: 'Mina’s New Community Programs: Grants, Community Spark Leaderboard, Mina Academy, and Mina Achievements Program',
               subTitle: '',
               description: 'We herein update another BAF Capital’s invested project-Mina’s status. Mina Foundation will launch several programs to support community members in their participation within Mina\'s ecosystem.',
@@ -107,6 +124,10 @@ export default {
       ]
     }
   }, 
+  methods: { 
+  },
+  created() { 
+  }
 }
 </script>
 

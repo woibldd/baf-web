@@ -31,17 +31,19 @@
               </router-link>
             </div>
             <div class="item-content investment-list">
-              <div class="news-item black" :href="obj.link" v-for="(obj, index) in investmentList" :key="index">
+              <div class="news-item black" :href="obj.link" v-for="(obj, index) in investmentList"  
+                @click="gotoPath({name: obj.link, params: {id: obj.id}})"
+                :key="index">
                 <div class="img-box"  :class="['img-box-'+index]">
                   <img :src="obj.pic" alt="" > 
                 </div>
                 <div class="news-a-box" :class="['box-'+index]">
                   <div class="news-text">
                     <div class="title-a">{{obj.title}}</div>
-                    <div class="news-content mt-17" v-html="obj.content">{{obj.content}}</div>
+                    <div class="news-content mt-17" v-html="obj.description">{{obj.content}}</div>
                   </div> 
                   <div class="news-mask" flex="cross:center main:center">
-                    <div class="title-a">{{obj.title}}</div>
+                    <div class="title-c">{{obj.title}}</div>
                     <div class="arrow">
                       <icon v-if="index === 5" name="arrow-long"  size="100"/>
                       <icon v-else name="arrow-short"  size="70"/>
@@ -60,7 +62,7 @@
               </router-link>
             </div>
             <div class="item-content"> 
-              <my-link v-for="(obj, index) in seminarList" 
+              <my-link v-for="(obj, index) in seminarList"   
                 :key="index"
                 :obj="obj"
                 ></my-link>
@@ -75,7 +77,7 @@
               </router-link>
             </div>
             <div class="item-content"> 
-              <my-link v-for="(obj, index) in partyList" 
+              <my-link v-for="(obj, index) in partyList"   
                 :key="index"
                 :obj="obj"
                 ></my-link>
@@ -95,59 +97,79 @@ export default {
     return {  
       investmentList: [
         {
-          pic: require('@/assets/news/investment-1.png'),
-          title: 'People Turn to Technology to Help',
-          content: 'People in flood zones acted quickly,<br> using technology to find survivors who needed he',
-          date: '',
-          link: 'http://www.baidu.com',
-        },
+          id: 1,
+          pic: require('@/assets/news/investment/1a.png'),
+          link: 'InvestmentArticle', 
+          title: 'Investment Blast: MeliGame, reaches a peak half a month after listed.',
+          subTitle: '',
+          description: 'MeliGame, co-invested by BAF Capital, OK Blockchain Venture, has achieved 10+ times of profits after listed on Exchange.',
+          content: '',
+          createDate: 'Dec 5,2021'
+        }, 
         {
-          pic: require('@/assets/news/investment-2.png'),
-          title: 'People Turn to Help',
-          content: 'People in flood zones acted quickly, using technology to find survivors who needed help.es acted quickly,y to find survivors who needed help.es acted quickly,y to find survivors who needed help.es acted quickly,y to find  survivors who needed help.es acted quickly,y to find survivors who needed help.es acted quickly,',
-          date: '',
-          link: 'http://www.baidu.com',
-        },
+          id: 2,
+          pic: require('@/assets/news/investment/2a.png'),
+          link: 'InvestmentArticle', 
+          title: 'Galaxy Blitz Play-To-Earn Combat Strategy NFT Game Launches Official Website',
+          subTitle: '',
+          description: 'Galaxy Blitz, a Play-To-Earn combat strategy NFT game, launched its official website on December 1, 2021. The website will be a repository for artwork from the game, lore, updates in the game\'s development, and more.',
+          content: '',
+          createDate: 'Dec 2,2021'
+        }, 
         {
-          pic: require('@/assets/news/investment-3.png'),
-          title: 'People Turn to Techn',
-          content: 'People in flood zones acted quickly, using technology to find survivors who needed he',
-          date: '',
-          link: 'http://www.baidu.com',
-        },
+          id: 3,
+          pic: require('@/assets/news/investment/3a.png'),
+          link: 'InvestmentArticle', 
+          title: 'Meteorite vs Crypto Quantitative Platform — Comprehensive Comparison and Review',
+          subTitle: '',
+          description: 'Meteorite is a decentralized quantitative strategy platform that supports several fundamental quantitative strategies for digital assets.',
+          content: '',
+          createDate: 'Nov 30,2021'
+        }, 
         {
-          pic: require('@/assets/news/investment-4.png'),
-          title: 'People Turn to Techn',
-          content: 'People in flood zones acted quickly, using technology to find survivors who needed he',
-          date: '',
-          link: 'http://www.baidu.com',
-        },
+          id: 4,
+          pic: require('@/assets/news/investment/4a.png'),
+          link: 'InvestmentArticle', 
+          title: 'Epik protocol and nft: Much more than the hype',
+          subTitle: '',
+          description: 'There are underlying risks and concerns that must be critically looked at before one jumps into the wagon. ',
+          content: '',
+          createDate: 'Nov 24,2021'
+        }, 
         {
-          pic: require('@/assets/news/investment-5.png'),
-          title: 'People Turn to Techn',
-          content: 'People in flood zones acted quickly, using technology to find survivors who needed he',
-          date: '',
-          link: 'http://www.baidu.com',
-        },
+          id: 5,
+          pic: require('@/assets/news/investment/5a.png'),
+          link: 'InvestmentArticle', 
+          title: 'Introducing CasperPunks NFTs!',
+          subTitle: '',
+          description: 'Casper, one of BAF Capital’s portfolio project, has launched their NFT. What they call is CasperPunks. Go grab them.',
+          content: '',
+          createDate: 'Dec 2,2021'
+        }, 
         {
-          pic: require('@/assets/news/investment-6.png'),
-          title: 'People Turn to Technology to Help',
-          content: 'People in flood zones acted quickly,<br> People in flood zones acted quickly, using technology to find survivors who needed he',
-          date: '',
-          link: 'http://www.baidu.com',
-        },
+          id: 6,
+          pic: require('@/assets/news/investment/6a.png'),
+          link: 'InvestmentArticle', 
+          title: 'Mina’s New Community Programs: Grants, Community Spark Leaderboard, Mina Academy, and Mina Achievements Program',
+          subTitle: '',
+          description: 'We herein update another BAF Capital’s invested project-Mina’s status. Mina Foundation will launch several programs to support community members in their participation within Mina\'s ecosystem.',
+          content: '',
+          createDate: 'Sep 30,2021'
+        }, 
       ],
       seminarList:  [
         {
+          id: 7,
           pic: require('@/assets/news/seminar/1.png'),
-          link: 'http://www.baidu.com', 
+          link: 'SeminarArticle', 
           title: 'BAF - Seminar<br>Serial 02',
           subTitle: 'Crypto Assets’ Allocation',
           description: 'Seminar topics are how to better manage the allocation of crypto assets, shared by Leon, partner of BAF Capital; Blockchain Overview, shared by Dr. Yu Gang, Co-chairman of Hong Kong Blockchain Association; Meteorite Project Overview, shared by Aaron. '
         }, 
         {
+          id: 8,
           pic: require('@/assets/news/seminar/2.png'),
-          link: 'http://www.baidu.com', 
+          link: 'SeminarArticle', 
           title: 'BAF - Seminar<br>Serial 01',
           subTitle: 'The Next Generation of Public Chain',
           description: 'BAF Capital hosted a private seminar in Shenzhen Bay One. This private meeting brought together a number of industry elites, KOL and project founders.'
@@ -155,22 +177,25 @@ export default {
       ],
       partyList: [
         {
+          id: 9,
           pic: require('@/assets/news/fridge-wine-party/1.png'),
-          link: 'http://www.baidu.com', 
+          link: 'FridgeWinePartyArticle', 
           title: 'Fridge Wine Party<br>Serial 03',
           subTitle: 'Road to DAO',
           description: 'DAO is a paradigm shift in the concept of economic organization and a fitting tool for metaverse. The advent of DAO era requires us to embrace it together.'
         }, 
         {
+          id: 10,
           pic: require('@/assets/news/fridge-wine-party/2.png'),
-          link: 'http://www.baidu.com', 
+          link: 'FridgeWinePartyArticle', 
           title: 'Fridge Wine Party<br>Serial 02',
           subTitle: 'How to Gamefi: Land, NFT, P2E',
           description: 'What are the Metaverse Panorama and Opportunities? Are there any potential investment opportunities in secondary market?'
         }, 
         // {
+        //  id: 11,
         //   pic: require('@/assets/news/fridge-wine-party/3.png'),
-        //   link: 'http://www.baidu.com', 
+        //   link: 'FridgeWinePartyArticle', 
         //   title: 'Fridge Wine Party<br>Serial 01',
         //   subTitle: 'Metaverse',
         //   description: 'What are the Metaverse Panorama and Opportunities? Are there any potential investment opportunities in secondary market? '
@@ -375,6 +400,11 @@ export default {
               .title-a {
                 font-size: 24px;
                 font-weight: 600;
+              }
+              .title-c {
+                font-size: 24px;
+                font-weight: 600;
+                padding: 52px 59px;
               }
               .title-b {
                 font-size: 72px;

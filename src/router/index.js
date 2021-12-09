@@ -25,7 +25,7 @@ const routes = [
   }, 
   {
     path: '/insights',
-    name: 'insights',
+    name: 'Insights',
     meta: {
       nav: true,
       footer: true
@@ -44,7 +44,7 @@ const routes = [
       }, 
       {
         path: 'OurInsights',
-        name: 'OurInsights',
+        name: 'Our Insights',
         meta: {
           nav: true,
           footer: true
@@ -64,7 +64,7 @@ const routes = [
   }, 
   {
     path: '/news',
-    name: 'news', 
+    name: 'News', 
     meta: {
       nav: true,
       footer: true
@@ -83,30 +83,67 @@ const routes = [
       },  
       {
         path: 'Investment',
-        name: 'newsInvestment',
+        name: 'Investment',
         meta: {
           nav: true,
-          footer: true
+          footer: true, 
         },
-        component: () => import('@/views/News/NewsInvestment')
+        component: () => import('@/views/News/NewsInvestment'),
+        children: [
+          {
+            path: 'FullArticle/:id',
+            name: 'InvestmentArticle',
+            meta: {
+              nav: true,
+              footer: true,
+              text: 'Full Article'
+            },
+            component: () => import('@/views/News/NewsFullArticle')
+          }, 
+        ]
       }, 
+
       {
         path: 'Seminar',
-        name: 'newsSeminar',
+        name: 'Seminar',
         meta: {
           nav: true,
           footer: true
         },
-        component: () => import('@/views/News/NewsSeminar')
+        component: () => import('@/views/News/NewsSeminar'),
+        children: [
+          {
+            path: 'FullArticle/:id',
+            name: 'SeminarArticle',
+            meta: {
+              nav: true,
+              footer: true,
+              text: 'Full Article'
+            },
+            component: () => import('@/views/News/NewsFullArticle')
+          }, 
+        ]
       }, 
       {
         path: 'FridgeWineParty',
-        name: 'newsFridgeWineParty',
+        name: 'Fridge Wine Party',
         meta: {
           nav: true,
           footer: true
         },
-        component: () => import('@/views/News/NewsFridgeWineParty')
+        component: () => import('@/views/News/NewsFridgeWineParty'),
+        children: [
+          {
+            path: 'FullArticle/:id',
+            name: 'FridgeWinePartyArticle',
+            meta: {
+              nav: true,
+              footer: true,
+              text: 'Full Article'
+            },
+            component: () => import('@/views/News/NewsFullArticle')
+          }, 
+        ]
       }
     ] 
   },

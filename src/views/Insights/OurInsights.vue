@@ -5,22 +5,20 @@
     <div class="page-content">
       <div class="panel-content">
         <div class="left-rectangle"></div> 
-        <div class="breadcrumb ml-43">
-          <router-link class="mr-14" to="/insights">Insights</router-link>
-          <icon class="separator mr-14" name="arrow" />
-          <router-link class="mr-14" to="/insights/OurInsights">Our Insights</router-link>
+        <div class="breadcrumb ml-43"> 
+          <label v-for="(link, idx) in $route.matched" :key="idx"> 
+            <icon v-if="idx!==0" class="separator mr-14" name="arrow" />
+            <router-link class="mr-14" :to="link.path">{{link.name}}</router-link>
+          </label>
         </div>
         <div class="my-list">
           <div class="item-box" v-for="(item, idx) in list" :key="idx">
             <div class="item-title">
-              <label>{{item.name}}</label>
-              <!-- <a class="view-all">
-                <em>View All</em>
-                <img src="@/assets/icon-view-all.png" alt="">
-              </a> -->
+              <label>{{item.name}}</label> 
             </div>
             <div :class="['item-content', item.name]"> 
               <my-link v-for="(obj, index) in item.linkList" 
+                type="url"
                 :key="index"
                 :obj="obj"
                 ></my-link>
@@ -43,14 +41,14 @@ export default {
           linkList: [
             {
               pic: require('@/assets/insights/our-insights/1.png'),
-              link: 'http://www.baidu.com', 
+              link: '/Our Insights/Crypto Trend.pdf', 
               title: 'Crypto Trend',
               subTitle: 'First DeFi, Then NFTs, Now DAOs, the Next Big Chapter of Crypto Is Already Here',
               description: 'DAOs are setting a precedent for a revolutionary governance model that will potentially replace all forms of businesses, governments and human organizations.'
             }, 
             {
               pic: require('@/assets/insights/our-insights/2.png'),
-              link: 'http://www.baidu.com', 
+              link: '/Our Insights/CryptoPunks.pdf', 
               title: 'CryptoPunks',
               subTitle: 'What’s Behind Their Unstoppable Rise?',
               description: 'CryptoPunks is a collection of 10,000 unique collectible characters that is widely regarded as the beginning of today’s CryptoArt movement.'

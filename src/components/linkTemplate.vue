@@ -1,6 +1,7 @@
 <template>
   <div class="link-wrap">
-    <a :href="obj.link" 
+    <div class="mylink" 
+      @click="goto(obj)"
       :style="{backgroundImage: `url(${obj.pic})`}">
       <div class="a-pd">
         <div class="p-title" flex="cross:center" v-html="obj.title"></div>
@@ -11,13 +12,17 @@
       <div class="arrow" > 
         <icon size="100" name="arrow-long" />
       </div> 
-    </a>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   props: {
+    type: {
+      type: String,
+      default: 'route'
+    },
     obj: {
       pic: require('@/assets/insights/insights-1.png'),
       link: 'http://www.baidu.com', 
@@ -25,13 +30,22 @@ export default {
       subTitle: 'Comprehensive research report',
       content: 'This is BAF\'s first comprehensive study of the filecoin project, and we are grateful to Filecoin for its support and assistance in this study'
     }, 
+  }, 
+  methods: {
+    goto(obj) { 
+      if (this.type === 'route') { 
+        this.gotoPath({name: obj.link, params: {id: obj.id}})
+      } else {
+        window.open(obj.link)
+      }
+    }
   }
 }
 </script>
 
 <style lang="scss" scope>
 .link-wrap { 
-  a {
+  .mylink {
     display: block;
     height: 380px;
     color: #FFFFFF;
