@@ -3,7 +3,7 @@
     <div ref="nav" style="transition: all 0.5s ease 0s;" class="nav-a">
       <div class="nav-box" flex="main:justify">
          <div class="left">
-          <div to="/"  style="height: 45px; margin-top: 32px;" flex="cross:top;">  
+          <div @click="gotoPath('/')"  style="height: 45px; margin-top: 32px; cursor:pointer;" flex="cross:top;">  
             <icon  style="width: 157px; height: 45px;" name="logo" /> 
           </div>
          </div>
