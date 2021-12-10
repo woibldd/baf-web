@@ -36,18 +36,21 @@
             <p class="text2 mt-20">We connect investors, industry experts, KOL, community, media, and other resources to the project company within an ecosystem.   </p>
             <p class="text1 mt-20">Moreover, BAF Capital invests and incubates Mayflower Lab, Galand Research Institute and Panda Game Guild. </p>
           </article>
-          <div class="ziyuan mt-56" flex="main:justify cross:center">
+          <div class="ziyuan mt-56" flex="main:justify cross:top">
             <div class="ziyuan-box">
-              <img class="def"  src="@/assets/ziyuan1.png" alt="">
-              <img class="hover"  src="@/assets/ziyuan1-hover.png" alt="">
+              <!-- <img class="def"  src="@/assets/ziyuan1.png" alt=""> -->
+              <icon style="width: 270px; height: 37px;" class="def" name="ziyuan1"></icon>
+              <icon style="width: 270px; height: 37px;" class="hover" name="ziyuan1-hover"></icon> 
             </div>
             <div class="ziyuan-box">
-              <img class="def"  src="@/assets/ziyuan2.png" alt="">
-              <img class="hover"  src="@/assets/ziyuan2-hover.png" alt="">
+              <!-- <img class="def"  src="@/assets/ziyuan2.png" alt=""> -->
+              <icon style="width: 194px; height: 23px;" class="def" name="ziyuan2"></icon>
+              <icon style="width: 194px; height: 23px;" class="hover" name="ziyuan2-hover"></icon> 
             </div>
-            <div class="ziyuan-box">
-              <img class="def"  src="@/assets/ziyuan3.png" alt="">
-              <img class="hover"  src="@/assets/ziyuan3-hover.png" alt="">
+            <div class="ziyuan-box ziyuan-box-3">
+              <!-- <img class="def"  src="@/assets/ziyuan3.png" alt=""> -->
+              <icon style="width: 164px; height: 53px;" class="def" name="ziyuan3"></icon>
+              <icon style="width: 164px; height: 53px;" class="hover" name="ziyuan3-hover"></icon> 
             </div> 
           </div>
         </div>
@@ -400,7 +403,7 @@ export default {
         margin-left: 78px;
         height: 180px;
         line-height: 1.5em;
-        width: 838px;
+        width: 796px;
         text-align: justify;
         font-size: 16px; 
         color: rgba($color: #ffffff, $alpha: .4); 
@@ -450,16 +453,20 @@ export default {
         .ziyuan {
           margin: 0 auto;
           width: 864px;
-          .ziyuan-box {
+          .ziyuan-box { 
+              color: rgba($color: $text, $alpha: .2);
+            &-3 {
+              margin-top: -16px;
+            }
             &:hover {
-              img.def {
+              .def {
                 display: none;
               }
-              img.hover {
+              .hover {
                 display:inline;
               }
             }
-            img.hover {
+            .hover {
               display:none;
             }
           }
