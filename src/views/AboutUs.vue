@@ -110,11 +110,11 @@
             </div>
             <div class="item-box item-box-middle" flex="main:center cross:center dir:top">
               <div class="item-box-title">Promotion</div>
-              <div class="item-box-tip mt-7">Operational Excellen</div>
+              <div class="item-box-tip mt-7">Operational Excellence</div>
             </div>
             <div class="item-box item-box-side" flex="main:center cross:center dir:top">
               <div class="item-box-title">Impetus</div>
-              <div class="item-box-tip mt-7">Technology Innovatio</div>
+              <div class="item-box-tip mt-7">Technology Innovation</div>
             </div>
           </div>  
         </div>
@@ -155,7 +155,7 @@
               </div>
             </div>
             <div class="text1 mt-53  row1">
-              Late-stage Investmen
+              Late-stage Investment 
             </div>
             <div class="text1">+</div>
             <div class="text1">Secondary Market</div>
@@ -401,6 +401,7 @@ export default {
         height: 180px;
         line-height: 1.5em;
         width: 838px;
+        text-align: justify;
         font-size: 16px; 
         color: rgba($color: #ffffff, $alpha: .4); 
       }
@@ -430,6 +431,7 @@ export default {
         margin: -36px auto;
         padding: 105px 0 120px;
         width: 1300px; 
+        text-align: justify;
         background-color: #ffffff;
         z-index: 1;
         article {
