@@ -2,10 +2,10 @@
   <div class="top-nav-container">
     <div ref="nav" style="transition: all 0.5s ease 0s;" class="nav-a">
       <div class="nav-box" flex="main:justify">
-         <div class="left" flex="cross:center">
-          <router-link to="/"  flex="cross:center" style="height: 100px; overflow: hidden;">  
-            <icon  style="font-size: 220px;" name="logo" /> 
-          </router-link>
+         <div class="left">
+          <div to="/"  style="height: 45px; margin-top: 32px;" flex="cross:top;">  
+            <icon  style="width: 157px; height: 45px;" name="logo" /> 
+          </div>
          </div>
          <div class="right"> 
             <ul flex="main:right">

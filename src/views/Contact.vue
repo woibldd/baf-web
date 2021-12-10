@@ -24,13 +24,17 @@
           <div class="panel-icons mt-40">
             <div></div>
             <div class="pl-9 pr-9" flex="main:justify">  
-              <img 
+              <a href=""> <icon class="c" name="twitter"></icon> </a>
+              <a href=""> <icon class="c" name="telegram"></icon> </a>
+              <a href=""> <icon class="c" name="discord"></icon> </a>
+              <a href=""> <icon class="c" name="instagram"></icon> </a>
+              <!-- <img 
                 @mouseover.prevent="handleMouseOver" 
                 @mouseout="handleMouseOut" 
                 :src="require(`@/assets/contact/contact-icon-1.png`) " alt="">
               <img @mouseover.stop="handleMouseOver" @mouseout="handleMouseOut" src="@/assets/contact/contact-icon-2.png" alt="">
               <img @mouseover.stop="handleMouseOver" @mouseout="handleMouseOut" src="@/assets/contact/contact-icon-3.png" alt="">
-              <img @mouseover.stop="handleMouseOver" @mouseout="handleMouseOut" src="@/assets/contact/contact-icon-4.png" alt="">
+              <img @mouseover.stop="handleMouseOver" @mouseout="handleMouseOut" src="@/assets/contact/contact-icon-4.png" alt=""> -->
             </div>
             <div></div>
           </div>
@@ -237,6 +241,7 @@ export default {
                 &.is-active {
                   // background-color: $primary;
                   color: #fff;
+                  font-weight: 600;
                 }
               }
               .el-tabs__active-bar {
@@ -250,6 +255,18 @@ export default {
         .panel-icons {
           display: grid;
           grid-template-columns: 1fr 1fr 1fr;
+          a {
+            color: $text;
+            opacity: 10%;
+            .iconfont {
+              height: 48px;
+              width: 48px;
+            }
+            &:hover {
+              color: $primary;
+              opacity: 1;
+            }
+          }
         }
         .form {
           display: grid;

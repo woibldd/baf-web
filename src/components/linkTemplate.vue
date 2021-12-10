@@ -10,7 +10,7 @@
       </div>
       <div class="mask"></div> 
       <div class="arrow" > 
-        <icon size="100" name="arrow-long" />
+        <icon style="width: 156px; height: 15px;" name="arrow-long" />
       </div> 
     </div>
   </div>
@@ -50,6 +50,7 @@ export default {
     height: 380px;
     color: #FFFFFF;
     overflow: hidden;
+    cursor: pointer;
     .a-pd { 
       padding: 30px 60px;
       height: 320px;
@@ -77,7 +78,7 @@ export default {
       } 
       .arrow { 
         opacity: 1;
-        transform: translate(0, -475px);
+        transform: translate(0, -437px);
       }
     } 
     .p-title {

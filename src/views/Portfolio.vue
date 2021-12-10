@@ -26,7 +26,7 @@
                 <div class="name" >{{obj.text}}</div>
                 <div class="arrow" >
                   <!-- <img src="@/assets/icon-arrow-right.png" alt=""> -->
-                  <icon name="arrow-short" size="70" />
+                  <icon name="arrow-short" style="width: 72px; height: 15px;" />
                 </div>
               </a>
             </div>
@@ -313,10 +313,13 @@ export default {
                 transition: all .38s ease-out; 
               }
               .arrow {
-                padding-right: 20px;
+                position:absolute;
+                bottom: -30px;
+                right: 0;
+                padding-right: 29px;
                 text-align: right;
                 opacity: 0;
-                transition: all .28s ease-out; 
+                transition: all .33s ease-out; 
               }
               &:hover {
                 .mask { 
@@ -329,7 +332,7 @@ export default {
                 }
                 .arrow { 
                   opacity: 1;
-                  transform: translate3d(0, -383px, 0);
+                  transform: translate3d(0, -60px, 0);
                 }
               }
             }

@@ -18,10 +18,12 @@ import '@/styles/flex.css'
 
 import 'swiper/css/swiper.css'
 import './modules/swiper/animate.min.css'
- 
-Vue.use(VueAwesomeSwiper)
+import $ from 'jquery'
 
+Vue.prototype.$ = $
+Vue.use(VueAwesomeSwiper) 
 Vue.use(ElementUI); 
+
 
 //加载svg到页面
 const request = require.context('./assets/svg', true, /\.svg$/)

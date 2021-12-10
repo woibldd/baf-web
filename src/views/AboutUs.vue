@@ -77,7 +77,7 @@
         </div>
       </div>
       <div ref="team" class="panel-content team-content">
-        <div ref="teamA" class="teamA">
+        <div ref="teamA" class="teamA" style="animation-delay:.5s;">
           <div class="team-item team1 " flex="main:justify">
             <div class="item-box item-box-side" flex="main:center cross:center dir:top">
               <div class="item-box-title">Foundation</div>

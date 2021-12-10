@@ -41,9 +41,10 @@
                   <div class="news-text">
                     <div class="title-a">{{obj.title}}</div>
                     <div class="news-content mt-17" v-html="obj.description">{{obj.content}}</div>
+                    <div class="date">{{obj.createDate}}</div>
                   </div> 
                   <div class="news-mask" flex="cross:center main:center">
-                    <div class="title-c">{{obj.title}}</div>
+                    <!-- <div class="title-c">{{obj.title}}</div> -->
                     <div class="arrow">
                       <icon v-if="index === 5" name="arrow-long"  size="100"/>
                       <icon v-else name="arrow-short"  size="70"/>
@@ -315,6 +316,7 @@ export default {
               .news-item {
                 overflow: hidden;
                 transition: ease all 0.3s;
+                cursor:pointer;
                 &:first-child {
                   grid-column-start: 1;
                   grid-column-end: 3;
@@ -322,13 +324,6 @@ export default {
                 &:nth-child(6) {
                   grid-column-start: 1;
                   grid-column-end: 4;
-                }
-                &:hover { 
-                  transform: translateY(-4px);
-                  // box-shadow: 0px 4px 4px rgba(0, 0, 0, .1); 
-                  .news-a-box .news-mask {
-                    transform: translate3d(0, 0, 0);
-                  }
                 }
                 img {
                   vertical-align: bottom;
@@ -361,6 +356,26 @@ export default {
                     } 
                   } 
                 } 
+                .title-a {
+                  transition-duration: .3s;
+                }
+                &:hover { 
+                  transform: translateY(-4px); 
+                  .news-a-box .news-mask {
+                    transform: translate3d(0, 0, 0);
+                  }
+                  .title-a {
+                    position: relative;
+                    z-index: 1;
+                    color: #fff;
+                    transform: translateY(calc(130px - 50%));
+                  }
+                  .box-0, .box-5 {
+                    .title-a {
+                        transform: translateY(calc(60px - 50%));
+                    }
+                  }
+                }
                 .box- {
                   border-top: none;
                   &0, &5 {
@@ -377,8 +392,15 @@ export default {
                     height: 370px;
                   }
                 }
-                .news-text { 
-                  padding: 36px 32px;
+                .news-text {  
+                  padding: 15px 21px 13px 32px;
+                  .date {
+                    position: absolute;
+                    bottom: 14px;
+                    right: 13px;
+                    color: rgba($color: $text, $alpha: .5);
+                    text-align: right;
+                  }
                 }
                 .news-content { 
                   opacity: .4;
