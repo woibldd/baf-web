@@ -153,10 +153,11 @@ export default {
   },
   async created() {
     // const res = await this.getRegionList() 
-    const res = require('@/modules/region.json')
-    console.log('ddddd', res)
+    const res = require('@/modules/region.json') 
     if (!res.code) {
-      this.regionOptions = res.data
+      this.regionOptions = res.data.sort((a, b) => {
+        return a.fullname[0].charCodeAt() - b.fullname[0].charCodeAt()
+      }) 
     } 
   },
 }
@@ -258,6 +259,8 @@ export default {
           a {
             color: $text;
             opacity: 10%;
+              color: black;
+              transition: all linear .2s;
             .iconfont {
               height: 48px;
               width: 48px;

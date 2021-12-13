@@ -38,16 +38,18 @@
                   <img :src="obj.pic" alt="" > 
                 </div>
                 <div class="news-a-box" :class="['box-'+index]">
-                  <div class="news-text">
-                    <div class="title-a">{{obj.title}}</div>
-                    <div class="news-content mt-17" v-html="obj.description">{{obj.content}}</div>
-                    <div class="date">{{obj.createDate}}</div>
-                  </div> 
+                  <div class="news-a-bd">
+                    <div class="news-text">
+                      <div class="title-a">{{obj.title}}</div>
+                      <div class="news-content mt-17" v-html="obj.description">{{obj.content}}</div>
+                      <div class="date">{{obj.createDate}}</div>
+                    </div> 
+                  </div>
                   <div class="news-mask" flex="cross:center main:center">
                     <!-- <div class="title-c">{{obj.title}}</div> -->
                     <div class="arrow">
-                      <icon v-if="index === 5" name="arrow-long"  size="100"/>
-                      <icon v-else name="arrow-short"  size="70"/>
+                      <icon v-if="index === 5" name="arrow-long"   style="width: 156px; height: 15px;"/>
+                      <icon v-else name="arrow-short"   style="width: 72px; height: 15px;"/>
                     </div>
                   </div>
                 </div>
@@ -334,13 +336,19 @@ export default {
                 }
                 .news-a-box {
                   position: relative;  
-                  border: 1px solid #CCD1E8;
                   border-top: none;
                   line-height: 1.4em;
-                  overflow: hidden;
+                  .news-a-bd {
+                    height: 100%;
+                    width: 100%;
+                    box-sizing: border-box;
+                    border: 1px solid #CCD1E8;
+                    border-top: none;
+                    overflow: hidden;
+                  }
                   .news-mask { 
                     position: absolute;  
-                    top:0;
+                    top:0px;
                     left:0;  
                     background-color: $primary;
                     color: #ffffff;
@@ -350,7 +358,7 @@ export default {
                     transition-duration: .3s;
                     .arrow {
                       position: absolute;
-                      bottom: 0;
+                      bottom: 33px;
                       right: 29px;
                       font-size: 70px;
                     } 
@@ -362,7 +370,7 @@ export default {
                 &:hover { 
                   transform: translateY(-4px); 
                   .news-a-box .news-mask {
-                    transform: translate3d(0, 0, 0);
+                    transform: translate3d(0, -1px, 0);
                   }
                   .title-a {
                     position: relative;

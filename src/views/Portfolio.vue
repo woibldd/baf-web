@@ -308,6 +308,7 @@ export default {
                 transform: translate3d(0, 0, 0);
                 height: 160px;
                 width: 280px; 
+                font-weight: 600;
                 line-height: 160px;
                 text-align: center;
                 transition: all .38s ease-out; 
@@ -316,7 +317,7 @@ export default {
                 position:absolute;
                 bottom: -30px;
                 right: 0;
-                padding-right: 29px;
+                padding-right: 22px;
                 text-align: right;
                 opacity: 0;
                 transition: all .33s ease-out; 
@@ -324,7 +325,7 @@ export default {
               &:hover {
                 .mask { 
                   opacity: 1;
-                  transform: translate3d(0, -162px, 0);
+                  transform: translate3d(0, -163px, 0);
                 }
                 .name { 
                   opacity: 1;
@@ -332,7 +333,7 @@ export default {
                 }
                 .arrow { 
                   opacity: 1;
-                  transform: translate3d(0, -60px, 0);
+                  transform: translate3d(0, -52px, 0);
                 }
               }
             }

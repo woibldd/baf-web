@@ -8,28 +8,28 @@
         <div 
           @mouseover="headleMouseOver" 
           @mouseout="headleMouseOut" 
-          class="icon-box ml-23"
+          class="icon-box over ml-23"
           flex="cross:center">
           <icon class=" icon" name="twitter"></icon>
         </div> 
         <div 
           @mouseover="headleMouseOver" 
           @mouseout="headleMouseOut" 
-          class="icon-box ml-23"
+          class="icon-box over ml-23"
           flex="cross:center">
           <icon class="icon" name="telegram"></icon>
         </div>  
         <div 
           @mouseover="headleMouseOver" 
           @mouseout="headleMouseOut" 
-          class="icon-box ml-23" 
+          class="icon-box over ml-23" 
           flex="cross:center">
           <icon class="icon" name="discord"></icon>  
         </div>  
         <div 
           @mouseover="headleMouseOver" 
           @mouseout="headleMouseOut" 
-          class="icon-box ml-23"
+          class="icon-box over ml-23"
           flex="cross:center">
           <icon class="icon" name="instagram"></icon>
         </div>  
@@ -50,13 +50,13 @@
 export default { 
   methods: {
     headleMouseOver(event) {
-      let list = this.$('.icon-box')  
-      list.addClass('over')
+      // let list = this.$('.icon-box')  
+      // list.addClass('over')
       event.srcElement.classList.add('active')
     },
     headleMouseOut(event) {
-      let list = this.$('.icon-box') 
-      list.removeClass('over') 
+      // let list = this.$('.icon-box') 
+      // list.removeClass('over') 
       event.srcElement.classList.remove('active')
     }
   }
@@ -82,6 +82,7 @@ export default {
       .btn {
         width: 220px;
         height: 59px;
+        cursor: pointer;
         background-color: $primary;
         font-size: 18px;
         color: #fff;
@@ -92,9 +93,11 @@ export default {
         width: 25px;
         height: 25px;
         &.over {
-          color: rgba($color: #fff, $alpha: .1);
+          color: rgba($color: #fff, $alpha: .5);
+          transition: all linear 0.2s;
+          cursor: pointer;
           &:hover {
-            color: $primary;
+            color: rgba($color: #fff, $alpha: 1);
           }
         }
       }
