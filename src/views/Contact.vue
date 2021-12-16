@@ -258,9 +258,9 @@ export default {
           grid-template-columns: 1fr 1fr 1fr;
           a {
             color: $text;
-            opacity: 10%;
-              color: black;
-              transition: all linear .2s;
+            opacity: .1;
+            color: black;
+            transition: all linear .2s;
             .iconfont {
               height: 48px;
               width: 48px;
