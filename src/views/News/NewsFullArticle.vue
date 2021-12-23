@@ -31,8 +31,7 @@ export default {
   article {
     margin-top: 63px;
     padding: 0 190px 120px;  
-      text-align: left;
-      // margin-bottom: 100px;
+      text-align: left; 
       .article-title {
         position:relative;
         padding: 0 0 9px;
