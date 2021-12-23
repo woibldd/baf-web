@@ -187,6 +187,8 @@ import {swiperAnimateCache,swiperAnimate} from '@/modules/swiper/swiper.animate1
 import '@/modules/swiper/animate.min.css'
 import TWEEN from 'tween.js'
 
+import { getBannerList } from '@/api/service'
+
 export default {
   data() {
     return { 
@@ -364,6 +366,11 @@ export default {
   },
   destroyed() {
     window.removeEventListener('scroll',this.handleScroll)
+  }, 
+  created() {
+    getBannerList().then(res=> {
+      console.log(res)
+    })
   }
 }
 </script>

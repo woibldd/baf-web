@@ -16,14 +16,7 @@ module.exports = {
     loaderOptions: {
       sass: {
         prependData: `@import "@/styles/default.scss"; `
-      },
-      // less: {  
-      //     modifyVars: {
-      //       // 直接覆盖变量  
-      //       // 或者可以通过 less 文件覆盖（文件路径为绝对路径）
-      //       hack: `true; @import "${resolve('src/styles/_reset_vant.less')}";`,
-      //     }, 
-      // },
+      }, 
       postcss: {
         plugins: [
           autoprefixer(),
@@ -32,6 +25,23 @@ module.exports = {
           //   propList: ['*']
           // })
         ]
+      }
+    }
+  },
+  devServer: {
+    port: 7788,
+    open: true,
+    overlay: {
+      warnings: false,
+      errors: true
+    },
+    proxy: {
+      '/wapi': {
+        target: 'http://i.baf.vc',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/wapi': ''
+        }
       }
     }
   },
