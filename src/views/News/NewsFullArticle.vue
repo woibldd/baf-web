@@ -3,7 +3,7 @@
     <article>
       <h3 class="article-title">
         <div v-html="myArticle.title"></div> 
-        <div class="article-date mt-18">{{myArticle.createDate}}</div>
+        <div class="article-date mt-18">{{ $date(myArticle.createDate)}}</div>
       </h3>
       <div class="article-content" v-html="myArticle.content"></div>
     </article>
@@ -12,15 +12,55 @@
 
 <script> 
 import list from '@/views/News/articles.js'
+import {getNewsDetail, getNews2Detail, getNews3Detail} from '@/api/service'
 export default {
   data() {
-    return { 
-      myArticle: {}
+    return {  
+      article: {},
     }
   }, 
-  created() { 
-    let id = this.$route.params.id 
-    this.myArticle = list.find(item => item.id === +id) 
+  computed: {
+    lang() {
+      return this.$store.state.lang
+    },
+    myArticle() {
+      if (this.lang === 'en') {
+        return {
+          title: this.article.english_info_title,
+          createDate: this.article.send_time,
+          content: this.article.english_txts
+        }
+      } else {
+        return {
+          title: this.article.info_title,
+          createDate: this.article.send_time,
+          content: this.article.txts
+        }
+      }
+    }
+  },
+  methods: {
+    fetch() {
+      console.log(this.$route)
+      let name = this.$route.name
+      let id = this.$route.params.id 
+      let fun = getNewsDetail
+      if (name === 'SeminarArticle') { 
+        fun = getNews2Detail
+      }
+      else if (name === 'FridgeWinePartyArticle') {
+        fun = getNews3Detail
+      }
+
+      fun({id}).then(res => {
+        if (res.code === 200) {
+          this.article = res.data
+        }
+      })
+    }
+  }, 
+  created() {
+    this.fetch()
   }
 }
 </script>

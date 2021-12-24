@@ -31,7 +31,7 @@
               </router-link>
             </div>
             <div class="item-content investment-list">
-              <div class="news-item black" :href="obj.link" v-for="(obj, index) in investmentList"  
+              <div class="news-item black" :href="obj.link" v-for="(obj, index) in calcInvestmentList"  
                 @click="gotoPath({name: obj.link, params: {id: obj.id}})"
                 :key="index">
                 <div class="img-box"  :class="['img-box-'+index]">
@@ -65,7 +65,7 @@
               </router-link>
             </div>
             <div class="item-content"> 
-              <my-link v-for="(obj, index) in seminarList"   
+              <my-link v-for="(obj, index) in calcSeminarList"   
                 :key="index"
                 :obj="obj"
                 ></my-link>
@@ -80,7 +80,7 @@
               </router-link>
             </div>
             <div class="item-content"> 
-              <my-link v-for="(obj, index) in partyList"   
+              <my-link v-for="(obj, index) in calcPartyList"   
                 :key="index"
                 :obj="obj"
                 ></my-link>
@@ -94,6 +94,7 @@
 
 <script>
 import myLink from '@/components/linkTemplate'
+import { getNewsList, getNews2List, getNews3List } from '@/api/service'
 export default {
   components: {myLink},
   data() {
@@ -126,7 +127,6 @@ export default {
           title: 'Meteorite vs Crypto Quantitative Platform — Comprehensive Comparison and Review',
           subTitle: '',
           description: 'Meteorite is a decentralized quantitative strategy platform that supports several fundamental quantitative strategies for digital assets.',
-          content: '',
           createDate: 'Nov 30,2021'
         }, 
         {
@@ -136,7 +136,6 @@ export default {
           title: 'Epik protocol and nft: Much more than the hype',
           subTitle: '',
           description: 'There are underlying risks and concerns that must be critically looked at before one jumps into the wagon. ',
-          content: '',
           createDate: 'Nov 24,2021'
         }, 
         {
@@ -206,9 +205,116 @@ export default {
       ],
     }
   },
-  methods: {
-    handleClick(tab, event) { 
+  computed: {
+    lang() {
+      return this.$store.state.lang
+    },
+    calcInvestmentList() {
+      let list = []
+      this.investmentList.map(item => {
+        if (this.lang === 'en') {
+          list.push({
+            id: item.id,
+            pic: item.english_pic,
+            pic_vice: item.english_pic_vice,
+            link: 'InvestmentArticle', 
+            title: item.english_title,
+            subTitle: '',
+            description: item.english_describe, 
+            createDate: item.send_time
+          })
+        } else {
+          list.push({
+            id: item.id,
+            pic: item.pic,
+            pic_vice: item.pic_vice,
+            link: 'InvestmentArticle', 
+            title: item.title,
+            subTitle: '',
+            description: item.describe, 
+            createDate: item.send_time
+          })
+        }
+      })
+      return list
+    },
+    calcSeminarList() {
+      let list = []
+      this.seminarList.map(item => {
+        if (this.lang === 'en') {
+          list.push({
+            id: item.id,
+            pic: item.english_pic,
+            link: 'SeminarArticle', 
+            title: item.english_title,
+            subTitle: item.english_content_one,
+            description: item.english_content_two, 
+            createDate: item.send_time
+          })
+        } else {
+          list.push({
+            id: item.id,
+            pic: item.pic,
+            link: 'SeminarArticle', 
+            title: item.title,
+            subTitle: item.content_one,
+            description: item.content_two, 
+            createDate: item.send_time
+          })
+        }
+      })
+      return list
+    },
+    calcPartyList() {
+      let list = []
+      this.partyList.map(item => {
+        if (this.lang === 'en') {
+          list.push({
+            id: item.id,
+            pic: item.english_pic,
+            link: 'FridgeWinePartyArticle', 
+            title: item.english_title,
+            subTitle: item.english_content_one,
+            description: item.english_content_two, 
+            createDate: item.send_time
+          })
+        } else {
+          list.push({
+            id: item.id,
+            pic: item.pic,
+            link: 'FridgeWinePartyArticle', 
+            title: item.title,
+            subTitle: item.content_one,
+            description: item.content_two, 
+            createDate: item.send_time
+          })
+        }
+      })
+      return list
     }
+  },
+  methods: {
+    handleClick() { 
+    },
+    async initData() {
+      let res = await getNewsList({page: 1, limit: 6}) 
+      if (res.code === 200) {
+        this.investmentList = res.data.list
+      }
+      
+      res = await getNews2List({page: 1, limit: 2})
+      if (res.code === 200) {
+        this.seminarList = res.data.list
+      }
+      
+      res = await getNews3List({page: 1, limit: 2})
+      if (res.code === 200) {
+        this.partyList = res.data.list
+      }
+    }
+  },
+  mounted() {
+    this.initData()
   }
 }
 </script>

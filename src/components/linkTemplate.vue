@@ -3,8 +3,10 @@
     <div class="mylink" 
       @click="goto(obj)"
       :style="{backgroundImage: `url(${obj.pic})`}">
-      <div class="a-pd">
-        <div class="p-title" flex="cross:center" v-html="obj.title"></div>
+      <div class="a-pd"> 
+        <div class="p-title" flex="cross:center">
+          <div v-html="obj.title"></div>
+        </div>
         <div class="p-sub-title mt-19" flex="cross:center" v-html="obj.subTitle">{{obj.subTitle}}</div>
         <div class="p-content mt-10" v-html="obj.description">{{obj.content}}</div> 
       </div>
@@ -48,7 +50,7 @@ export default {
   .mylink {
     display: block;
     height: 380px;
-    color: #FFFFFF;
+    color: $text;
     overflow: hidden;
     cursor: pointer;
     .a-pd { 

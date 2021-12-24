@@ -3,6 +3,10 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+import VueI18n from 'vue-i18n'
+import en from '@/languages/en.js'
+import zhCN from '@/languages/zh-CN.js' 
+
 import commonMixins from './mixins/common'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
@@ -20,9 +24,21 @@ import 'swiper/css/swiper.css'
 import './modules/swiper/animate.min.css'
 import $ from 'jquery'
 
+Vue.use(VueI18n)
 Vue.prototype.$ = $
 Vue.use(VueAwesomeSwiper) 
 Vue.use(ElementUI); 
+
+const i18n = new VueI18n({
+  locale: store.state.lang,
+  silentFallbackWarn: true,
+  message: {
+    en: {...en},
+    'zh-CN': {...zhCN}
+  }
+})
+// Vue.prototype.$i18n = i18n
+
 
 
 //加载svg到页面
@@ -35,6 +51,7 @@ Vue.config.productionTip = false
 
 new Vue({
   router,
+  i18n,
   store,
   render: h => h(App)
 }).$mount('#app')

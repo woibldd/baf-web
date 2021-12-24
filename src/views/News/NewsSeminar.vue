@@ -19,12 +19,12 @@
         </div>
         <div v-else>
           <div class="my-list">
-            <div class="item-box" v-for="(item, idx) in list" :key="idx">
+            <div class="item-box" >
               <div class="item-title">
-                <label>{{item.name}}</label> 
+                <label>Seminar</label> 
               </div>
-              <div :class="['item-content', item.name]"> 
-                <my-link v-for="(obj, index) in item.linkList" 
+              <div :class="['item-content', 'Seminar']"> 
+                <my-link v-for="(obj, index) in calcList" 
                   :key="index"
                   :obj="obj"
                   ></my-link>
@@ -32,9 +32,8 @@
             </div>
           </div> 
           <div class="panel-bottom pt-50 pb-50">
-            <div class="load-more">
-              LOAD MORE
-              <icon name="arrow" class="arrow-down ml-8" size="26"/>
+            <div v-if="showBtn" class="load-more">
+              <label @click="handleClickLoading">LOAD MORE <icon class="arrow ml-10" size="26"  name="arrow"></icon> </label>
             </div>
           </div> 
         </div>
@@ -45,9 +44,15 @@
 
 <script>
 import myLink from '@/components/linkTemplate'
+import { getNews2List } from '@/api/service'
 export default {
+  components: {myLink},
   data() {
     return {
+      showBtn: true,
+      page: 1,
+      limit: 4,
+      total: 0,
       list: [ 
         {
           name: 'Seminar',
@@ -73,7 +78,56 @@ export default {
       ]
     }
   },
-  components: {myLink}
+  computed: {
+    lang() {
+      return this.$store.state.lang
+    },
+    calcList() {
+      let list = []
+      this.list.map(item => {
+        if (this.lang === 'en') {
+          list.push({
+            id: item.id,
+            pic: item.english_pic,
+            link: 'SeminarArticle', 
+            title: item.english_title,
+            subTitle: item.english_content_one,
+            description: item.english_content_two, 
+            createDate: item.send_time
+          })
+        } else {
+          list.push({
+            id: item.id,
+            pic: item.pic,
+            link: 'SeminarArticle', 
+            title: item.title,
+            subTitle: item.content_one,
+            description: item.content_two, 
+            createDate: item.send_time
+          })
+        }
+      })
+      return list
+    },
+  }, 
+  methods: { 
+    async fetchData() {
+      let res = await getNews2List({page: 1, limit: 6}) 
+      if (res.code === 200) {
+        this.list = res.data.list
+      }
+    },
+    handleClickLoading() {
+      this.page++
+      this.fetchData()
+      if (this.page * this.limit >= this.total) {
+        this.showBtn = false
+      }
+    }
+  },
+  mounted() {
+    this.fetchData()
+  }
 }
 </script>
 

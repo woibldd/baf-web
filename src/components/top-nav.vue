@@ -15,7 +15,7 @@
               <li class="pointer nav-item mr-60"><router-link to="/news">News</router-link></li> 
               <li class="pointer nav-item mr-60"><router-link to="/contact">Contact</router-link></li>
               <li class="pointer nav-item lang">
-                <label>简</label> / <label>EN</label>
+                <label @click="handleChangeLang('zh-CN')">简</label> / <label @click="handleChangeLang('en')">EN</label>
               </li>
             </ul>
          </div>
@@ -50,6 +50,9 @@ export default {
         nav.style.transform = 'translate3d(0px, 0px, 0px)' 
       }
       this.scrollY = docSrollTop
+    },
+    handleChangeLang(lang) {
+      this.$store.dispatch('changeLang', lang)
     }
   }, 
   mounted() { 

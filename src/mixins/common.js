@@ -5,8 +5,12 @@ export default {
       this.$router.push(path)
     },
     $date(ts, tpl = 'Y-M-D H:m:s') {
+      if (!ts) return ''
       if (typeof ts === 'string') {
         ts = parseInt(ts)
+      }
+      if (ts.toString().length === 10) {
+        ts = ts * 1000
       }
       const date = new Date(ts)
       const dateObj = {

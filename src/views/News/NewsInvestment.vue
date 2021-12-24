@@ -19,30 +19,28 @@
         </div>
         <div v-else>
           <div class="my-list-b">
-            <div class="item-box" v-for="(item, idx) in list"
-              :key="idx">
+            <div class="item-box" >
               <div class="item-title">
-                <label>{{item.name}}</label> 
+                <label>Investment</label> 
               </div>
-              <div :class="['item-content', item.name]"> 
-                <div class="link-item" v-for="(obj, index) in item.linkList" 
+              <div :class="['item-content', 'Investment']"> 
+                <div class="link-item" v-for="(obj, index) in calcList" 
                   @click="gotoPath({name: obj.link, params: {id: obj.id}})"
                   :key="index"
                   flex="box:first">
                   <div class="link-left" flex="main:center"><img :src="obj.pic" alt=""></div> 
                   <div class="link-right ml-41">
-                    <div class="title mt-17" flex="cross:center">{{obj.title}}</div>
-                    <div class="description mt-16">{{obj.description}}</div>
-                    <div class="date">{{obj.createDate}}</div>
+                    <div class="title mt-17" flex="cross:center" v-html="obj.title"></div>
+                    <div class="description mt-16" v-html="obj.description">{{obj.description}}</div>
+                    <div class="date">{{ $date(obj.createDate)}}</div>
                   </div>
                 </div>
               </div>
             </div>
           </div> 
           <div class="panel-bottom pt-50 pb-50">
-            <div class="load-more">
-              LOAD MORE
-              <icon name="arrow" class="arrow-down ml-8" size="26"/>
+            <div v-if="showBtn" class="load-more">
+              <label @click="handleClickLoading">LOAD MORE <icon class="arrow ml-10" size="26"  name="arrow"></icon> </label>
             </div>
           </div> 
         </div>
@@ -52,9 +50,14 @@
 </template>
 
 <script> 
+import { getNewsList } from '@/api/service'
 export default {
   data() {
     return {
+      showBtn: true,
+      page: 1,
+      limit: 6,
+      total: 0,
       list: [ 
         {
           name: 'Investment',
@@ -123,10 +126,58 @@ export default {
         }, 
       ]
     }
+  },
+  computed: {
+    lang() {
+      return this.$store.state.lang
+    },
+    calcList() {
+      let list = []
+      this.list.map(item => {
+        if (this.lang === 'en') {
+          list.push({
+            id: item.id,
+            pic: item.english_pic,
+            pic_vice: item.english_pic_vice,
+            link: 'InvestmentArticle', 
+            title: item.english_title,
+            subTitle: '',
+            description: item.english_describe, 
+            createDate: item.send_time
+          })
+        } else {
+          list.push({
+            id: item.id,
+            pic: item.pic,
+            pic_vice: item.pic_vice,
+            link: 'InvestmentArticle', 
+            title: item.title,
+            subTitle: '',
+            description: item.describe, 
+            createDate: item.send_time
+          })
+        }
+      })
+      return list
+    },
   }, 
   methods: { 
+    async fetchData() {
+      let res = await getNewsList({page: 1, limit: 6}) 
+      if (res.code === 200) {
+        this.list = res.data.list
+      }
+    },
+    handleClickLoading() {
+      this.page++
+      this.fetchData()
+      if (this.page * this.limit >= this.total) {
+        this.showBtn = false
+      }
+    }
   },
-  created() { 
+  mounted() {
+    this.fetchData()
   }
 }
 </script>

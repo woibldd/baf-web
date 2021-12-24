@@ -15,22 +15,26 @@
           </label>
         </div>
         <div class="my-list">
-          <div class="item-box" v-for="(item, idx) in list" :key="idx">
+          <div class="item-box" >
             <div class="item-title">
-              <label>{{item.name}}</label>
+              <label>{{name}}</label>
               <!-- <a class="view-all">
                 <em>View All</em>
                 <img src="@/assets/icon-view-all.png" alt="">
               </a> -->
             </div>
-            <div :class="['item-content', item.name]"> 
-              <my-link v-for="(obj, index) in item.linkList" 
+            <div :class="['item-content', name]"> 
+              <my-link v-for="(obj, index) in calcList" 
                 type="url"
                 :key="index"
                 :obj="obj"
                 ></my-link>
             </div>
           </div>
+        </div>
+        
+        <div v-if="showBtn" class="load-more">
+          <label @click="handleClickLoading">LOAD MORE <icon class="arrow ml-10" size="26"  name="arrow"></icon> </label>
         </div>
       </div> 
     </div>
@@ -39,49 +43,104 @@
 
 <script>
 import myLink from '@/components/linkTemplate'
+import { getInsightsList } from '@/api/service'
 export default {
   components: {myLink},
   data() {
     return {
+      name:  'Research',
+      showBtn: true,
+      page: 1,
+      limit: 4,
+      total: 0,
+      dataList: [],
       list: [ 
         {
           name: 'Research',
-          linkList: [
-            {
-              pic: require('@/assets/insights/research/1.png'),
-              link: '/Research/Explain It Like I’m 5- GameFi.pdf', 
-              title: 'Explain It Like I’m 5:<br>GameFi',
-              subTitle: 'The concept of play-to-earn games isn’t novel, but other aspects of GameFi are',
-              description: 'Listen to what’s being said at conferences, on earning calls, or in boardrooms in the gaming industry, and a recurring theme stands out: GameFi.'
-            }, 
-            {
-              pic: require('@/assets/insights/research/2.png'),
-              link: '/Research/Genie- The Metaverse’s Aggregator.pdf', 
-              title: 'Genie: The Metaverse’s <br>Aggregator',
-              subTitle: 'Showing assets or buying NFTs on different exchanges is time-consuming and tedious',
-              description: 'Genie is an NFT aggregator, or as the team so catchily describes it, “The Metaverse’s Aggregator”. Genie offers two features, Genie Swap and Genie List.'
-            }, 
-            {
-              pic: require('@/assets/insights/research/3.png'),
-              link: '/Research/dYdX - Perpetual Maxima.pdf', 
-              title: 'dYdX - <br>Perpetual Maxima',
-              subTitle: 'Six months is all it took for dYdX’s layer 2 offering to eclipse Coinbase in daily trading volumes.',
-              description: 'dYdX is one of if not the most liquid exchanges in crypto. dYdX has now shut down its Layer 1 offering and is doubling down on perpetuals by expanding beyond the currently available 28 markets.'
-            }, 
-            {
-              pic: require('@/assets/insights/research/4.png'),
-              link: '/Research/Why Smart Money Matters More.pdf', 
-              title: 'Why Smart Money <br>Matters More',
-              subTitle: '“In a world deluged by irrelevant information, clarity is power.”',
-              description: 'To make crypto accessible, tools like Nansen must continue to push the frontiers transforming data into meaningful signals. In crypto, following the smart money matters more than ever.'
-            }, 
-          ]
+          linkList: {
+            cn: [], en: []
+            // en: [
+            //   {
+            //     pic: require('@/assets/insights/research/1.png'),
+            //     link: '/Research/Explain It Like I’m 5- GameFi.pdf', 
+            //     title: 'Explain It Like I’m 5:<br>GameFi',
+            //     subTitle: 'The concept of play-to-earn games isn’t novel, but other aspects of GameFi are',
+            //     description: 'Listen to what’s being said at conferences, on earning calls, or in boardrooms in the gaming industry, and a recurring theme stands out: GameFi.'
+            //   }, 
+            //   {
+            //     pic: require('@/assets/insights/research/2.png'),
+            //     link: '/Research/Genie- The Metaverse’s Aggregator.pdf', 
+            //     title: 'Genie: The Metaverse’s <br>Aggregator',
+            //     subTitle: 'Showing assets or buying NFTs on different exchanges is time-consuming and tedious',
+            //     description: 'Genie is an NFT aggregator, or as the team so catchily describes it, “The Metaverse’s Aggregator”. Genie offers two features, Genie Swap and Genie List.'
+            //   }, 
+            //   {
+            //     pic: require('@/assets/insights/research/3.png'),
+            //     link: '/Research/dYdX - Perpetual Maxima.pdf', 
+            //     title: 'dYdX - <br>Perpetual Maxima',
+            //     subTitle: 'Six months is all it took for dYdX’s layer 2 offering to eclipse Coinbase in daily trading volumes.',
+            //     description: 'dYdX is one of if not the most liquid exchanges in crypto. dYdX has now shut down its Layer 1 offering and is doubling down on perpetuals by expanding beyond the currently available 28 markets.'
+            //   }, 
+            //   {
+            //     pic: require('@/assets/insights/research/4.png'),
+            //     link: '/Research/Why Smart Money Matters More.pdf', 
+            //     title: 'Why Smart Money <br>Matters More',
+            //     subTitle: '“In a world deluged by irrelevant information, clarity is power.”',
+            //     description: 'To make crypto accessible, tools like Nansen must continue to push the frontiers transforming data into meaningful signals. In crypto, following the smart money matters more than ever.'
+            //   }, 
+            // ]
+          }
         }, 
       ]
     }
   },
-  created() {
-    console.log(this.$route)
+  computed: {
+    lang() {
+      return this.$store.state.lang
+    },
+    calcList() {
+      let list = []
+      this.dataList.map(item => {
+        if (this.lang === 'en') {
+          list.push({
+            pic: item.english_pic,
+            link: item.english_enclosure, 
+            title: item.english_title,
+            subTitle: item.english_title_vice,
+            description: item.english_txts, 
+          })
+        } else {
+          list.push({
+            pic: item.pic,
+            link: item.enclosure, 
+            title: item.title,
+            subTitle: item.title_vice,
+            description: item.txts, 
+          }) 
+        }
+      })
+      return list
+    }
+  },
+  methods: {
+    async fetchData() {
+      let res = await getInsightsList({page: this.page, limit: this.limit})
+      if (res.code === 200) {
+        this.total = res.data.pageCount
+        this.dataList = this.dataList.concat(res.data.list)  
+      } 
+    },
+    handleClickLoading() {
+      this.page++
+      this.fetchData()
+      if (this.page * this.limit >= this.total) {
+        this.showBtn = false
+      }
+    }
+
+  },
+  mounted() {
+    this.fetchData()
   }
 }
 </script>
@@ -252,6 +311,22 @@ export default {
             }
           }
            
+        }
+      }
+      .load-more {
+        position: absolute;
+        bottom: 54px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        font-size: 18px;
+        font-weight: 600;
+        color: rgba($color: $text, $alpha: .5);
+        label {
+          cursor: pointer;
+        }
+        .arrow {
+          transform: rotate(90deg); 
         }
       }
     }

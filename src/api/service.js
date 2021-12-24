@@ -97,6 +97,15 @@ export function getNews3Detail(data) {
   return request({
     url: '/admin/news_three/detail',
     method: 'get',
-    params: data
+    params: data 
+  })
+}
+
+//发送邮件
+export function setMailSend(data) {
+  return request({
+    url: '/mail/mailer',
+    method: 'post',
+    data
   })
 }

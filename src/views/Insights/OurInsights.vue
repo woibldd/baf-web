@@ -5,25 +5,36 @@
     <div class="page-content">
       <div class="panel-content">
         <div class="left-rectangle"></div> 
-        <div class="breadcrumb ml-43"> 
+        <div class="breadcrumb ml-43">
+          <!-- <router-link class="mr-14" to="/insights">Insights</router-link>
+          <icon class="separator mr-14" name="arrow" />
+          <router-link class="mr-14" to="/insights/Research">Research</router-link> -->
           <label v-for="(link, idx) in $route.matched" :key="idx"> 
             <icon v-if="idx!==0" class="separator mr-14" name="arrow" />
             <router-link class="mr-14" :to="link.path">{{link.name}}</router-link>
           </label>
         </div>
         <div class="my-list">
-          <div class="item-box" v-for="(item, idx) in list" :key="idx">
+          <div class="item-box" >
             <div class="item-title">
-              <label>{{item.name}}</label> 
+              <label>{{name}}</label>
+              <!-- <a class="view-all">
+                <em>View All</em>
+                <img src="@/assets/icon-view-all.png" alt="">
+              </a> -->
             </div>
-            <div :class="['item-content', item.name]"> 
-              <my-link v-for="(obj, index) in item.linkList" 
+            <div :class="['item-content', name]"> 
+              <my-link v-for="(obj, index) in calcList" 
                 type="url"
                 :key="index"
                 :obj="obj"
                 ></my-link>
             </div>
           </div>
+        </div>
+        
+        <div v-if="showBtn" class="load-more">
+          <label @click="handleClickLoading">LOAD MORE <icon class="arrow ml-10" size="26"  name="arrow"></icon> </label>
         </div>
       </div> 
     </div>
@@ -32,9 +43,17 @@
 
 <script>
 import myLink from '@/components/linkTemplate'
+import { getInsights2List } from '@/api/service'
 export default {
+  components: {myLink},
   data() {
     return {
+      name:  'Our Insights',
+      showBtn: true,
+      page: 1,
+      limit: 4,
+      total: 0,
+      dataList: [],
       list: [ 
         {
           name: 'Our Insights',
@@ -58,7 +77,54 @@ export default {
       ]
     }
   },
-  components: {myLink}
+  computed: {
+    lang() {
+      return this.$store.state.lang
+    },
+    calcList() {
+      let list = []
+      this.dataList.map(item => {
+        if (this.lang === 'en') {
+          list.push({
+            pic: item.english_pic,
+            link: item.english_enclosure, 
+            title: item.english_title,
+            subTitle: item.english_title_vice,
+            description: item.english_txts, 
+          })
+        } else {
+          list.push({
+            pic: item.pic,
+            link: item.enclosure, 
+            title: item.title,
+            subTitle: item.title_vice,
+            description: item.txts, 
+          }) 
+        }
+      })
+      return list
+    }
+  },
+  methods: {
+    async fetchData() {
+      let res = await getInsights2List({page: this.page, limit: this.limit})
+      if (res.code === 200) {
+        this.total = res.data.pageCount
+        this.dataList = this.dataList.concat(res.data.list)  
+      } 
+    },
+    handleClickLoading() {
+      this.page++
+      this.fetchData()
+      if (this.page * this.limit >= this.total) {
+        this.showBtn = false
+      }
+    }
+
+  },
+  mounted() {
+    this.fetchData()
+  }
 }
 </script>
 
@@ -213,7 +279,7 @@ export default {
             }
             .p-title {
               height: 211px;
-              width: 604px;
+              width: 911px;
               font-size: 72px;
               font-weight: 600;
             }
@@ -228,6 +294,22 @@ export default {
             }
           }
            
+        }
+      }
+      .load-more {
+        position: absolute;
+        bottom: 54px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        font-size: 18px;
+        font-weight: 600;
+        color: rgba($color: $text, $alpha: .5);
+        label {
+          cursor: pointer;
+        }
+        .arrow {
+          transform: rotate(90deg); 
         }
       }
     }
