@@ -32,7 +32,7 @@ Vue.use(ElementUI);
 const i18n = new VueI18n({
   locale: store.state.lang,
   silentFallbackWarn: true,
-  message: {
+  messages: {
     en: {...en},
     'zh-CN': {...zhCN}
   }

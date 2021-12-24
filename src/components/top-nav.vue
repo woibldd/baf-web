@@ -2,23 +2,23 @@
   <div class="top-nav-container">
     <div ref="nav" style="transition: all 0.5s ease 0s;" class="nav-a">
       <div class="nav-box" flex="main:justify">
-         <div class="left">
+        <div class="left">
           <div @click="gotoPath('/')"  style="height: 45px; margin-top: 32px; cursor:pointer;" flex="cross:top;">  
             <icon  style="width: 157px; height: 45px;" name="logo" /> 
-          </div>
-         </div>
-         <div class="right"> 
-            <ul flex="main:right">
-              <li class="pointer nav-item mr-60" ><router-link to="/home">About Us</router-link></li>
-              <li class="pointer nav-item mr-60" ><router-link to="/portfolio">Portfolio</router-link></li>
-              <li class="pointer nav-item mr-60" ><router-link to="/insights">Insights</router-link></li>
-              <li class="pointer nav-item mr-60"><router-link to="/news">News</router-link></li> 
-              <li class="pointer nav-item mr-60"><router-link to="/contact">Contact</router-link></li>
-              <li class="pointer nav-item lang">
-                <label @click="handleChangeLang('zh-CN')">简</label> / <label @click="handleChangeLang('en')">EN</label>
-              </li>
-            </ul>
-         </div>
+          </div> 
+        </div>
+        <div class="right"> 
+          <ul flex="main:right">
+            <li class="pointer nav-item mr-60" ><router-link to="/home">About Us</router-link></li>
+            <li class="pointer nav-item mr-60" ><router-link to="/portfolio">Portfolio</router-link></li>
+            <li class="pointer nav-item mr-60" ><router-link to="/insights">Insights</router-link></li>
+            <li class="pointer nav-item mr-60"><router-link to="/news">News</router-link></li> 
+            <li class="pointer nav-item mr-60"><router-link to="/contact">Contact</router-link></li>
+            <li class="pointer nav-item lang">
+              <label @click="handleChangeLang('zh-CN')">简</label> / <label @click="handleChangeLang('en')">EN</label>
+            </li>
+          </ul>
+        </div>
       </div>
     </div> 
   </div>
@@ -52,12 +52,14 @@ export default {
       this.scrollY = docSrollTop
     },
     handleChangeLang(lang) {
+      this.$i18n.locale = lang
       this.$store.dispatch('changeLang', lang)
     }
   }, 
   mounted() { 
     // this.handleScroll()
     window.addEventListener('scroll',this.handleScroll)
+ 
   }
 }
 </script>
