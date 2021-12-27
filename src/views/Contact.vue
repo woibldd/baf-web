@@ -105,6 +105,7 @@
 
 <script>
 import mytabs from '@/components/tabs'
+import {setMailSend} from '@/api/service' 
 export default {
   components: {mytabs},
   data() {
@@ -121,6 +122,7 @@ export default {
       regionId: 86,
       showLista: false,
       showListb: false,
+      errMsg: '',
     }
   },
   methods: {
@@ -137,8 +139,80 @@ export default {
       console.log(tab, event);
     }, 
     handleClickSend() {
-
+      if (this.checkPara()) { 
+        let title = `【${this.activeName}】${this.company}-${this.name} （inquiry: ${this.inquiry}）` 
+        let msg = ''
+        this.message.split('\n').map(item => msg = msg + `<div>${item}</div>`)
+        let body = `
+          <div class="mail-body">
+            <p></p>
+            <div><b> Date：</b>June 17, 2021 5:04:52 PM </div>  
+            <div><b>Name： </b>${this.name}</div>
+            <div><b>Phone：</b>${this.phone}</div>
+            <div><b>Email：</b>${this.email}</div>
+            <div><b>Country：</b>${this.country}</div>
+            <div><b>Company：</b>${this.company}</div>
+            <div><b>Inquiry：</b>${this.inquiry}</div>
+            <p></p>
+            <div>--------------------------------------</div>
+            <p></p>
+            <p style="width: 550px;">
+            ${msg}
+            </p> 
+          </div>
+        `
+        setMailSend({title, body}).then(res => {
+          if (res.code === 200) {
+            this.$message({
+              message: '发送成功。',
+              type: 'success'
+            })
+          } else {
+            this.$message({
+              message: res.msg,
+              type: 'error'
+            })
+          }
+        })
+      } else {
+        this.$message({
+          message: this.errMsg,
+          type: 'error'
+        })
+      }
     }, 
+    checkPara() {
+      this.errMsg = ''
+      if (!this.name.trim()) {
+        this.errMsg = '请输入姓名！'
+        return false
+      }
+      if (!this.phone.trim()) {
+         this.errMsg = '请输入电话号码！'
+        return false
+      }
+      if (!this.email.trim()) {
+         this.errMsg = '请输入邮箱地址！'
+        return false
+      }
+      if (!this.country.trim()) {
+         this.errMsg = '请选择国籍！'
+        return false
+      }
+      if (!this.company.trim()) {
+         this.errMsg = '请输入公司名称！'
+        return false
+      }
+      if (!this.inquiry.trim()) {
+         this.errMsg = '请输入咨询问题！'
+        return false
+      }
+      if (!this.message.trim()) {
+         this.errMsg = '请输入消息内容！'
+        return false
+      }  
+      return true
+    },
     handleSelectRegion(item) {
       this.regionId = item.id
       this.showLista = false
@@ -324,12 +398,14 @@ export default {
               height: 51px;
               border: 1px solid rgba($color: $primary, $alpha: .2);
               color: rgba($color: $primary, $alpha: .2);
+              cursor: not-allowed;
               font-size: 24px;
               background-color: #fff;
               &.hasValue {
                 background-color: $primary;
                 font-weight: 600;
                 color: #fff;
+                cursor: pointer;
               }
             }
             .row-pd {
