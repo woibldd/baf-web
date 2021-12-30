@@ -40,9 +40,9 @@
                 <div class="news-a-box" :class="['box-'+index]">
                   <div class="news-a-bd">
                     <div class="news-text">
-                      <div class="title-a">{{obj.title}}</div>
+                      <div class="title-a" v-html="obj.title">{{obj.title}}</div>
                       <div class="news-content mt-17" v-html="obj.description">{{obj.content}}</div>
-                      <div class="date">{{obj.createDate}}</div>
+                      <div class="date">{{ $date(obj.createDate) }}</div>
                     </div> 
                   </div>
                   <div class="news-mask" flex="cross:center main:center">
@@ -408,6 +408,7 @@ export default {
               em{
                 padding: 0 30px;
                 cursor: pointer;
+                font: inherit;
               }
               img {
                 width: 36px;

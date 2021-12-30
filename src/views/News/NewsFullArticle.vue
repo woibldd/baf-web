@@ -28,13 +28,13 @@ export default {
         return {
           title: this.article.english_info_title,
           createDate: this.article.send_time,
-          content: this.article.english_txts
+          content: this.article.english_txts || this.article.english_content
         }
       } else {
         return {
           title: this.article.info_title,
           createDate: this.article.send_time,
-          content: this.article.txts
+          content: this.article.txts || this.article.content
         }
       }
     }

@@ -311,6 +311,7 @@ export default {
               em{
                 padding: 0 30px;
                 cursor: pointer;
+                font: inherit;
               }
               img {
                 width: 36px;
