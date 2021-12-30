@@ -165,6 +165,16 @@ export default {
               link: 'https://uniswap.org/', 
               text: 'Uniswap',
             },  
+            {
+              pic: require('@/assets/portfolio/defi-6.png'),
+              link: '', 
+              text: 'Continuum Finance',
+            },  
+            {
+              pic: require('@/assets/portfolio/defi-7.png'),
+              link: '', 
+              text: 'HILLSTONE',
+            },  
           ]
         },
         {
@@ -189,6 +199,31 @@ export default {
               pic: require('@/assets/portfolio/gamefi-4.png'),
               link: 'https://kakifi.com/', 
               text: 'KAKI',
+            }, 
+            {
+              pic: require('@/assets/portfolio/gamefi-5.png'),
+              link: '', 
+              text: 'MetaTube',
+            }, 
+            {
+              pic: require('@/assets/portfolio/gamefi-6.png'),
+              link: '', 
+              text: 'EB',
+            }, 
+            {
+              pic: require('@/assets/portfolio/gamefi-7.png'),
+              link: '', 
+              text: 'Me Race',
+            }, 
+            {
+              pic: require('@/assets/portfolio/gamefi-8.png'),
+              link: '', 
+              text: 'BT MIRACLES',
+            }, 
+            {
+              pic: require('@/assets/portfolio/gamefi-9.png'),
+              link: '', 
+              text: 'DOH',
             }, 
           ]
         },
@@ -293,6 +328,10 @@ export default {
               height: 160px;
               width: 280px;
               overflow: hidden;
+              img {
+                height: 160px;
+                width: 280px;
+              }
               .mask { 
                 opacity: 0;
                 transform: translate3d(0, 0, 0);

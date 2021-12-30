@@ -5,14 +5,24 @@
         Copyright © 1998 - 2021 BAF Capital. All Rights Reserved.
       </div>
       <div class="footer-right" flex="cross:center">
-        <div 
+         <a 
           @mouseover="headleMouseOver" 
           @mouseout="headleMouseOut" 
           class="icon-box over ml-23"
+          target="_blank"
+          flex="cross:center">
+          <icon class=" icon" name="medium"></icon>
+        </a> 
+        <a 
+          @mouseover="headleMouseOver" 
+          @mouseout="headleMouseOut" 
+          target="_blank"
+          href="https://twitter.com/BAF_Capital"
+          class="icon-box over ml-23"
           flex="cross:center">
           <icon class=" icon" name="twitter"></icon>
-        </div> 
-        <div 
+        </a> 
+        <!-- <div 
           @mouseover="headleMouseOver" 
           @mouseout="headleMouseOut" 
           class="icon-box over ml-23"
@@ -25,14 +35,15 @@
           class="icon-box over ml-23" 
           flex="cross:center">
           <icon class="icon" name="discord"></icon>  
-        </div>  
-        <div 
+        </div>   -->
+        <a 
           @mouseover="headleMouseOver" 
           @mouseout="headleMouseOut" 
           class="icon-box over ml-23"
+          target="_blank"
           flex="cross:center">
           <icon class="icon" name="instagram"></icon>
-        </div>  
+        </a>  
          
         <router-link to="/contact"><button class="btn ml-60">Contact Us</button></router-link>
         

@@ -24,9 +24,10 @@
           <div class="panel-icons mt-40">
             <div></div>
             <div class="pl-9 pr-9" flex="main:justify">  
-              <a href=""> <icon class="c" name="twitter"></icon> </a>
-              <a href=""> <icon class="c" name="telegram"></icon> </a>
-              <a href=""> <icon class="c" name="discord"></icon> </a>
+              <a href=""> <icon class="c" name="medium"></icon> </a>
+              <a target="_blank" href="https://twitter.com/BAF_Capital"> <icon class="c" name="twitter"></icon> </a>
+              <!-- <a href=""> <icon class="c" name="telegram"></icon> </a>
+              <a href=""> <icon class="c" name="discord"></icon> </a> -->
               <a href=""> <icon class="c" name="instagram"></icon> </a>
               <!-- <img 
                 @mouseover.prevent="handleMouseOver" 
