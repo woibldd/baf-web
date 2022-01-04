@@ -3,25 +3,43 @@
     <div class="page-banner">
       <div class="banner-content">
         <div class="animated bounceInLeft">
-          <swiper
+          <!-- <swiper
             ref="swiperDesigner"
             class="swiper-designer " 
             :options="swiperDesignerOptions">  
             <swiper-slide 
-              v-for="index in 3"  
+              v-for="(item, index) in bannerList"  
               class="swiper-designer-item"  
               :key="'designer'+index">
                 <div class="banner-box pt-1"> 
                   <h5 class="title ani" swiper-animate-effect="fadeInLeft"  swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">ABOUT US</h5>
                   <h1 class="sub-title mt-19 ani" swiper-animate-effect="fadeInLeft"  swiper-animate-duration="0.5s" swiper-animate-delay="0.5s">
-                    Focusing on cutting edge blockchain innovations with global exposure
+                    <div v-html="item.title"></div> 
                   </h1>
                   <h6 class="tips mt-19 ani" swiper-animate-effect="fadeInLeft"  swiper-animate-duration="0.5s" swiper-animate-delay="0.7s">
-                    Founded in 2019, BAF Capital has developed a reputation for being forward-leaning and independent. We focuses on investing in cryptocurrencies, tokens, and innovative blockchain companies at the technological level or business model level.  Our team is around the world, with a presence in China, America, and Korea. The founding partners all joined the blockchain industry in early 2013 (the year was marked by the price of 1BTC>1 ounce of gold), and became life members of the Bitcoin Foundation in the same year.
+                    <div v-html="item.describe"></div>
                   </h6>
                 </div>
             </swiper-slide> 
-          </swiper>  
+          </swiper>   -->
+          <div class="swiper-container">
+            <div class="swiper-wrapper"> 
+              <div class="swiper-slide" v-for="item in bannerList" :key="item.id">
+                <div class="swiper-item">
+                  <div class="banner-box pt-1"> 
+                    <h5 class="title ani" swiper-animate-effect="fadeInLeft"  swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">ABOUT US</h5>
+                    <h1 class="sub-title mt-19 ani" swiper-animate-effect="fadeInLeft"  swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"> 
+                      <div v-html="item.title"></div> 
+                    </h1>
+                    <h6 class="tips mt-19 ani" swiper-animate-effect="fadeInLeft"  swiper-animate-duration="0.5s" swiper-animate-delay="0.7s"> 
+                      <div v-html="item.describe"></div>
+                    </h6>
+                  </div> 
+                </div> 
+              </div> 
+            </div> 
+            <div class="swiper-pagination"></div>  
+          </div>
         </div>
         <div class="banner-box">
           <div class="ml-78 swiper-pagination"></div> 
@@ -183,6 +201,8 @@
 
 
 <script>  
+
+import { Swiper } from 'vue-awesome-swiper' 
 import {swiperAnimateCache,swiperAnimate} from '@/modules/swiper/swiper.animate1.0.2.min.js'
 import '@/modules/swiper/animate.min.css'
 import TWEEN from 'tween.js'
@@ -202,14 +222,16 @@ export default {
         },
         loop: true, 
         loopAdditionalSlides: 5,  
+        observer:true,//修改swiper自己或子元素时，自动初始化swiper 
+        observeParents:false,//修改swiper的父元素时，自动初始化swiper 
         pagination: {
           el: '.swiper-pagination',
           clickable: true,
         },  
         on:{
-          init: function(){
-            swiperAnimateCache(this); //隐藏动画元素 
-            swiperAnimate(this); //初始化完成开始动画
+          init: function(){ 
+              swiperAnimateCache(this); //隐藏动画元素  
+              swiperAnimate(this); //初始化完成开始动画
           }, 
           slideChangeTransitionEnd: function(){ 
             swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
@@ -218,12 +240,14 @@ export default {
         }
 
       },
+      bannerList: [],
       num1: 0,
       animatedNum1: 0,
       num2:0,
       animatedNum2: 0,
       num3:0,
       animatedNum3: 0,
+      bannerSwiper: null,
     }
   },
   components: { 
@@ -359,18 +383,55 @@ export default {
         }
       }
     } 
-  },
-  mounted() { 
+  }, 
+  async mounted() { 
     this.handleScroll()
     window.addEventListener('scroll',this.handleScroll)
+    let res = await getBannerList() 
+    if (res.code === 200) {
+      this.bannerList = res.data.list 
+          
+      this.$nextTick(function() {
+        this.bannerSwiper = new Swiper('.swiper-container', {
+          effect: 'fade',
+          allowTouchMove: true,
+          autoplay: {
+            delay: 15000,
+            disableOnInteraction: true,
+          },
+          loop: true, 
+          loopAdditionalSlides: 5,  
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },  
+          observer:true,//修改swiper自己或子元素时，自动初始化swiper 
+          observeParents:false,//修改swiper的父元素时，自动初始化swiper 
+          onSlideChangeEnd: function(swiper){ 
+            swiper.update();  
+            swiper.startAutoplay();
+            swiper.reLoop();  
+          },
+          on:{
+            init: function(){ 
+                swiperAnimateCache(this); //隐藏动画元素  
+                swiperAnimate(this); //初始化完成开始动画 
+            }, 
+            slideChangeTransitionEnd: function(){ 
+              swiperAnimate(this); //每个slide切换结束时也运行当前slide动画 
+            } 
+          }
+        })
+
+      })
+
+    }  
   },
   destroyed() {
     window.removeEventListener('scroll',this.handleScroll)
   }, 
-  created() {
-    getBannerList().then(res=> {
-      console.log(res)
-    })
+  async created() {
+
   }
 }
 </script>

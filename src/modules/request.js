@@ -27,6 +27,7 @@ service.interceptors.request.use(
   }
 )
 
+
 // response interceptor
 service.interceptors.response.use(
   response => {
@@ -35,8 +36,7 @@ service.interceptors.response.use(
       return null
     }
 
-    const res = response.data
-
+    const res = response.data 
     if (res.code === 401) {
       MessageBox.confirm(
         '你已被登出，可以取消继续留在该页面，或者重新登录', '确定登出',
