@@ -83,25 +83,26 @@ export default {
     },
     calcList() {
       let list = []
-      this.dataList.map(item => {
-        if (this.lang === 'en') {
-          list.push({
-            pic: item.english_pic,
-            link: item.english_enclosure, 
-            title: item.english_title,
-            subTitle: item.english_title_vice,
-            description: item.english_txts, 
-          })
-        } else {
-          list.push({
-            pic: item.pic,
-            link: item.enclosure, 
-            title: item.title,
-            subTitle: item.title_vice,
-            description: item.txts, 
-          }) 
-        }
-      })
+      // this.dataList.map(item => {
+      //   if (this.lang === 'en') {
+      //     list.push({
+      //       pic: item.english_pic,
+      //       link: item.english_enclosure, 
+      //       title: item.english_title,
+      //       subTitle: item.english_title_vice,
+      //       description: item.english_txts, 
+      //     })
+      //   } else {
+      //     list.push({
+      //       pic: item.pic,
+      //       link: item.enclosure, 
+      //       title: item.title,
+      //       subTitle: item.title_vice,
+      //       description: item.txts, 
+      //     }) 
+      //   }
+      // }) 
+      list = this.list[0].linkList
       return list
     }
   },

@@ -24,24 +24,25 @@ export default {
       return this.$store.state.lang
     },
     myArticle() {
-      if (this.lang === 'en') {
-        return {
-          title: this.article.english_info_title,
-          createDate: this.article.send_time,
-          content: this.article.english_txts || this.article.english_content
-        }
-      } else {
-        return {
-          title: this.article.info_title,
-          createDate: this.article.send_time,
-          content: this.article.txts || this.article.content
-        }
-      }
+      // if (this.lang === 'en') {
+      //   return {
+      //     title: this.article.english_info_title,
+      //     createDate: this.article.send_time,
+      //     content: this.article.english_txts || this.article.english_content
+      //   }
+      // } else {
+      //   return {
+      //     title: this.article.info_title,
+      //     createDate: this.article.send_time,
+      //     content: this.article.txts || this.article.content
+      //   }
+      // }
+      let id = this.$route.params.id 
+      return list.find(item => item.id === +id) 
     }
   },
   methods: {
-    fetch() {
-      console.log(this.$route)
+    fetch() { 
       let name = this.$route.name
       let id = this.$route.params.id 
       let fun = getNewsDetail

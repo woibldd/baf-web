@@ -41,8 +41,9 @@
                   <div class="news-a-bd">
                     <div class="news-text">
                       <div class="title-a" v-html="obj.title">{{obj.title}}</div>
-                      <div class="news-content mt-17" v-html="obj.description">{{obj.content}}</div>
+                      <div class="news-content mt-17" v-html="obj.description">{{obj.description}}</div>
                       <div class="date">{{ $date(obj.createDate) }}</div>
+                      
                     </div> 
                   </div>
                   <div class="news-mask" flex="cross:center main:center">
@@ -64,7 +65,7 @@
                 <img src="@/assets/icon-view-all.png" alt="">
               </router-link>
             </div>
-            <div class="item-content"> 
+            <div class="item-content" style="color: #000F27;"> 
               <my-link v-for="(obj, index) in calcSeminarList"   
                 :key="index"
                 :obj="obj"
@@ -79,7 +80,7 @@
                 <img src="@/assets/icon-view-all.png" alt="">
               </router-link>
             </div>
-            <div class="item-content"> 
+            <div class="item-content" style="color: #ffffff;"> 
               <my-link v-for="(obj, index) in calcPartyList"   
                 :key="index"
                 :obj="obj"
@@ -211,85 +212,88 @@ export default {
     },
     calcInvestmentList() {
       let list = []
-      this.investmentList.map(item => {
-        if (this.lang === 'en') {
-          list.push({
-            id: item.id,
-            pic: item.english_pic,
-            pic_vice: item.english_pic_vice,
-            link: 'InvestmentArticle', 
-            title: item.english_title,
-            subTitle: '',
-            description: item.english_describe, 
-            createDate: item.send_time
-          })
-        } else {
-          list.push({
-            id: item.id,
-            pic: item.pic,
-            pic_vice: item.pic_vice,
-            link: 'InvestmentArticle', 
-            title: item.title,
-            subTitle: '',
-            description: item.describe, 
-            createDate: item.send_time
-          })
-        }
-      })
+      // this.investmentList.map(item => {
+      //   if (this.lang === 'en') {
+      //     list.push({
+      //       id: item.id,
+      //       pic: item.english_pic,
+      //       pic_vice: item.english_pic_vice,
+      //       link: 'InvestmentArticle', 
+      //       title: item.english_title,
+      //       subTitle: '',
+      //       description: item.english_describe, 
+      //       createDate: item.send_time
+      //     })
+      //   } else {
+      //     list.push({
+      //       id: item.id,
+      //       pic: item.pic,
+      //       pic_vice: item.pic_vice,
+      //       link: 'InvestmentArticle', 
+      //       title: item.title,
+      //       subTitle: '',
+      //       description: item.describe, 
+      //       createDate: item.send_time
+      //     })
+      //   }
+      // })
+      list = this.investmentList
       return list
     },
     calcSeminarList() {
       let list = []
-      this.seminarList.map(item => {
-        if (this.lang === 'en') {
-          list.push({
-            id: item.id,
-            pic: item.english_pic,
-            link: 'SeminarArticle', 
-            title: item.english_title,
-            subTitle: item.english_content_one,
-            description: item.english_content_two, 
-            createDate: item.send_time
-          })
-        } else {
-          list.push({
-            id: item.id,
-            pic: item.pic,
-            link: 'SeminarArticle', 
-            title: item.title,
-            subTitle: item.content_one,
-            description: item.content_two, 
-            createDate: item.send_time
-          })
-        }
-      })
+      // this.seminarList.map(item => {
+      //   if (this.lang === 'en') {
+      //     list.push({
+      //       id: item.id,
+      //       pic: item.english_pic,
+      //       link: 'SeminarArticle', 
+      //       title: item.english_title,
+      //       subTitle: item.english_content_one,
+      //       description: item.english_content_two, 
+      //       createDate: item.send_time
+      //     })
+      //   } else {
+      //     list.push({
+      //       id: item.id,
+      //       pic: item.pic,
+      //       link: 'SeminarArticle', 
+      //       title: item.title,
+      //       subTitle: item.content_one,
+      //       description: item.content_two, 
+      //       createDate: item.send_time
+      //     })
+      //   }
+      // })
+      list = this.seminarList
       return list
     },
     calcPartyList() {
       let list = []
-      this.partyList.map(item => {
-        if (this.lang === 'en') {
-          list.push({
-            id: item.id,
-            pic: item.english_pic,
-            link: 'FridgeWinePartyArticle', 
-            title: item.english_title,
-            subTitle: item.english_content_one,
-            description: item.english_content_two, 
-            createDate: item.send_time
-          })
-        } else {
-          list.push({
-            id: item.id,
-            pic: item.pic,
-            link: 'FridgeWinePartyArticle', 
-            title: item.title,
-            subTitle: item.content_one,
-            description: item.content_two, 
-            createDate: item.send_time
-          })
-        }
-      })
+      // this.partyList.map(item => {
+      //   if (this.lang === 'en') {
+      //     list.push({
+      //       id: item.id,
+      //       pic: item.english_pic,
+      //       link: 'FridgeWinePartyArticle', 
+      //       title: item.english_title,
+      //       subTitle: item.english_content_one,
+      //       description: item.english_content_two, 
+      //       createDate: item.send_time
+      //     })
+      //   } else {
+      //     list.push({
+      //       id: item.id,
+      //       pic: item.pic,
+      //       link: 'FridgeWinePartyArticle', 
+      //       title: item.title,
+      //       subTitle: item.content_one,
+      //       description: item.content_two, 
+      //       createDate: item.send_time
+      //     })
+      //   }
+      // })
+      list = this.partyList
       return list
     }
   },
@@ -299,17 +303,17 @@ export default {
     async initData() {
       let res = await getNewsList({page: 1, limit: 6}) 
       if (res.code === 200) {
-        this.investmentList = res.data.list
+        // this.investmentList = res.data.list
       }
       
       res = await getNews2List({page: 1, limit: 2})
       if (res.code === 200) {
-        this.seminarList = res.data.list
+        // this.seminarList = res.data.list
       }
       
       res = await getNews3List({page: 1, limit: 2})
       if (res.code === 200) {
-        this.partyList = res.data.list
+        // this.partyList = res.data.list
       }
     }
   },

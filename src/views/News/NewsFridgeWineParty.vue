@@ -92,29 +92,30 @@ export default {
     },
     calcList() {
       let list = []
-      this.list.map(item => {
-        if (this.lang === 'en') {
-          list.push({
-            id: item.id,
-            pic: item.english_pic,
-            link: 'FridgeWinePartyArticle', 
-            title: item.english_title,
-            subTitle: item.english_content_one,
-            description: item.english_content_two, 
-            createDate: item.send_time
-          })
-        } else {
-          list.push({
-            id: item.id,
-            pic: item.pic,
-            link: 'FridgeWinePartyArticle', 
-            title: item.title,
-            subTitle: item.content_one,
-            description: item.content_two, 
-            createDate: item.send_time
-          })
-        }
-      })
+      // this.list.map(item => {
+      //   if (this.lang === 'en') {
+      //     list.push({
+      //       id: item.id,
+      //       pic: item.english_pic,
+      //       link: 'FridgeWinePartyArticle', 
+      //       title: item.english_title,
+      //       subTitle: item.english_content_one,
+      //       description: item.english_content_two, 
+      //       createDate: item.send_time
+      //     })
+      //   } else {
+      //     list.push({
+      //       id: item.id,
+      //       pic: item.pic,
+      //       link: 'FridgeWinePartyArticle', 
+      //       title: item.title,
+      //       subTitle: item.content_one,
+      //       description: item.content_two, 
+      //       createDate: item.send_time
+      //     })
+      //   }
+      // })
+      list = this.list[0].linkList
       return list
     },
   }, 
@@ -122,7 +123,7 @@ export default {
     async fetchData() {
       let res = await getNews3List({page: 1, limit: 6}) 
       if (res.code === 200) {
-        this.list = res.data.list
+        // this.list = res.data.list
       }
     },
     handleClickLoading() {

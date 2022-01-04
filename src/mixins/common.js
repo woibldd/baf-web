@@ -28,16 +28,17 @@ export default {
     //   return tpl
     // },
     $date(ts, tpl = 'MMM D,YYYY') {
-      if (!ts) return ''
-      if (!ts) return ''
-      if (typeof ts === 'string') {
-        ts = parseInt(ts)
-      }
-      if (ts.toString().length === 10) {
-        ts = ts * 1000
-      }
-      let moment = require('moment') 
-      return moment(ts).format(tpl)
+      // if (!ts) return ''
+      // if (!ts) return ''
+      // if (typeof ts === 'string') {
+      //   ts = parseInt(ts)
+      // }
+      // if (ts.toString().length === 10) {
+      //   ts = ts * 1000
+      // }
+      // let moment = require('moment') 
+      // return moment(ts).format(tpl)
+      return ts
     },
     leftpad(num) {
       return num < 10 ? '0' + num : '' + num

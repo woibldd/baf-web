@@ -50,7 +50,7 @@ export default {
   .mylink {
     display: block;
     height: 380px;
-    color: $text;
+    // color: $text;
     overflow: hidden;
     cursor: pointer;
     .a-pd { 

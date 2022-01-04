@@ -133,31 +133,32 @@ export default {
     },
     calcList() {
       let list = []
-      this.list.map(item => {
-        if (this.lang === 'en') {
-          list.push({
-            id: item.id,
-            pic: item.english_pic,
-            pic_vice: item.english_pic_vice,
-            link: 'InvestmentArticle', 
-            title: item.english_title,
-            subTitle: '',
-            description: item.english_describe, 
-            createDate: item.send_time
-          })
-        } else {
-          list.push({
-            id: item.id,
-            pic: item.pic,
-            pic_vice: item.pic_vice,
-            link: 'InvestmentArticle', 
-            title: item.title,
-            subTitle: '',
-            description: item.describe, 
-            createDate: item.send_time
-          })
-        }
-      })
+      // this.list.map(item => {
+      //   if (this.lang === 'en') {
+      //     list.push({
+      //       id: item.id,
+      //       pic: item.english_pic,
+      //       pic_vice: item.english_pic_vice,
+      //       link: 'InvestmentArticle', 
+      //       title: item.english_title,
+      //       subTitle: '',
+      //       description: item.english_describe, 
+      //       createDate: item.send_time
+      //     })
+      //   } else {
+      //     list.push({
+      //       id: item.id,
+      //       pic: item.pic,
+      //       pic_vice: item.pic_vice,
+      //       link: 'InvestmentArticle', 
+      //       title: item.title,
+      //       subTitle: '',
+      //       description: item.describe, 
+      //       createDate: item.send_time
+      //     })
+      //   }
+      // })
+      list = this.list[0].linkList
       return list
     },
   }, 
@@ -165,7 +166,7 @@ export default {
     async fetchData() {
       let res = await getNewsList({page: 1, limit: 6}) 
       if (res.code === 200) {
-        this.list = res.data.list
+        // this.list = res.data.list
       }
     },
     handleClickLoading() {
