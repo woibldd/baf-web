@@ -72,16 +72,16 @@ export default {
             }, 
           ]
         },
-        // {
-        //   name: 'Layer 2',
-        //   linkList: [
-        //     // {
-        //     //   pic: require('@/assets/portfolio/layer-2-1.png'),
-        //     //   link: 'https://zksync.io/', 
-        //     //   text: 'Zksync',
-        //     // }, 
-        //   ]
-        // },
+        {
+          name: 'Layer 2',
+          linkList: [
+            {
+              pic: require('@/assets/portfolio/layer-2-1.png'),
+              link: 'https://zksync.io/', 
+              text: 'Zksync',
+            }, 
+          ]
+        },
         {
           name: 'Infrastructure and Storage',
           linkList: [
@@ -165,16 +165,16 @@ export default {
               link: 'https://uniswap.org/', 
               text: 'Uniswap',
             },  
-            // {
-            //   pic: require('@/assets/portfolio/defi-6.png'),
-            //   link: '', 
-            //   text: 'Continuum Finance',
-            // },  
-            // {
-            //   pic: require('@/assets/portfolio/defi-7.png'),
-            //   link: '', 
-            //   text: 'HILLSTONE',
-            // },  
+            {
+              pic: require('@/assets/portfolio/defi-6.png'),
+              link: '', 
+              text: 'Continuum Finance',
+            },  
+            {
+              pic: require('@/assets/portfolio/defi-7.png'),
+              link: '', 
+              text: 'HILLSTONE',
+            },  
           ]
         },
         {
@@ -200,31 +200,31 @@ export default {
               link: 'https://kakifi.com/', 
               text: 'KAKI',
             }, 
-            // {
-            //   pic: require('@/assets/portfolio/gamefi-5.png'),
-            //   link: '', 
-            //   text: 'MetaTube',
-            // }, 
-            // {
-            //   pic: require('@/assets/portfolio/gamefi-6.png'),
-            //   link: '', 
-            //   text: 'EB',
-            // }, 
-            // {
-            //   pic: require('@/assets/portfolio/gamefi-7.png'),
-            //   link: '', 
-            //   text: 'Me Race',
-            // }, 
-            // {
-            //   pic: require('@/assets/portfolio/gamefi-8.png'),
-            //   link: '', 
-            //   text: 'BT MIRACLES',
-            // }, 
-            // {
-            //   pic: require('@/assets/portfolio/gamefi-9.png'),
-            //   link: '', 
-            //   text: 'DOH',
-            // }, 
+            {
+              pic: require('@/assets/portfolio/gamefi-5.png'),
+              link: '', 
+              text: 'MetaTube',
+            }, 
+            {
+              pic: require('@/assets/portfolio/gamefi-6.png'),
+              link: '', 
+              text: 'EB',
+            }, 
+            {
+              pic: require('@/assets/portfolio/gamefi-7.png'),
+              link: '', 
+              text: 'Me Race',
+            }, 
+            {
+              pic: require('@/assets/portfolio/gamefi-8.png'),
+              link: '', 
+              text: 'BT MIRACLES',
+            }, 
+            {
+              pic: require('@/assets/portfolio/gamefi-9.png'),
+              link: '', 
+              text: 'DOH',
+            }, 
           ]
         },
         {
