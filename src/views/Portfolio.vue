@@ -200,31 +200,31 @@ export default {
               link: 'https://kakifi.com/', 
               text: 'KAKI',
             }, 
-            {
-              pic: require('@/assets/portfolio/gamefi-5.png'),
-              link: '', 
-              text: 'MetaTube',
-            }, 
-            {
-              pic: require('@/assets/portfolio/gamefi-6.png'),
-              link: '', 
-              text: 'EB',
-            }, 
-            {
-              pic: require('@/assets/portfolio/gamefi-7.png'),
-              link: '', 
-              text: 'Me Race',
-            }, 
-            {
-              pic: require('@/assets/portfolio/gamefi-8.png'),
-              link: '', 
-              text: 'BT MIRACLES',
-            }, 
-            {
-              pic: require('@/assets/portfolio/gamefi-9.png'),
-              link: '', 
-              text: 'DOH',
-            }, 
+            // {
+            //   pic: require('@/assets/portfolio/gamefi-5.png'),
+            //   link: '', 
+            //   text: 'MetaTube',
+            // }, 
+            // {
+            //   pic: require('@/assets/portfolio/gamefi-6.png'),
+            //   link: '', 
+            //   text: 'EB',
+            // }, 
+            // {
+            //   pic: require('@/assets/portfolio/gamefi-7.png'),
+            //   link: '', 
+            //   text: 'Me Race',
+            // }, 
+            // {
+            //   pic: require('@/assets/portfolio/gamefi-8.png'),
+            //   link: '', 
+            //   text: 'BT MIRACLES',
+            // }, 
+            // {
+            //   pic: require('@/assets/portfolio/gamefi-9.png'),
+            //   link: '', 
+            //   text: 'DOH',
+            // }, 
           ]
         },
         {

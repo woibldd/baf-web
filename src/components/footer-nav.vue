@@ -2,7 +2,7 @@
   <div class="footer-nav-container">
     <div class="footer-nav-box" flex="main:justify">
       <div class="footer-left">
-        Copyright © 1998 - 2021 BAF Capital. All Rights Reserved.
+        Copyright © 2019 - 2022 BAF Capital. All Rights Reserved.
       </div>
       <div class="footer-right" flex="cross:center">
          <a 
