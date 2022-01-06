@@ -72,16 +72,16 @@ export default {
             }, 
           ]
         },
-        {
-          name: 'Layer 2',
-          linkList: [
-            {
-              pic: require('@/assets/portfolio/layer-2-1.png'),
-              link: 'https://zksync.io/', 
-              text: 'Zksync',
-            }, 
-          ]
-        },
+        // {
+        //   name: 'Layer 2',
+        //   linkList: [
+        //     // {
+        //     //   pic: require('@/assets/portfolio/layer-2-1.png'),
+        //     //   link: 'https://zksync.io/', 
+        //     //   text: 'Zksync',
+        //     // }, 
+        //   ]
+        // },
         {
           name: 'Infrastructure and Storage',
           linkList: [
@@ -130,11 +130,11 @@ export default {
               link: '#', 
               text: 'Harmony Ten Technologies',
             }, 
-            {
-              pic: require('@/assets/portfolio/mining-3.png'),
-              link: '#', 
-              text: 'Renyunyiyun Technologies ',
-            }, 
+            // {
+            //   pic: require('@/assets/portfolio/mining-3.png'),
+            //   link: '#', 
+            //   text: 'Renyunyiyun Technologies ',
+            // }, 
           ]
         },
         {
@@ -165,16 +165,16 @@ export default {
               link: 'https://uniswap.org/', 
               text: 'Uniswap',
             },  
-            {
-              pic: require('@/assets/portfolio/defi-6.png'),
-              link: '', 
-              text: 'Continuum Finance',
-            },  
-            {
-              pic: require('@/assets/portfolio/defi-7.png'),
-              link: '', 
-              text: 'HILLSTONE',
-            },  
+            // {
+            //   pic: require('@/assets/portfolio/defi-6.png'),
+            //   link: '', 
+            //   text: 'Continuum Finance',
+            // },  
+            // {
+            //   pic: require('@/assets/portfolio/defi-7.png'),
+            //   link: '', 
+            //   text: 'HILLSTONE',
+            // },  
           ]
         },
         {
