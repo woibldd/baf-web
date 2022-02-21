@@ -37,7 +37,7 @@ module.exports = {
     },
     proxy: {
       '/wapi': {
-        target: 'http://i.baf.vc',
+        target: 'https://i.baf.vc',
         changeOrigin: true,
         pathRewrite: {
           '^/wapi': ''
