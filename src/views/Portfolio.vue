@@ -141,11 +141,6 @@ export default {
           name: 'Defi',
           linkList: [
             {
-              pic: require('@/assets/portfolio/defi-1.png'),
-              link: 'https://ixxweb.com/', 
-              text: 'IXX.COM',
-            }, 
-            {
               pic: require('@/assets/portfolio/defi-2.png'),
               link: 'https://shieldex.io/', 
               text: 'Shield',
